@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 5365484103616148362}
   - component: {fileID: 5365484103616148365}
   - component: {fileID: 5365484103616148364}
-  - component: {fileID: 5365484103616148367}
+  - component: {fileID: 4594805234799666484}
   m_Layer: 0
   m_Name: Star
-  m_TagString: Untagged
+  m_TagString: STAR
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5365484103616148366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.18, y: 4.5, z: 16.24}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -98,7 +98,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5365484103616148367
+--- !u!114 &4594805234799666484
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
