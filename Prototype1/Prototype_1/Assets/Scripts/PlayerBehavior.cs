@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -47,6 +48,10 @@ public class PlayerBehavior : MonoBehaviour
         if (c.tag == GameConstants.STAR_TAG) {
             starsCollected++;
             print("clues collected: " + starsCollected);
+        }
+
+        if(c.tag == GameConstants.SPIKE_BALL_TAG){
+            SceneManager.LoadScene("SampleScene");
         }
     }
 }
