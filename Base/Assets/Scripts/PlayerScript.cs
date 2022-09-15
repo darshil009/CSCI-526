@@ -1,23 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
+using static GameDetails;
 
 public class PlayerScript : MonoBehaviour
 {
     private CharacterController _controller;
 
-    [SerializeField] private float _playerSpeed = 5f;
-    [SerializeField] private float _rotationSpeed = 10f;
-    [SerializeField] private Camera _followCamera;
+    [SerializeField] private float playerSpeed = 5f;
+    [SerializeField] private float rotationSpeed = 10f;
+    [SerializeField] private Camera followCamera;
+    [SerializeField] private float jumpHeight = 1.0f;
+    [SerializeField] private float gravityValue = -9.81f;
 
     private Vector3 _playerVelocity;
     private bool _groundedPlayer;
 
-    [SerializeField] private float _jumpHeight = 1.0f;
-    [SerializeField] private float _gravityValue = -9.81f;
 
     private void Start()
     {
+        NumGems.Green = 0;
+        NumGems.Blue = 0;
+        NumGems.Red = 0;
         _controller = GetComponent<CharacterController>();
     }
 
@@ -38,25 +43,43 @@ public class PlayerScript : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 movementInput = Quaternion.Euler(0, _followCamera.transform.eulerAngles.y, 0) *
+        Vector3 movementInput = Quaternion.Euler(0, followCamera.transform.eulerAngles.y, 0) *
                                 new Vector3(horizontalInput, 0, verticalInput);
         Vector3 movementDirection = movementInput.normalized;
 
-        _controller.Move(movementDirection * (_playerSpeed * Time.deltaTime));
+        _controller.Move(movementDirection * (playerSpeed * Time.deltaTime));
 
         if (movementDirection != Vector3.zero)
         {
             Quaternion desiredRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
 
-            transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, _rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
         }
 
         if (Input.GetButtonDown("Jump") && _groundedPlayer)
         {
-            _playerVelocity.y += Mathf.Sqrt(_jumpHeight * -3.0f * _gravityValue);
+            _playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
         }
 
-        _playerVelocity.y += _gravityValue * Time.deltaTime;
+        _playerVelocity.y += gravityValue * Time.deltaTime;
         _controller.Move(_playerVelocity * Time.deltaTime);
+    }
+
+    void OnTriggerEnter(Collider c)
+    {
+        if (c.CompareTag(BlueGemsTag))
+        {
+            NumGems.Blue++;
+        }
+        else if (c.CompareTag((RedGemsTag)))
+        {
+            NumGems.Red++;
+        }
+        else if (c.CompareTag(GreenGemsTag))
+        {
+            NumGems.Green++;
+        }
+
+        Debug.Log("Blue:" + NumGems.Blue + " Red:" + NumGems.Red + " Green:" + NumGems.Green);
     }
 }
