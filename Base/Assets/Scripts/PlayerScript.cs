@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.SceneManagement;
 using static GameDetails;
 
 public class PlayerScript : MonoBehaviour
@@ -67,6 +68,9 @@ public class PlayerScript : MonoBehaviour
 
     void OnTriggerEnter(Collider c)
     {
+          if(c.CompareTag(SpikeBallTag)){
+            SceneManager.LoadScene("SampleScene");
+        }
         if (c.CompareTag(BlueGemsTag))
         {
             NumGems.Blue++;
@@ -79,6 +83,7 @@ public class PlayerScript : MonoBehaviour
         {
             NumGems.Green++;
         }
+
 
         Debug.Log("Blue:" + NumGems.Blue + " Red:" + NumGems.Red + " Green:" + NumGems.Green);
     }
