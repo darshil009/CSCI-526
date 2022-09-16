@@ -31,8 +31,8 @@ public class InstantiateEnemy : MonoBehaviour
         {
             GameObject gem = gemsWithEnemies[i];
             GameObject spikeBallObj = spikeBalls[i];
-            print("gem pos: " + gem.transform.position);
-            print("spike: "  + spikeBallObj.transform.position);
+            //print("gem pos: " + gem.transform.position);
+            //print("spike: "  + spikeBallObj.transform.position);
             spikeBallObj.transform.RotateAround(gem.transform.position, Vector3.up, SPEED * Time.deltaTime);
         }
     }
