@@ -13,9 +13,20 @@ public class DoorBehavior : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    //void Update()
+    //{
+    //    if(GameDetails.NumGems.Green == 1 && !isDoorOpen) {
+    //        print("door: all clues collected");
+    //        doorTransform.Rotate(0f, 0f, -90f, Space.Self);
+    //        isDoorOpen = true;
+    //    }
+
+    //}
+
+    public void changeDoor()
     {
-        if(GameDetails.NumGems.Green == 1 && !isDoorOpen) {
+        if (GameDetails.NumGems.Green == 5 && GameDetails.NumGems.Red == 3 && GameDetails.NumGems.Blue == 4 && !isDoorOpen)
+        {
             print("door: all clues collected");
             doorTransform.Rotate(0f, 0f, -90f, Space.Self);
             isDoorOpen = true;

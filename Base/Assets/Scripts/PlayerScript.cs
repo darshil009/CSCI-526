@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour
 {
     private CharacterController _controller;
 
-    [SerializeField] private float playerSpeed = 5f;
+    [SerializeField] private float playerSpeed = 6f;
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private Camera followCamera;
     [SerializeField] private float jumpHeight = 1.0f;
