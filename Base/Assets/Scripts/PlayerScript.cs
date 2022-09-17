@@ -9,7 +9,7 @@ public class PlayerScript : MonoBehaviour
 {
     private CharacterController _controller;
 
-    [SerializeField] private float playerSpeed = 6f;
+    private float playerSpeed = 5f;
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private Camera followCamera;
     [SerializeField] private float jumpHeight = 1.0f;
@@ -30,6 +30,14 @@ public class PlayerScript : MonoBehaviour
     private void Update()
     {
         MovePlayer();
+    }
+    public void decreaseSpeed(int weight)
+    {
+        playerSpeed -= (0.75f*weight);
+        if (playerSpeed<0)
+        {
+            playerSpeed = 0;
+        }
     }
 
     private void MovePlayer()
