@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +9,8 @@ using static GameDetails;
 public class PlayerScript : MonoBehaviour
 {
     private CharacterController _controller;
-
-    private float playerHealth = 100;
+    private InventoryManager _inventoryManager;
+    [SerializeField] private InventoryUI _inventoryUI;
     private float playerSpeed = 5f;
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private Camera followCamera;
@@ -19,6 +20,11 @@ public class PlayerScript : MonoBehaviour
     private Vector3 _playerVelocity;
     private bool _groundedPlayer;
 
+    private void Awake()
+    {
+        _inventoryManager = new InventoryManager();
+        _inventoryUI.SetInventoryManager(_inventoryManager);
+    }
 
     private void Start()
     {
@@ -35,10 +41,11 @@ public class PlayerScript : MonoBehaviour
 
     public void decreaseHealth(int health)
     {
-        playerHealth -= health;
-        Debug.Log("Player Health: " + playerHealth);
-        if (playerHealth <= 0) SceneManager.LoadScene("SampleScene");
+        PlayerHealth -= health;
+        Debug.Log("Player Health: " + PlayerHealth);
+        if (PlayerHealth <= 0) SceneManager.LoadScene("SampleScene");
     }
+
     public void decreaseSpeed(int weight)
     {
         playerSpeed -= (0.75f*weight);
@@ -103,4 +110,8 @@ public class PlayerScript : MonoBehaviour
     //
     //       // Debug.Log("Blue:" + NumGems.Blue + " Red:" + NumGems.Red + " Green:" + NumGems.Green);
     // }
+    public InventoryManager getInventoryManager()
+    {
+        return _inventoryManager;
+    }
 }

@@ -22,7 +22,7 @@ namespace Enemy
             PlayerScript playerScript = other.GetComponent<PlayerScript>();
             if (playerScript!=null)
             {
-                playerScript.decreaseHealth(10);
+                playerScript.decreaseHealth(30);
             }
             Destroy(gameObject);
         }

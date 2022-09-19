@@ -16,20 +16,24 @@ public class Collect : MonoBehaviour
         PlayerScript playerScript = other.GetComponent<PlayerScript>();
         if (playerScript!=null)
         {
-            if (gameObject.tag=="1lb")
+            if (CompareTag( "1lb"))
             {
+                playerScript.getInventoryManager().AddItem(Item.ItemType.Block1LB);
                 playerScript.decreaseSpeed(1);
             }
-            else if (gameObject.tag=="2lb")
+            else if (CompareTag( "2lb"))
             {
+                playerScript.getInventoryManager().AddItem(Item.ItemType.Block2LB);
                 playerScript.decreaseSpeed(2);
             }
-            else if (gameObject.tag == "3lb")
+            else if (CompareTag( "3lb"))
             {
+                playerScript.getInventoryManager().AddItem(Item.ItemType.Block3LB);
                 playerScript.decreaseSpeed(3);
             }
-            else
+            else if (CompareTag( "5lb"))
             {
+                playerScript.getInventoryManager().AddItem(Item.ItemType.Block5LB);
                 playerScript.decreaseSpeed(5);
             }
         }

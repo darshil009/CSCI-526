@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 
 namespace Enemy
 {
@@ -14,11 +13,13 @@ namespace Enemy
         
         private float radius;
         private bool canSeePlayer;
+        private Vector3 startPos;
         void Start()
         {
+            startPos = navMesh.transform.position;
             radius = GameDetails.EnemyVisionRadius;
             canSeePlayer = false;
-            navMesh.autoRepath = true;
+            navMesh.autoRepath = false;
             StartCoroutine(CheckIfPlayerVisible());
         }
 
@@ -29,8 +30,8 @@ namespace Enemy
             
             while (true)
             {
-                yield return wait;
                 CheckForPlayer();
+                yield return wait;
             }
         }
 
@@ -43,8 +44,8 @@ namespace Enemy
                 Transform target = rangeCheck[0].transform;
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
                 canSeePlayer = distanceToTarget <= radius;
-                Debug.Log(canSeePlayer + " " + distanceToTarget + ' ' + radius);
             }
+            else canSeePlayer = false;
         }
         
 
@@ -52,6 +53,7 @@ namespace Enemy
         void Update()
         {
             if (canSeePlayer) MoveToPlayer();
+            else navMesh.SetDestination(startPos);
         }
 
         void MoveToPlayer()
@@ -60,5 +62,6 @@ namespace Enemy
             var newPos = new Vector3(position.x - 0.2f, position.y - 0.2f, position.z - 0.2f);
             navMesh.SetDestination(newPos);
         }
+        
     }
 }
