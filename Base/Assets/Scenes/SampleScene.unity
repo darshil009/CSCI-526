@@ -1039,15 +1039,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-<<<<<<< Updated upstream
     m_Bits: 4294967295
-=======
-<<<<<<< HEAD
-    m_Bits: 153
-=======
-    m_Bits: 4294967295
->>>>>>> f9b0326943305197141270b7811c7a54919c4e56
->>>>>>> Stashed changes
   m_UseGeometry: 0
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
@@ -5316,7 +5308,6 @@ GameObject:
   - component: {fileID: 1758570981}
   - component: {fileID: 1758570985}
   - component: {fileID: 1758570986}
-  - component: {fileID: 1758570987}
   m_Layer: 0
   m_Name: Enemy_freeze
   m_TagString: Untagged
@@ -5414,27 +5405,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-<<<<<<< Updated upstream
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0.5
-=======
-<<<<<<< HEAD
-  m_Speed: 11
-  m_Acceleration: 10
-  avoidancePriority: 50
-  m_AngularSpeed: 30
-  m_StoppingDistance: 0
-=======
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0.5
->>>>>>> f9b0326943305197141270b7811c7a54919c4e56
->>>>>>> Stashed changes
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -5452,7 +5427,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87949a44ad0264f50b4414f06cef3e70, type: 3}
-<<<<<<< Updated upstream
   m_Name: 
   m_EditorClassIdentifier: 
   navMesh: {fileID: 1758570985}
@@ -5460,55 +5434,6 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 8
-=======
-  m_Name: 
-  m_EditorClassIdentifier: 
-  navMesh: {fileID: 1758570985}
-  player: {fileID: 1482986939}
-  playerMask:
-    serializedVersion: 2
-<<<<<<< HEAD
-    m_Bits: 128
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 256
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 2
-  sightRange: 15
-  attackRange: 5
-  playerInSightRange: 0
-  playerInAttackRange: 0
---- !u!114 &1758570987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1758570979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b48cdb7420ed4b2cba8497d77c2b2f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 0}
-  player: {fileID: 0}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 0
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 0
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 2
-  sightRange: 15
-  attackRange: 5
-  playerInSightRange: 0
-  playerInAttackRange: 0
-  startPosition: {x: 0, y: 0, z: 0}
-=======
-    m_Bits: 8
->>>>>>> f9b0326943305197141270b7811c7a54919c4e56
->>>>>>> Stashed changes
 --- !u!1001 &1770693912
 PrefabInstance:
   m_ObjectHideFlags: 0

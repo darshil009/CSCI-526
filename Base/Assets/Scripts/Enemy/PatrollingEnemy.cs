@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PatrollingEnemy1 : MonoBehaviour
+public class PatrollingEnemy : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform player;
@@ -13,7 +13,7 @@ public class PatrollingEnemy1 : MonoBehaviour
     public float walkPointRange;
 
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    public bool playerInsightRange, playerInAttackRange;
 
     private void Awake()
     {
@@ -24,12 +24,10 @@ public class PatrollingEnemy1 : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        playerInsightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patrolling();
-        if (playerInSightRange && !playerInAttackRange) ChasePlayer();
-        if (playerInAttackRange && playerInSightRange) ChasePlayer();
+        if (!playerInsightRange && !playerInAttackRange) Patrolling();
     }
 
     private void Patrolling()
@@ -44,12 +42,6 @@ public class PatrollingEnemy1 : MonoBehaviour
         //if walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
-    }
-
-    private void ChasePlayer()
-    {
-        agent.SetDestination(player.position);
-        
     }
 
     private void SearchWalkPoint()
