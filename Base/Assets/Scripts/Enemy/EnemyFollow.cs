@@ -13,10 +13,10 @@ namespace Enemy
         
         private float radius;
         private bool canSeePlayer;
-        private Transform startPos;
+        private Vector3 startPos;
         void Start()
         {
-            startPos = navMesh.transform;
+            startPos = navMesh.transform.position;
             radius = GameDetails.EnemyVisionRadius;
             canSeePlayer = false;
             navMesh.autoRepath = false;
@@ -53,7 +53,7 @@ namespace Enemy
         void Update()
         {
             if (canSeePlayer) MoveToPlayer();
-            else navMesh.SetDestination(startPos.position);
+            else navMesh.SetDestination(startPos);
         }
 
         void MoveToPlayer()
