@@ -5,9 +5,10 @@ namespace Enemy
     public class Health : EnemyFollow
     {
         // Start is called before the first frame update
+        private EnemyFollow follow;
         void Start()
         {
-        
+            
         }
 
         // Update is called once per frame
@@ -21,7 +22,7 @@ namespace Enemy
             PlayerScript playerScript = other.GetComponent<PlayerScript>();
             if (playerScript!=null)
             {
-                playerScript.descreaseHealth(10);
+                playerScript.decreaseHealth(10);
             }
             Destroy(gameObject);
         }

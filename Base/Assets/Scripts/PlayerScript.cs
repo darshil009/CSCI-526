@@ -33,9 +33,10 @@ public class PlayerScript : MonoBehaviour
         MovePlayer();
     }
 
-    public void descreaseHealth(int health)
+    public void decreaseHealth(int health)
     {
         playerHealth -= health;
+        Debug.Log("Player Health: " + playerHealth);
         if (playerHealth <= 0) SceneManager.LoadScene("SampleScene");
     }
     public void decreaseSpeed(int weight)

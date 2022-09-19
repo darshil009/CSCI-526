@@ -25,7 +25,7 @@ namespace Enemy
         private IEnumerator CheckIfPlayerVisible()
         {
             
-            WaitForSeconds wait = new WaitForSeconds(0.5f);
+            WaitForSeconds wait = new WaitForSeconds(0.1f);
             
             while (true)
             {
