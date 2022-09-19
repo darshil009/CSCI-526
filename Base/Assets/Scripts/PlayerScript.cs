@@ -9,7 +9,6 @@ public class PlayerScript : MonoBehaviour
 {
     private CharacterController _controller;
 
-    private float playerHealth = 100;
     private float playerSpeed = 5f;
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private Camera followCamera;
@@ -35,10 +34,11 @@ public class PlayerScript : MonoBehaviour
 
     public void decreaseHealth(int health)
     {
-        playerHealth -= health;
-        Debug.Log("Player Health: " + playerHealth);
-        if (playerHealth <= 0) SceneManager.LoadScene("SampleScene");
+        PlayerHealth -= health;
+        Debug.Log("Player Health: " + PlayerHealth);
+        if (PlayerHealth <= 0) SceneManager.LoadScene("SampleScene");
     }
+
     public void decreaseSpeed(int weight)
     {
         playerSpeed -= (0.75f*weight);
