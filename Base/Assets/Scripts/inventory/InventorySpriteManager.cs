@@ -8,28 +8,21 @@ public class InventorySpriteManager : MonoBehaviour
     [SerializeField] private Sprite[] blockSprites; 
 
 
-    public Sprite GetSprite(Item item)
+    public Sprite GetSprite(Item.ItemType itemType)
     {
-        switch (item.GetItemType())
+        switch (itemType)
         {
-            case Item.ItemType.Block:
-                Block block = (Block)item;
-                switch (block.getWeight())
-                {
-                    case 1:
-                        return blockSprites[0];
-                    case 2:
-                        return blockSprites[1];
-                    case 3:
-                        return blockSprites[2];
-                    case 5:
-                        return blockSprites[3];
-                    default:
-                        return blockSprites[0];
-                }
-                
-        }
+            case Item.ItemType.Block1LB:
+                return blockSprites[0];
+            case Item.ItemType.Block2LB:
+                return blockSprites[1];
+            case Item.ItemType.Block3LB:
+                return blockSprites[2];
+            case Item.ItemType.Block5LB:
+                return blockSprites[3];
+            default:
+                return blockSprites[0];
 
-        return blockSprites[0];
+        }
     }
 }
