@@ -45,6 +45,7 @@ namespace Enemy
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
                 canSeePlayer = distanceToTarget <= radius;
             }
+            else canSeePlayer = false;
         }
         
 
