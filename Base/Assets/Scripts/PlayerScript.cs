@@ -9,6 +9,7 @@ public class PlayerScript : MonoBehaviour
 {
     private CharacterController _controller;
 
+    private float playerHealth = 100;
     private float playerSpeed = 5f;
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private Camera followCamera;
@@ -30,6 +31,12 @@ public class PlayerScript : MonoBehaviour
     private void Update()
     {
         MovePlayer();
+    }
+
+    public void descreaseHealth(int health)
+    {
+        playerHealth -= health;
+        if (playerHealth <= 0) SceneManager.LoadScene("SampleScene");
     }
     public void decreaseSpeed(int weight)
     {
@@ -74,25 +81,25 @@ public class PlayerScript : MonoBehaviour
         _controller.Move(_playerVelocity * Time.deltaTime);
     }
 
-    void OnTriggerEnter(Collider c)
-    {
-          if(c.CompareTag(SpikeBallTag)){
-            SceneManager.LoadScene("SampleScene");
-        }
-        if (c.CompareTag(BlueGemsTag))
-        {
-            NumGems.Blue++;
-        }
-        else if (c.CompareTag((RedGemsTag)))
-        {
-            NumGems.Red++;
-        }
-        else if (c.CompareTag(GreenGemsTag))
-        {
-            NumGems.Green++;
-        }
-
-
-        Debug.Log("Blue:" + NumGems.Blue + " Red:" + NumGems.Red + " Green:" + NumGems.Green);
-    }
+    // void OnTriggerEnter(Collider c)
+    // {
+    //       if(c.CompareTag(SpikeBallTag)){
+    //         SceneManager.LoadScene("SampleScene");
+    //       }
+    //       if (c.CompareTag(BlueGemsTag))
+    //       {
+    //           NumGems.Blue++;
+    //       }
+    //       else if (c.CompareTag((RedGemsTag)))
+    //       {
+    //           NumGems.Red++;
+    //       }
+    //       else if (c.CompareTag(GreenGemsTag))
+    //       {
+    //           NumGems.Green++;
+    //       }
+    //
+    //
+    //       // Debug.Log("Blue:" + NumGems.Blue + " Red:" + NumGems.Red + " Green:" + NumGems.Green);
+    // }
 }

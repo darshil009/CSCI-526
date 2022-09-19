@@ -4,11 +4,8 @@ using UnityEngine.AI;
 
 public class PatrollingEnemy : MonoBehaviour
 {
-
     public NavMeshAgent agent;
-
     public Transform player;
-
     public LayerMask whatIsGround, whatIsPlayer;
 
     public Vector3 walkPoint;
@@ -62,6 +59,5 @@ public class PatrollingEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 }
