@@ -10,7 +10,7 @@ namespace Enemy
         [SerializeField] public NavMeshAgent navMesh;
         [SerializeField] public Transform player;
         [SerializeField] public LayerMask playerMask;
-        
+
         private float radius;
         private bool canSeePlayer;
         private Vector3 startPos;
@@ -25,9 +25,9 @@ namespace Enemy
 
         private IEnumerator CheckIfPlayerVisible()
         {
-            
+
             WaitForSeconds wait = new WaitForSeconds(0.1f);
-            
+
             while (true)
             {
                 CheckForPlayer();
@@ -47,7 +47,7 @@ namespace Enemy
             }
             else canSeePlayer = false;
         }
-        
+
 
         // Update is called once per frame
         void Update()
@@ -62,6 +62,6 @@ namespace Enemy
             var newPos = new Vector3(position.x - 0.2f, position.y - 0.2f, position.z - 0.2f);
             navMesh.SetDestination(newPos);
         }
-        
+
     }
 }
