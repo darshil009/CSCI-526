@@ -9,7 +9,6 @@ public class Block : Item
 
     protected Block(int weight)
     {
-        itemType = ItemType.Block;
         this.weight = weight;
     }
     public int getWeight()
