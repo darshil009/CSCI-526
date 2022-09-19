@@ -2,10 +2,13 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PatrollingEnemy1 : MonoBehaviour
+public class ChasePlayerEnemy : MonoBehaviour
 {
+
     public NavMeshAgent agent;
+
     public Transform player;
+
     public LayerMask whatIsGround, whatIsPlayer;
 
     public Vector3 walkPoint;
@@ -15,10 +18,13 @@ public class PatrollingEnemy1 : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    public Vector3 startPosition;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -27,45 +33,22 @@ public class PatrollingEnemy1 : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
 
-        if (!playerInSightRange && !playerInAttackRange) Patrolling();
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
         if (playerInAttackRange && playerInSightRange) ChasePlayer();
-    }
-
-    private void Patrolling()
-    {
-        if (!walkPointSet) SearchWalkPoint();
-
-        if (walkPointSet)
-            agent.SetDestination(walkPoint);
-
-        Vector3 distanceToWalkPoint = transform.position - walkPoint;
-
-        //if walkpoint reached
-        if (distanceToWalkPoint.magnitude < 1f)
-            walkPointSet = false;
     }
 
     private void ChasePlayer()
     {
         agent.SetDestination(player.position);
-        
-    }
-
-    private void SearchWalkPoint()
-    {
-        float randomZ = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
-        float randomX = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
-
-        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
-
-        //walkpoint should be on the ground
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
-            walkPointSet = true;
+        //if (!playerInSightRange && !playerInAttackRange)
+        //{
+        //    agent.SetDestination(startPosition);
+        //}
     }
 
     // Start is called before the first frame update
     void Start()
     {
+
     }
 }
