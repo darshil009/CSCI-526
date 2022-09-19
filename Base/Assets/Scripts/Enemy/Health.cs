@@ -2,10 +2,9 @@ using UnityEngine;
 
 namespace Enemy
 {
-    public class Health : EnemyFollow
+    public class Health : MonoBehaviour
     {
         // Start is called before the first frame update
-        private EnemyFollow follow;
         void Start()
         {
             

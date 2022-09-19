@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour
 
     private Vector3 _playerVelocity;
     private bool _groundedPlayer;
+    public static float PlayerHealth;
 
     private void Awake()
     {
@@ -28,9 +29,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Start()
     {
-        NumGems.Green = 0;
-        NumGems.Blue = 0;
-        NumGems.Red = 0;
+        PlayerHealth = 100;
         _controller = GetComponent<CharacterController>();
     }
 
@@ -43,7 +42,7 @@ public class PlayerScript : MonoBehaviour
     {
         PlayerHealth -= health;
         Debug.Log("Player Health: " + PlayerHealth);
-        if (PlayerHealth <= 0) SceneManager.LoadScene("SampleScene");
+        if (PlayerHealth <= 0) SceneManager.LoadScene("Scenes/SampleScene");
     }
 
     public void decreaseSpeed(int weight)
@@ -89,27 +88,14 @@ public class PlayerScript : MonoBehaviour
         _controller.Move(_playerVelocity * Time.deltaTime);
     }
 
-    // void OnTriggerEnter(Collider c)
-    // {
-    //       if(c.CompareTag(SpikeBallTag)){
-    //         SceneManager.LoadScene("SampleScene");
-    //       }
-    //       if (c.CompareTag(BlueGemsTag))
-    //       {
-    //           NumGems.Blue++;
-    //       }
-    //       else if (c.CompareTag((RedGemsTag)))
-    //       {
-    //           NumGems.Red++;
-    //       }
-    //       else if (c.CompareTag(GreenGemsTag))
-    //       {
-    //           NumGems.Green++;
-    //       }
-    //
-    //
-    //       // Debug.Log("Blue:" + NumGems.Blue + " Red:" + NumGems.Red + " Green:" + NumGems.Green);
-    // }
+    void OnTriggerEnter(Collider c)
+    {
+          if(c.CompareTag("Bullet"))
+          {
+              decreaseHealth(10);
+              Destroy(c.gameObject);
+          }
+    }
     public InventoryManager getInventoryManager()
     {
         return _inventoryManager;

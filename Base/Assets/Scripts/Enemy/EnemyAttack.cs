@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -72,9 +73,13 @@ namespace Enemy
             {
                 ///Attack code here
                 Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+                rb.detectCollisions = true;
+                rb.tag = "Bullet";
                 rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
                 rb.AddForce(transform.up * 8f, ForceMode.Impulse);
+                
                 Destroy(rb.gameObject, 1);
+                
                 ///End of attack code
 
                 alreadyAttacked = true;
