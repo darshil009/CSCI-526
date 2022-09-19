@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public struct GemsCount
 {
     public int Green;
