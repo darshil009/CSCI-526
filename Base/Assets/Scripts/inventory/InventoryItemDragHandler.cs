@@ -41,7 +41,13 @@ public class InventoryItemDragHandler : MonoBehaviour,IDragHandler,IEndDragHandl
             if (!RectTransformUtility.RectangleContainsScreenPoint(itemSlotContainer, Input.mousePosition))
             {
                 item.OnItemDrop();
-                Debug.Log("Item removed and placed on maze");
+                
+                GameObject newItem = Instantiate(Resources.Load("Prefabs/Red", typeof(GameObject))) as GameObject;
+                Vector3 pos =  Vector3.zero;
+                pos.x += Input.mousePosition.x;
+                pos.y += Input.mousePosition.y;
+                Vector3.ProjectOnPlane(pos, Vector3.up);
+                Debug.Log("Item removed and placed on maze" +Input.mousePosition);
             }
             else
             {
