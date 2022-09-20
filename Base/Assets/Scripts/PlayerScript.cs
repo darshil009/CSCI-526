@@ -35,6 +35,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
+        
         MovePlayer();
     }
 

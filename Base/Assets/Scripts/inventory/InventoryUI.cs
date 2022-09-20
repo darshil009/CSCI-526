@@ -9,7 +9,6 @@ public abstract class InventoryUI : MonoBehaviour
     protected InventoryManager inventoryManager;
     protected Transform itemSlotContainer;
     protected Transform itemSlotTemplate;
-    [SerializeField] protected InventoryResourceManager inventorySpriteManager;
     protected Dictionary<Item, Transform> itemToSlotTemplate;
 
     public abstract void OnItemAdded( Item item);

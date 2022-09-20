@@ -23,7 +23,7 @@ public class StackedInventoryUI : InventoryUI
         RectTransform itemSlotTemplateRectTransform = itemSlotTemplateTransform.GetComponent<RectTransform>();
         itemSlotTemplateRectTransform.gameObject.SetActive(true);
         itemSlotTemplateRectTransform.Find("itemImage").GetComponent<Image>().overrideSprite =
-            inventorySpriteManager.GetSprite(itemType);
+            InventoryResourceManager.GetSprite(itemType);
         itemSlotTemplateRectTransform.Find("itemCount").GetComponent<TextMeshProUGUI>().SetText(""+1);
     }
     
