@@ -33,4 +33,9 @@ public class Item
         OnItemDropEvent?.Invoke(this,this);
     }
 
+    public Item(ItemType itemType)
+    {
+        this.itemType = itemType;
+    }
+
 }

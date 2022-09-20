@@ -7,7 +7,7 @@ public class Block : Item
 {
     private readonly int weight;
 
-    protected Block(int weight)
+    protected Block(int weight,ItemType itemType):base(itemType)
     {
         this.weight = weight;
     }

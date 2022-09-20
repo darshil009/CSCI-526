@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Block2 : Block
 {
-    public Block2():base(2)
+    public Block2():base(2, ItemType.Block2LB)
     {
     }
 }
