@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static GameDetails;
+using System.Threading.Tasks;
 
 public class PlayerScript : MonoBehaviour
 {
     private CharacterController _controller;
     private InventoryManager _inventoryManager;
     [SerializeField] private InventoryUI _inventoryUI;
-    private float playerSpeed = 5f;
+    
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private Camera followCamera;
     [SerializeField] private float jumpHeight = 1.0f;
@@ -16,6 +16,8 @@ public class PlayerScript : MonoBehaviour
     private Vector3 _playerVelocity;
     private bool _groundedPlayer;
     public static float PlayerHealth;
+    public static float playerSpeed;
+    
 
     private void Awake()
     {
@@ -25,6 +27,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Start()
     {
+        playerSpeed = 5f;
         PlayerHealth = 100;
         _controller = GetComponent<CharacterController>();
     }
@@ -35,11 +38,11 @@ public class PlayerScript : MonoBehaviour
     }
 
     //
-    public void freezePlayer(int seconds)
+    public async void freezePlayer(int seconds)
     {
         var temp = playerSpeed;
-        playerSpeed = 0;
-        System.Threading.Thread.Sleep(seconds*1000);
+        playerSpeed = 0.5f;
+        await Task.Delay(seconds);
         playerSpeed = temp;
     }
     //

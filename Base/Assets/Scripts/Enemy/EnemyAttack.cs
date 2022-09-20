@@ -26,7 +26,7 @@ namespace Enemy
         void Start()
         {
             //radius = GameDetails.EnemyVisionRadius;
-            radius = 8;
+            radius = GameDetails.EnemyVisionRadius * 0.75f;
             canSeePlayer = false;
             navMesh.autoRepath = true;
             //startPosition = transform.position;
@@ -51,11 +51,11 @@ namespace Enemy
 
             if (rangeCheck.Length != 0)
             {
-                //Transform target = rangeCheck[0].transform;
                 float distanceToTarget = Vector3.Distance(transform.position, player.position);
                 canSeePlayer = distanceToTarget <= radius;
                 Debug.Log(canSeePlayer + " " + distanceToTarget + ' ' + radius);
             }
+            else canSeePlayer = false;
         }
 
 
@@ -71,7 +71,7 @@ namespace Enemy
             transform.LookAt(player);
             if (!alreadyAttacked)
             {
-                ///Attack code here
+                //Attack code here
                 Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
                 rb.detectCollisions = true;
                 rb.tag = "Bullet";
@@ -80,7 +80,7 @@ namespace Enemy
                 
                 Destroy(rb.gameObject, 1);
                 
-                ///End of attack code
+                //End of attack code
 
                 alreadyAttacked = true;
                 Invoke(nameof(ResetAttack), timeBetweenAttacks);

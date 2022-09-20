@@ -16,8 +16,10 @@ namespace Enemy
         private Vector3 startPos;
         void Start()
         {
+            var multiplier = 1;
+            if (navMesh.CompareTag("Enemy_health")) multiplier = 2;
             startPos = navMesh.transform.position;
-            radius = GameDetails.EnemyVisionRadius;
+            radius = GameDetails.EnemyVisionRadius * multiplier;
             canSeePlayer = false;
             navMesh.autoRepath = false;
             StartCoroutine(CheckIfPlayerVisible());
