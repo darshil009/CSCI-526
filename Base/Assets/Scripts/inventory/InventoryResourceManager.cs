@@ -2,24 +2,45 @@ using UnityEngine;
 
 public class InventoryResourceManager : MonoBehaviour
 {
+ 
 
-    [SerializeField] private Sprite[] blockSprites; 
-
-
-    public Sprite GetSprite(Item.ItemType itemType)
+  private const string SpritePath = "Sprites/Inventory/";
+  private const string PrefabPath = "Prefabs/";
+    
+    public static Sprite GetSprite(Item.ItemType itemType)
     {
         switch (itemType)
         {
             case Item.ItemType.Block1LB:
-                return Resources.Load<Sprite>("Sprites/Inventory/blocks/1lb");
+                return Resources.Load<Sprite>(SpritePath +"blocks/1lb");
             case Item.ItemType.Block2LB:
-                return Resources.Load<Sprite>("Sprites/Inventory/blocks/2lb");
+                return Resources.Load<Sprite>(SpritePath +"blocks/2lb");
             case Item.ItemType.Block3LB:
-                return Resources.Load<Sprite>("Sprites/Inventory/blocks/3lb");
+                return Resources.Load<Sprite>(SpritePath +"blocks/3lb");
             case Item.ItemType.Block5LB:
-                return Resources.Load<Sprite>("Sprites/Inventory/blocks/5lb");
+                return Resources.Load<Sprite>(SpritePath +"blocks/5lb");
             default:
-                return Resources.Load<Sprite>("Sprites/Inventory/blocks/1lb");
+                return Resources.Load<Sprite>(SpritePath +"blocks/1lb");
+
+        }
+    }
+    
+    public static Object GetPrefab(Item.ItemType itemType)
+    {
+        return Resources.Load(PrefabPath+"Red");
+        switch (itemType)
+        {
+            case Item.ItemType.Block1LB:
+                Debug.Log("Path is "+PrefabPath + "Block1LB");
+                return Resources.Load(PrefabPath+"Block1LB");
+            case Item.ItemType.Block2LB:
+                return Resources.Load(PrefabPath+"Block2LB");
+            case Item.ItemType.Block3LB:
+                return Resources.Load(PrefabPath+"Block3LB");
+            case Item.ItemType.Block5LB:
+                return Resources.Load(PrefabPath+"Block5LB");
+            default:
+                return Resources.Load(PrefabPath+"Block1LB");
 
         }
     }

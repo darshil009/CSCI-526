@@ -40,14 +40,19 @@ public class InventoryItemDragHandler : MonoBehaviour,IDragHandler,IEndDragHandl
             Debug.Log("Parent is " + itemSlotContainer.gameObject.name);
             if (!RectTransformUtility.RectangleContainsScreenPoint(itemSlotContainer, Input.mousePosition))
             {
+
+                GameObject newItem = Instantiate(InventoryResourceManager.GetPrefab(item.GetItemType())) as GameObject;
+                Vector3 mousePos = new Vector3(Input.mousePosition.x, 0, Input.mousePosition.y);
+                Vector3 worldPosition;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray.origin, ray.origin + ray.direction * 100f, out hit))
+                    worldPosition = hit.point;
+                else
+                    worldPosition = ray.origin + ray.direction * 100f;
+                newItem.transform.position = worldPosition;
+                Debug.Log("Item removed and placed on maze" + Camera.main.ScreenToWorldPoint(Input.mousePosition));
                 item.OnItemDrop();
-                
-                GameObject newItem = Instantiate(Resources.Load("Prefabs/Red", typeof(GameObject))) as GameObject;
-                Vector3 pos =  Vector3.zero;
-                pos.x += Input.mousePosition.x;
-                pos.y += Input.mousePosition.y;
-                Vector3.ProjectOnPlane(pos, Vector3.up);
-                Debug.Log("Item removed and placed on maze" +Input.mousePosition);
             }
             else
             {

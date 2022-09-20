@@ -32,7 +32,7 @@ public class UnstackedInventoryUI : InventoryUI
         
         Transform itemImageTransform =itemSlotTemplateRectTransform.Find("itemImage"); 
         itemImageTransform.GetComponent<Image>().overrideSprite =
-            inventorySpriteManager.GetSprite(itemType);
+            InventoryResourceManager.GetSprite(itemType);
         itemImageTransform.GetComponent<InventoryItemDragHandler>().SetItem(item);
         itemSlotTemplateRectTransform.Find("itemCount").GetComponent<TextMeshProUGUI>().gameObject.SetActive(false);
     }
