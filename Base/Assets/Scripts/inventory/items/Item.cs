@@ -25,4 +25,12 @@ public class Item
     {
         return itemType;
     }
+
+    public event EventHandler<Item> OnItemDropEvent;
+
+    public void OnItemDrop()
+    {
+        OnItemDropEvent?.Invoke(this,this);
+    }
+
 }

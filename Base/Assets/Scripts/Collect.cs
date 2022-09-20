@@ -16,22 +16,22 @@ public class Collect : MonoBehaviour
         {
             if (CompareTag( "1lb"))
             {
-                playerScript.getInventoryManager().AddItem(Item.ItemType.Block1LB);
+                playerScript.getInventoryManager().AddItem(new Block1());
                 playerScript.decreaseSpeed(1);
             }
             else if (CompareTag( "2lb"))
             {
-                playerScript.getInventoryManager().AddItem(Item.ItemType.Block2LB);
+                playerScript.getInventoryManager().AddItem(new Block2());
                 playerScript.decreaseSpeed(2);
             }
             else if (CompareTag( "3lb"))
             {
-                playerScript.getInventoryManager().AddItem(Item.ItemType.Block3LB);
+                playerScript.getInventoryManager().AddItem(new Block3());
                 playerScript.decreaseSpeed(3);
             }
             else if (CompareTag( "5lb"))
             {
-                playerScript.getInventoryManager().AddItem(Item.ItemType.Block5LB);
+                playerScript.getInventoryManager().AddItem(new Block5());
                 playerScript.decreaseSpeed(5);
             }
         }

@@ -21,8 +21,9 @@ public class PlayerScript : MonoBehaviour
 
     private void Awake()
     {
-        _inventoryManager = new InventoryManager();
+        _inventoryManager = new UnStackedInventoryManager();
         _inventoryUI.SetInventoryManager(_inventoryManager);
+        _inventoryManager.SetInventoryUI(_inventoryUI);
     }
 
     private void Start()
