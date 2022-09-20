@@ -543,7 +543,7 @@ GameObject:
   - component: {fileID: 1145206193}
   - component: {fileID: 1145206192}
   m_Layer: 5
-  m_Name: Image
+  m_Name: ArrowsImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1083,7 +1083,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: -139}
+  m_AnchoredPosition: {x: -28, y: -132}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2071812541
@@ -1171,7 +1171,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 20
 --- !u!222 &2071812543
 CanvasRenderer:
   m_ObjectHideFlags: 0
