@@ -34,6 +34,16 @@ public class PlayerScript : MonoBehaviour
         MovePlayer();
     }
 
+    //
+    public void freezePlayer(int seconds)
+    {
+        var temp = playerSpeed;
+        playerSpeed = 0;
+        System.Threading.Thread.Sleep(seconds*1000);
+        playerSpeed = temp;
+    }
+    //
+
     public void decreaseHealth(int health)
     {
         PlayerHealth -= health;
