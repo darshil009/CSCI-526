@@ -11,15 +11,15 @@ public class InventorySpriteManager : MonoBehaviour
         switch (itemType)
         {
             case Item.ItemType.Block1LB:
-                return blockSprites[0];
+                return Resources.Load<Sprite>("Inventory/blocks/1lb");
             case Item.ItemType.Block2LB:
-                return blockSprites[1];
+                return Resources.Load<Sprite>("Inventory/blocks/2lb");
             case Item.ItemType.Block3LB:
-                return blockSprites[2];
+                return Resources.Load<Sprite>("Inventory/blocks/3lb");
             case Item.ItemType.Block5LB:
-                return blockSprites[3];
+                return Resources.Load<Sprite>("Inventory/blocks/5lb");
             default:
-                return blockSprites[0];
+                return Resources.Load<Sprite>("Inventory/blocks/1lb");
 
         }
     }

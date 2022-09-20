@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Block3 : Block
 {
-    public Block3():base(3)
+    public Block3():base(3, ItemType.Block3LB)
     {
     }
 }
