@@ -27,6 +27,7 @@ public class InventoryResourceManager : MonoBehaviour
     
     public static Object GetPrefab(Item.ItemType itemType)
     {
+        //return Resources.Load(PrefabPath+"1lbBlock");
         switch (itemType)
         {
             case Item.ItemType.Block1LB:
