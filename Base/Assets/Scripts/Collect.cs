@@ -18,23 +18,27 @@ public class Collect : MonoBehaviour
             {
                 playerScript.getInventoryManager().AddItem(new Block1());
                 playerScript.decreaseSpeed(1);
+                Destroy(gameObject);
             }
             else if (CompareTag( "2lb"))
             {
                 playerScript.getInventoryManager().AddItem(new Block2());
                 playerScript.decreaseSpeed(2);
+                Destroy(gameObject);
+                
             }
             else if (CompareTag( "3lb"))
             {
                 playerScript.getInventoryManager().AddItem(new Block3());
                 playerScript.decreaseSpeed(3);
+                Destroy(gameObject);
             }
             else if (CompareTag( "5lb"))
             {
                 playerScript.getInventoryManager().AddItem(new Block5());
                 playerScript.decreaseSpeed(5);
+                Destroy(gameObject);
             }
         }
-        Destroy(gameObject);
     }
 }
