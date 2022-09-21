@@ -13,7 +13,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
     private Item item;
     private void Awake()
     {
-        itemSlotTemplate = gameObject.transform as RectTransform;
+        itemSlotTemplate = gameObject.transform.parent as RectTransform;
         itemSlotContainer = itemSlotTemplate.parent as RectTransform;
     }
 
@@ -30,6 +30,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
     {
 
         itemObj= Instantiate(InventoryResourceManager.GetPrefab(item.GetItemType())) as GameObject;
+        itemObj.GetComponent<BoxCollider>().isTrigger = false;
         itemObj.transform.GetComponent<Rigidbody>().useGravity = false;
         Debug.Log("On begin drag");
     }
@@ -51,15 +52,15 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
 
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        Debug.Log("Ray origin"+ray.origin+" ray direction"+ray.direction);
-        Debug.DrawRay(ray.origin, -ray.origin + -ray.direction, Color.green);
+        RaycastHit hit = new RaycastHit();
+        ray.origin = playerScript.transform.position;
+        Debug.DrawRay(ray.origin,ray.direction*100,Color.green);
 
-        if (Physics.Raycast(ray.origin, -ray.origin + -ray.direction * 200f, out hit)){
-                print("Hit");
-            Vector3 v3 = hit.point;
-            v3.z +=100;
-            Debug.DrawRay(ray.origin, v3, Color.black);
+        if (Physics.Raycast(ray.origin,ray.direction*100, out hit)){
+                print("Hit " + hit.transform.gameObject.name + " "+hit.point);
+                print("Local Hit "+playerScript.transform.InverseTransformPoint(hit.point));
+                print("New position"+ (playerScript.transform.position + playerScript.transform.InverseTransformPoint(hit.point)));
+                itemObj.transform.position = playerScript.transform.position + playerScript.transform.InverseTransformPoint(hit.point)+new Vector3(0,2,0);
         }
         
 
@@ -113,6 +114,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
                 */
                 //CalculateWorldPosition();
                 itemObj.transform.GetComponent<Rigidbody>().useGravity = true;
+                itemObj.GetComponent<BoxCollider>().isTrigger = true;
                 item.OnItemDrop();
             }
             else
