@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 1778480107529067059}
   - component: {fileID: 297048187879947567}
   - component: {fileID: 4859109732359677566}
+  - component: {fileID: -1527131962483851086}
   m_Layer: 0
   m_Name: Block2LB
   m_TagString: 2lb
@@ -194,6 +195,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 16, y: 2.5, z: -8.3}
+--- !u!54 &-1527131962483851086
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778480107529067058}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1778480107685789406
 GameObject:
   m_ObjectHideFlags: 0
