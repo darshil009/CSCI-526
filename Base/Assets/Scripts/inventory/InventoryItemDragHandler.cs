@@ -1,6 +1,7 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler,IEndDragHandler
@@ -32,6 +33,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
         itemObj= Instantiate(InventoryResourceManager.GetPrefab(item.GetItemType())) as GameObject;
         itemObj.GetComponent<BoxCollider>().isTrigger = false;
         itemObj.GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<Image>().enabled = false;
         Debug.Log("On begin drag");
     }
 
@@ -124,6 +126,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
                 Destroy(itemObj);
                 itemObj=null;
                 Debug.Log("Item removed and placed on panel");
+                GetComponent<Image>().enabled = true;
                 transform.localPosition = Vector3.zero;
             }
         }
