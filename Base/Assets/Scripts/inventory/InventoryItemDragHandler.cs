@@ -31,7 +31,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
 
         itemObj= Instantiate(InventoryResourceManager.GetPrefab(item.GetItemType())) as GameObject;
         itemObj.GetComponent<BoxCollider>().isTrigger = false;
-        itemObj.transform.GetComponent<Rigidbody>().useGravity = false;
+        itemObj.GetComponent<Rigidbody>().isKinematic = true;
         Debug.Log("On begin drag");
     }
 
@@ -60,7 +60,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
                 print("Hit " + hit.transform.gameObject.name + " "+hit.point);
                 print("Local Hit "+playerScript.transform.InverseTransformPoint(hit.point));
                 print("New position"+ (playerScript.transform.position + playerScript.transform.InverseTransformPoint(hit.point)));
-                itemObj.transform.position = playerScript.transform.position + playerScript.transform.InverseTransformPoint(hit.point)+new Vector3(0,2,0);
+                itemObj.transform.position = Vector3.Lerp(itemObj.transform.position,playerScript.transform.position + playerScript.transform.InverseTransformPoint(hit.point)+new Vector3(0,2,0),0.5f);
         }
         
 
@@ -113,8 +113,10 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
                 Debug.Log("Item removed and placed on maze" + Camera.main.ScreenToWorldPoint(Input.mousePosition));
                 */
                 //CalculateWorldPosition();
-                itemObj.transform.GetComponent<Rigidbody>().useGravity = true;
                 itemObj.GetComponent<BoxCollider>().isTrigger = true;
+                itemObj.transform.GetComponent<Rigidbody>().isKinematic = false;
+                itemObj.transform.GetComponent<Rigidbody>().velocity = new Vector3(0f,0f,0f);
+                itemObj.transform.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f,0f,0f);
                 item.OnItemDrop();
             }
             else
