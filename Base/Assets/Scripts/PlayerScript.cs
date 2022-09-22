@@ -106,6 +106,17 @@ public class PlayerScript : MonoBehaviour
               decreaseHealth(10);
               Destroy(c.gameObject);
           }
+          if (c.CompareTag("scale"))
+          {
+            Debug.Log("standing on scale");
+          }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag=="scale")
+        {
+            Debug.Log("ey yo");
+        }
     }
     public InventoryManager getInventoryManager()
     {

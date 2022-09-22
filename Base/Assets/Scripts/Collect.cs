@@ -41,4 +41,11 @@ public class Collect : MonoBehaviour
             }
         }
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "scale")
+        {
+            Debug.Log("box put on scale");
+        }
+    }
 }
