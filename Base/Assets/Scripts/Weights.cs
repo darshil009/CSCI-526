@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Weights : MonoBehaviour
@@ -26,36 +28,15 @@ public class Weights : MonoBehaviour
 
         while (true)
         {
-            CheckForPlayer();
+            CheckBoxes();
             yield return wait;
         }
     }
 
-    private void CheckForPlayer()
+    private void CheckBoxes()
     {
-        Collider[] numObjects = Physics.OverlapBox(scale.position, transform.localScale * 2, Quaternion.identity, boxMask);
-        int total = 0;
-        int i = 0;
-        while (i < numObjects.Length)
-        {
-            Collider obj = numObjects[i];
-            if (obj.CompareTag("1lb"))
-            {
-                total++;
-            } else if (obj.CompareTag("2lb"))
-            {
-                total += 2;
-            } else if (obj.CompareTag("3lb"))
-            {
-                total += 3;
-                
-            } else if (obj.CompareTag("5lb"))
-            {
-                total += 5;
-            }
-
-            i++;
-        }
+        Collider[] numObjects = Physics.OverlapBox(scale.position, transform.localScale, Quaternion.identity, boxMask);
+        var total = numObjects.Sum(obj => int.Parse(obj.tag[..1]));
         total_weights = total;
         
     }
