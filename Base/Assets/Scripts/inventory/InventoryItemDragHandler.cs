@@ -11,6 +11,8 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
     private RectTransform border;
     private GameObject itemObj = null;
     [SerializeField] private PlayerScript playerScript;
+
+    [SerializeField] private LayerMask planeMask;
     private Item item;
     private void Awake()
     {
@@ -53,16 +55,22 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
         // }
 
 
+        float pickUpDistance = 10f;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit = new RaycastHit();
-        ray.origin = playerScript.transform.position;
-        Debug.DrawRay(ray.origin,ray.direction*100,Color.green);
+        ray.origin = Camera.main.transform.position;
+        Debug.DrawRay(ray.origin,ray.direction,Color.green);
 
-        if (Physics.Raycast(ray.origin,ray.direction*100, out hit)){
-                print("Hit " + hit.transform.gameObject.name + " "+hit.point);
+        if (Physics.Raycast(ray.origin,ray.direction, out hit,pickUpDistance,planeMask)){
+                /*print("Hit " + hit.transform.gameObject.name + " "+hit.point);
                 print("Local Hit "+playerScript.transform.InverseTransformPoint(hit.point));
                 print("New position"+ (playerScript.transform.position + playerScript.transform.InverseTransformPoint(hit.point)));
-                itemObj.transform.position = Vector3.Lerp(itemObj.transform.position,playerScript.transform.position + playerScript.transform.InverseTransformPoint(hit.point)+new Vector3(0,2,0),0.5f);
+                itemObj.transform.position = Vector3.Lerp(itemObj.transform.position,playerScript.transform.position + playerScript.transform.InverseTransformPoint(hit.point)+new Vector3(0,2,0),0.5f);*/
+                itemObj.transform.position = hit.point+new Vector3(0,1,0);
+
+
+
+
         }
         
 
