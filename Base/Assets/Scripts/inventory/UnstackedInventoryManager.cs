@@ -28,7 +28,7 @@ public class UnStackedInventoryManager:InventoryManager
 
     private void OnItemDroppedFromUI(object sender, Item item)
     {
-        Debug.Log("Item removed from inventory");
+        // Debug.Log("Item removed from inventory");
         RemoveItem(item);
     }
     public override void RemoveItem(Item item)

@@ -31,7 +31,7 @@ public class InventoryResourceManager : MonoBehaviour
         switch (itemType)
         {
             case Item.ItemType.Block1LB:
-                Debug.Log("Path is "+PrefabPath + "Block1LB");
+                // Debug.Log("Path is "+PrefabPath + "Block1LB");
                 return Resources.Load(PrefabPath+"Block1LB");
             case Item.ItemType.Block2LB:
                 return Resources.Load(PrefabPath+"Block2LB");

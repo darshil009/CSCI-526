@@ -40,7 +40,7 @@ public class UnstackedInventoryUI : InventoryUI
 
     private void OnItemDroppedFromUI(object sender, Item item)
     {
-        Debug.Log("destroying slot template in UI");
+        // Debug.Log("destroying slot template in UI");
         Destroy(itemToSlotTemplate[item].gameObject);
     }
     public override void OnItemChanged(Tuple<Item,int,int> tuple)

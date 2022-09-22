@@ -20,9 +20,9 @@ public abstract class InventoryUI : MonoBehaviour
     }
     private void Awake()
     {
-        Debug.Log("Init itemSlotContainer and itemSlotTemplate");
+        // Debug.Log("Init itemSlotContainer and itemSlotTemplate");
         itemSlotContainer = transform.Find("inventoryBackgroundPanel").Find("itemSlotContainer");
-        Debug.Log("itemSlotContainer " + itemSlotContainer.childCount);
+        // Debug.Log("itemSlotContainer " + itemSlotContainer.childCount);
         itemSlotTemplate = itemSlotContainer.Find("itemSlotTemplate");
         itemToSlotTemplate = new Dictionary<Item, Transform>();
     }

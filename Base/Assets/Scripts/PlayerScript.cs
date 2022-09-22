@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
@@ -7,7 +9,7 @@ public class PlayerScript : MonoBehaviour
     private CharacterController _controller;
     private InventoryManager _inventoryManager;
     [SerializeField] private InventoryUI _inventoryUI;
-    
+
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private Camera followCamera;
     [SerializeField] private float jumpHeight = 1.0f;
@@ -15,8 +17,10 @@ public class PlayerScript : MonoBehaviour
 
     private Vector3 _playerVelocity;
     private bool _groundedPlayer;
+    private float maxSpeed;
     public static float PlayerHealth;
     public static float playerSpeed;
+
     
 
     private void Awake()
@@ -28,6 +32,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Start()
     {
+        maxSpeed = 5f;
         playerSpeed = 5f;
         PlayerHealth = 100;
         _controller = GetComponent<CharacterController>();
@@ -35,9 +40,12 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        
+        playerSpeed = Mathf.Max(0.2f, (maxSpeed - (0.75f * GameDetails.currentTotalWeight)));
+        // Debug.Log("Speed: " + playerSpeed + " Total Weight: " + totalWeight);
         MovePlayer();
     }
+    
+    
 
     //
     public async void freezePlayer(int seconds)
@@ -56,23 +64,24 @@ public class PlayerScript : MonoBehaviour
         if (PlayerHealth <= 0) SceneManager.LoadScene("Scenes/SampleScene");
     }
 
-    public void decreaseSpeed(int weight)
-    {
-        // playerSpeed -= (0.75f*weight);
-        if (playerSpeed<0)
-        {
-            playerSpeed = 0;
-        }
-    }
-    
-    public void IncreaseSpeed(int weight)
-    {
-        playerSpeed += (0.75f*weight);
-        if (playerSpeed > 5)
-        {
-            playerSpeed = 5;
-        }
-    }
+
+    // public void decreaseSpeed(int weight)
+    // {
+    //     playerSpeed -= (0.75f*weight);
+    //     if (playerSpeed<0)
+    //     {
+    //         playerSpeed = 0.2f;
+    //     }
+    // }
+    //
+    // public void IncreaseSpeed(int weight)
+    // {
+    //     playerSpeed += (0.75f*weight);
+    //     if (playerSpeed > 5)
+    //     {
+    //         playerSpeed = 5;
+    //     }
+    // }
 
     private void MovePlayer()
     {
@@ -110,12 +119,13 @@ public class PlayerScript : MonoBehaviour
 
     void OnTriggerEnter(Collider c)
     {
-          if(c.CompareTag("Bullet"))
-          {
-              decreaseHealth(10);
-              Destroy(c.gameObject);
-          }
+        if (c.CompareTag("Bullet"))
+        {
+            decreaseHealth(10);
+            Destroy(c.gameObject);
+        }
     }
+
     public InventoryManager getInventoryManager()
     {
         return _inventoryManager;

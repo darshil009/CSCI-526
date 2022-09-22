@@ -31,6 +31,8 @@ public class Item
     public void OnItemDrop()
     {
         OnItemDropEvent?.Invoke(this,this);
+        GameDetails.currentTotalWeight -= GameDetails.weights[this.GetItemType()];
+
     }
 
     public Item(ItemType itemType)

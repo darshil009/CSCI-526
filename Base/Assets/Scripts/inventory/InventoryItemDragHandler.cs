@@ -36,7 +36,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
         itemObj.GetComponent<BoxCollider>().isTrigger = false;
         itemObj.GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Image>().enabled = false;
-        Debug.Log("On begin drag");
+        // Debug.Log("On begin drag");
     }
 
     private void CalculateWorldPosition()
@@ -77,9 +77,9 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
     }
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("Dragging");
-        Debug.Log("Position on drag "+eventData);
-        Debug.Log("Mouse position " + Input.mousePosition);
+        // Debug.Log("Dragging");
+        // Debug.Log("Position on drag "+eventData);
+        // Debug.Log("Mouse position " + Input.mousePosition);
         
 
         
@@ -104,7 +104,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
         
         if (itemSlotContainer != null)
         {
-            Debug.Log("Parent is " + itemSlotContainer.gameObject.name);
+            // Debug.Log("Parent is " + itemSlotContainer.gameObject.name);
             if (!RectTransformUtility.RectangleContainsScreenPoint(itemSlotContainer, Input.mousePosition))
             {
 
