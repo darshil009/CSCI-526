@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using TMPro;
 
 public class Weights : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Weights : MonoBehaviour
     [SerializeField] public LayerMask boxMask;
 
     [SerializeField] private GameObject door;
+    public TextMeshProUGUI weightText;
 
     private DoorBehavior doorAction;
     // Start is called before the first frame update
@@ -38,14 +40,15 @@ public class Weights : MonoBehaviour
         Collider[] numObjects = Physics.OverlapBox(scale.position, transform.localScale, Quaternion.identity, boxMask);
         var total = numObjects.Sum(obj => int.Parse(obj.tag[..1]));
         total_weights = total;
-        
+        //Debug.Log("total weights is " + total);
     }
 
     // Update is called once per frame
     void Update()
     {
+        weightText.text = total_weights.ToString() + " lb";
         if (total_weights == 10) doorAction.changeDoor();
-
+        //weightText.text = "Well done";
     }
     
     
