@@ -37,10 +37,10 @@ public class Weights : MonoBehaviour
 
     private void CheckBoxes()
     {
-        Collider[] numObjects = Physics.OverlapBox(scale.position, transform.localScale, Quaternion.identity, boxMask);
+        Collider[] numObjects = Physics.OverlapBox(scale.position, transform.localScale/2, Quaternion.identity, boxMask);
         var total = numObjects.Sum(obj => int.Parse(obj.tag[..1]));
         total_weights = total;
-        //Debug.Log("total weights is " + total);
+        Debug.Log("total weights is " + total);
     }
 
     // Update is called once per frame
