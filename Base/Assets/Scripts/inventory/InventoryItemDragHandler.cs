@@ -127,6 +127,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
                 itemObj.transform.GetComponent<Rigidbody>().isKinematic = false;
                 itemObj.transform.GetComponent<Rigidbody>().velocity = new Vector3(0f,0f,0f);
                 itemObj.transform.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f,0f,0f);
+                itemObj.layer = 6;
                 item.OnItemDrop();
             }
             else

@@ -58,10 +58,19 @@ public class PlayerScript : MonoBehaviour
 
     public void decreaseSpeed(int weight)
     {
-        playerSpeed -= (0.75f*weight);
+        // playerSpeed -= (0.75f*weight);
         if (playerSpeed<0)
         {
             playerSpeed = 0;
+        }
+    }
+    
+    public void IncreaseSpeed(int weight)
+    {
+        playerSpeed += (0.75f*weight);
+        if (playerSpeed > 5)
+        {
+            playerSpeed = 5;
         }
     }
 

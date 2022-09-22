@@ -23,7 +23,7 @@ public class DoorBehavior : MonoBehaviour
 
     public void changeDoor()
     {
-        if (GameDetails.NumGems.Green == 5 && GameDetails.NumGems.Red == 3 && GameDetails.NumGems.Blue == 4 && !isDoorOpen)
+        if (!isDoorOpen)
         {
             print("door: all clues collected");
             doorTransform.Rotate(0f, 0f, -90f, Space.Self);
