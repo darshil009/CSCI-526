@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -197,7 +197,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4375126}
-  m_LocalRotation: {x: 0.22708708, y: -0.3564871, z: 0.08976632, w: 0.90182614}
+  m_LocalRotation: {x: 0.22704075, y: -0.35695213, z: 0.08988342, w: 0.9016422}
   m_LocalPosition: {x: 0, y: 0.0000009536743, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2144,7 +2144,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689023244}
-  m_LocalRotation: {x: 0.27238452, y: -0.39064205, z: 0.12219354, w: 0.87078935}
+  m_LocalRotation: {x: 0.2727282, y: -0.38818368, z: 0.12142458, w: 0.8718881}
   m_LocalPosition: {x: 0, y: 0.0000019073486, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2839,7 +2839,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.24451298, y: -0.39133132, z: 0.10867307, w: 0.8804904}
+  m_LocalRotation: {x: 0.2447912, y: -0.38906947, z: 0.10804497, w: 0.88149226}
   m_LocalPosition: {x: -28.918018, y: 7.399646, z: 4.8435383}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4039,7 +4039,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1548870799}
-  m_LocalRotation: {x: 0.24451299, y: -0.3913313, z: 0.108673036, w: 0.8804904}
+  m_LocalRotation: {x: 0.2447912, y: -0.38906947, z: 0.10804495, w: 0.8814922}
   m_LocalPosition: {x: 0, y: 0.0000009536743, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5929,6 +5929,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScript: {fileID: 1482986941}
+  planeMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &7500318975580306992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6379,6 +6382,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerScript: {fileID: 1482986941}
+  planeMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!224 &7500318976429522832
 RectTransform:
   m_ObjectHideFlags: 0
