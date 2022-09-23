@@ -12,33 +12,40 @@ public class Collect : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         PlayerScript playerScript = other.GetComponent<PlayerScript>();
-        //if (playerScript!=null)
-        //{
-        //    if (CompareTag( "1lb"))
-        //    {
-        //        playerScript.getInventoryManager().AddItem(new Block1());
-        //        GameDetails.currentTotalWeight += 1;
-        //        Destroy(gameObject);
-        //    }
-        //    else if (CompareTag( "2lb"))
-        //    {
-        //        playerScript.getInventoryManager().AddItem(new Block2());
-        //        GameDetails.currentTotalWeight += 2;
-        //        Destroy(gameObject);
+        if (playerScript!=null)
+        {
+            Debug.Log("Trigger entered with tag "+gameObject.tag);
+            if(CompareTag("05lb"))
+            {
+                playerScript.getInventoryManager().AddItem(new Block05());
+                GameDetails.currentTotalWeight += 0.5f;
+                Destroy(gameObject);
+            }
+            else if (CompareTag( "1lb"))
+            {
+                playerScript.getInventoryManager().AddItem(new Block1());
+                GameDetails.currentTotalWeight += 1;
+                Destroy(gameObject);
+            }
+            else if (CompareTag( "2lb"))
+            {
+                playerScript.getInventoryManager().AddItem(new Block2());
+                GameDetails.currentTotalWeight += 2;
+                Destroy(gameObject);
                 
-        //    }
-        //    else if (CompareTag( "3lb"))
-        //    {
-        //        playerScript.getInventoryManager().AddItem(new Block3());
-        //        GameDetails.currentTotalWeight += 3;
-        //        Destroy(gameObject);
-        //    }
-        //    else if (CompareTag( "5lb"))
-        //    {
-        //        playerScript.getInventoryManager().AddItem(new Block5());
-        //        GameDetails.currentTotalWeight += 5;
-        //        Destroy(gameObject);
-        //    }
-        //}
+           }
+           else if (CompareTag( "3lb"))
+           {
+               playerScript.getInventoryManager().AddItem(new Block3());
+               GameDetails.currentTotalWeight += 3;
+               Destroy(gameObject);
+           }
+           else if (CompareTag( "5lb"))
+           {
+               playerScript.getInventoryManager().AddItem(new Block5());
+               GameDetails.currentTotalWeight += 5;
+               Destroy(gameObject);
+           }
+        }
     }
 }

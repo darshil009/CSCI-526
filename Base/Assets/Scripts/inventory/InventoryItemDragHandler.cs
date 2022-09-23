@@ -66,6 +66,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
                 print("Local Hit "+playerScript.transform.InverseTransformPoint(hit.point));
                 print("New position"+ (playerScript.transform.position + playerScript.transform.InverseTransformPoint(hit.point)));
                 itemObj.transform.position = Vector3.Lerp(itemObj.transform.position,playerScript.transform.position + playerScript.transform.InverseTransformPoint(hit.point)+new Vector3(0,2,0),0.5f);*/
+                Debug.Log("Item "+ itemObj);
                 itemObj.transform.position = hit.point+new Vector3(0,1,0);
 
 
