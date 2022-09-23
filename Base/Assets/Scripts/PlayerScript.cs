@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 public class PlayerScript : MonoBehaviour
 {
+    AnalyticsManager analyticsManager;
     private CharacterController _controller;
     private InventoryManager _inventoryManager;
     [SerializeField] private InventoryUI _inventoryUI;
@@ -20,8 +21,9 @@ public class PlayerScript : MonoBehaviour
     private float maxSpeed;
     public static float PlayerHealth;
     public static float playerSpeed;
+    private SentToGoogle sg;
 
-    
+
 
     private void Awake()
     {
@@ -32,6 +34,9 @@ public class PlayerScript : MonoBehaviour
 
     private void Start()
     {
+        analyticsManager = new AnalyticsManager();
+        analyticsManager.Reset(1);
+        sg = new SentToGoogle();
         maxSpeed = 5f;
         playerSpeed = 5f;
         PlayerHealth = 100;
@@ -61,7 +66,15 @@ public class PlayerScript : MonoBehaviour
     {
         PlayerHealth -= health;
         Debug.Log("Player Health: " + PlayerHealth);
-        if (PlayerHealth <= 0) SceneManager.LoadScene("Scenes/SampleScene");
+        if (PlayerHealth <= 0)
+        {
+            analyticsManager.RegisterEvent(GameEvent.HEALTH_LOST, PlayerHealth);
+            IDictionary<string, string> analytics = analyticsManager.Publish();
+            Debug.Log(analytics["level"] + " " + analytics["time"] + " " + analytics["health"]);
+            // StartCoroutine(sg.Post("1", "2", "3"));
+            StartCoroutine(sg.Post(analytics["level"], analytics["time"], analytics["health"]));
+            SceneManager.LoadScene("Scenes/SampleScene");
+        }
     }
 
 
