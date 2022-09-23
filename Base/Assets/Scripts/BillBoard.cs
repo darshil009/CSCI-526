@@ -5,7 +5,7 @@ using UnityEngine;
 public class BillBoard : MonoBehaviour
 {
 
-    [SerializeField] public new Transform camera;
+    [SerializeField] public Transform camera;
 
     void LateUpdate()
     {

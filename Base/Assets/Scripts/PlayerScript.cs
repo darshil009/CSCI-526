@@ -46,6 +46,10 @@ public class PlayerScript : MonoBehaviour
     private void Update()
     {
         playerSpeed = Mathf.Max(0.2f, (maxSpeed - (0.75f * GameDetails.currentTotalWeight)));
+    }
+    private void LateUpdate()
+    {
+        
         // Debug.Log("Speed: " + playerSpeed + " Total Weight: " + totalWeight);
         MovePlayer();
     }
