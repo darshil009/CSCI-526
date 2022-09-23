@@ -120,15 +120,16 @@ public class PlayerScript : MonoBehaviour
 
     public void decreaseHealth(int health)
     {
+        float tw = Weights.total_weights;
         PlayerHealth -= health;
         Debug.Log("Player Health: " + PlayerHealth);
         if (PlayerHealth <= 0)
         {
             analyticsManager.RegisterEvent(GameEvent.HEALTH_LOST, PlayerHealth);
             IDictionary<string, string> analytics = analyticsManager.Publish();
-            Debug.Log(analytics["level"] + " " + analytics["time"] + " " + analytics["health"]);
+            Debug.Log(analytics["level"] + " " + analytics["time"] + " " + analytics["health"] + " " + tw);
             // StartCoroutine(sg.Post("1", "2", "3"));
-            StartCoroutine(sg.Post(analytics["level"], analytics["time"], analytics["health"]));
+            StartCoroutine(sg.Post(analytics["level"], analytics["time"], analytics["health"], tw.ToString()));
             SceneManager.LoadScene("Scenes/SampleScene");
         }
     }
