@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class Block : Item
 {
-    private readonly int weight;
+    private readonly float weight;
 
-    protected Block(int weight,ItemType itemType):base(itemType)
+    protected Block(float weight,ItemType itemType):base(itemType)
     {
         this.weight = weight;
     }
-    public int GetWeight()
+    public float GetWeight()
     {
         return weight;
     }

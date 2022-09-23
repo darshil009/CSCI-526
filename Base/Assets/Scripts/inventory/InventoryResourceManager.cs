@@ -11,6 +11,8 @@ public class InventoryResourceManager : MonoBehaviour
     {
         switch (itemType)
         {
+            case Item.ItemType.Block05LB:
+                return Resources.Load<Sprite>(SpritePath +"blocks/05lb");
             case Item.ItemType.Block1LB:
                 return Resources.Load<Sprite>(SpritePath +"blocks/1lb");
             case Item.ItemType.Block2LB:
@@ -27,9 +29,12 @@ public class InventoryResourceManager : MonoBehaviour
     
     public static Object GetPrefab(Item.ItemType itemType)
     {
-        //return Resources.Load(PrefabPath+"1lbBlock");
+        //return Resources.Load(PrefabPath+"Block05LB");
         switch (itemType)
         {
+            case Item.ItemType.Block05LB:
+                // Debug.Log("Path is "+PrefabPath + "Block1LB");
+                return Resources.Load(PrefabPath+"Block05LB");
             case Item.ItemType.Block1LB:
                 // Debug.Log("Path is "+PrefabPath + "Block1LB");
                 return Resources.Load(PrefabPath+"Block1LB");

@@ -14,7 +14,14 @@ public class Collect : MonoBehaviour
         PlayerScript playerScript = other.GetComponent<PlayerScript>();
         if (playerScript!=null)
         {
-            if (CompareTag( "1lb"))
+            Debug.Log("Trigger entered with tag "+gameObject.tag);
+            if(CompareTag("05lb"))
+            {
+                playerScript.getInventoryManager().AddItem(new Block05());
+                GameDetails.currentTotalWeight += 0.5f;
+                Destroy(gameObject);
+            }
+            else if (CompareTag( "1lb"))
             {
                 playerScript.getInventoryManager().AddItem(new Block1());
                 GameDetails.currentTotalWeight += 1;
