@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
+using System.Linq;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -22,8 +23,18 @@ public class PlayerScript : MonoBehaviour
     public static float PlayerHealth;
     public static float playerSpeed;
     private SentToGoogle sg;
+    PlayerScript playerScript;
 
 
+    private GameObject weightObject = null;
+    public string tagname;
+
+    public string[] weight_tags = { "1lb", "2lb", "3lb", "5lb" };
+
+    public PlayerScript()
+    {
+
+    }
 
     private void Awake()
     {
@@ -46,13 +57,42 @@ public class PlayerScript : MonoBehaviour
     private void Update()
     {
         playerSpeed = Mathf.Max(0.2f, (maxSpeed - (0.75f * GameDetails.currentTotalWeight)));
+        MovePlayer();
+
+        if (Input.GetKeyDown(KeyCode.E) && weightObject != null)
+        {
+            if (tagname.Equals("1lb"))
+            {
+                getInventoryManager().AddItem(new Block1());
+                decreaseSpeed(1);
+                Destroy(weightObject);
+            }
+            else if (tagname.Equals("2lb"))
+            {
+                getInventoryManager().AddItem(new Block2());
+                decreaseSpeed(2);
+                Destroy(weightObject);
+            }
+            else if (tagname.Equals("3lb"))
+            {
+                getInventoryManager().AddItem(new Block3());
+                decreaseSpeed(3);
+                Destroy(weightObject);
+            }
+            else if (tagname.Equals("5lb"))
+            {
+                getInventoryManager().AddItem(new Block5());
+                decreaseSpeed(5);
+                Destroy(weightObject);
+            }
+        }
     }
-    private void LateUpdate()
-    {
+    //private void LateUpdate()
+    //{
         
         // Debug.Log("Speed: " + playerSpeed + " Total Weight: " + totalWeight);
-        MovePlayer();
-    }
+    //    MovePlayer();
+    //}
     
     
 
@@ -82,23 +122,23 @@ public class PlayerScript : MonoBehaviour
     }
 
 
-    // public void decreaseSpeed(int weight)
-    // {
-    //     playerSpeed -= (0.75f*weight);
-    //     if (playerSpeed<0)
-    //     {
-    //         playerSpeed = 0.2f;
-    //     }
-    // }
-    //
-    // public void IncreaseSpeed(int weight)
-    // {
-    //     playerSpeed += (0.75f*weight);
-    //     if (playerSpeed > 5)
-    //     {
-    //         playerSpeed = 5;
-    //     }
-    // }
+    public void decreaseSpeed(int weight)
+    {
+        playerSpeed -= (0.75f * weight);
+        if (playerSpeed < 0)
+        {
+            playerSpeed = 0.2f;
+        }
+    }
+
+    public void increaseSpeed(int weight)
+    {
+        playerSpeed += (0.75f * weight);
+        if (playerSpeed > 5)
+        {
+            playerSpeed = 5;
+        }
+    }
 
     private void MovePlayer()
     {
@@ -136,11 +176,31 @@ public class PlayerScript : MonoBehaviour
 
     void OnTriggerEnter(Collider c)
     {
+
         if (c.CompareTag("Bullet"))
         {
             decreaseHealth(10);
             Destroy(c.gameObject);
         }
+
+        //Debug.Log("OnTrigger");
+        //Debug.Log(c.gameObject.tag);
+        //Debug.Log(weight_tags.Contains("1lb"));
+
+        if (weight_tags.Contains(c.gameObject.tag))
+        {
+            // playerScript = c.GetComponent<PlayerScript>();
+            weightObject = c.gameObject;
+            tagname = c.gameObject.tag;
+        }
+    }
+    void OnTriggerExit(Collider c)
+    {
+        if (weight_tags.Contains(c.gameObject.tag))
+        {
+            weightObject = null;
+            tagname = "";
+        } 
     }
 
     public InventoryManager getInventoryManager()
