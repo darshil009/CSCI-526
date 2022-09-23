@@ -168,9 +168,10 @@ public class PlayerScript : MonoBehaviour
         _controller.Move(_playerVelocity * Time.deltaTime);
     }
 
-    void OnTriggerEnter(Collider c)
+   void OnTriggerEnter(Collider c)
     {
 
+        if(c.gameObject.tag.Contains("lb") ){
         isInCollision = true;
         collidedWith = c;
         Debug.Log("Collided with "+collidedWith);
@@ -179,13 +180,18 @@ public class PlayerScript : MonoBehaviour
             decreaseHealth(10);
             Destroy(c.gameObject);
         }
+        }
     }
 
-    private void OnTriggerExit(Collider other) 
+    private void OnTriggerExit(Collider c) 
     {
+
+        if(c.gameObject.tag.Contains("lb") ){
         isInCollision = false;
         collidedWith = null;
+        }
     }
+
 
     public InventoryManager getInventoryManager()
     {
