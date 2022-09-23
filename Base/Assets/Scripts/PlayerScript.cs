@@ -27,6 +27,7 @@ public class PlayerScript : MonoBehaviour
 
     private bool isInCollision = false;
     private Collider collidedWith = null;
+    private bool canMove;
 
     public PlayerScript()
     {
@@ -42,6 +43,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Start()
     {
+        canMove = true;
         analyticsManager = new AnalyticsManager();
         analyticsManager.Reset(1);
         sg = new SentToGoogle();
@@ -53,7 +55,9 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        playerSpeed = Mathf.Max(0.2f, (maxSpeed - (0.75f * GameDetails.currentTotalWeight)));
+        
+        if (canMove)
+            playerSpeed = Mathf.Max(0.2f, (maxSpeed - (0.75f * GameDetails.currentTotalWeight)));
         MovePlayer();
 
          
@@ -107,10 +111,10 @@ public class PlayerScript : MonoBehaviour
     //
     public async void freezePlayer(int seconds)
     {
-        var temp = playerSpeed;
+        canMove = false;
         playerSpeed = 0.5f;
         await Task.Delay(seconds);
-        playerSpeed = temp;
+        canMove = true;
     }
     //
 
@@ -129,24 +133,6 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-
-    public void decreaseSpeed(int weight)
-    {
-        playerSpeed -= (0.75f * weight);
-        if (playerSpeed < 0)
-        {
-            playerSpeed = 0.2f;
-        }
-    }
-
-    public void increaseSpeed(int weight)
-    {
-        playerSpeed += (0.75f * weight);
-        if (playerSpeed > 5)
-        {
-            playerSpeed = 5;
-        }
-    }
 
     private void MovePlayer()
     {

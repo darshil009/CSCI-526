@@ -61,7 +61,7 @@ public class Weights : MonoBehaviour
         if (total_weights == 10.5)
         {
             doorAction.changeDoor();
-            weightText.text = "Level 1 Complete";
+            weightText.text = "DOOR OPEN";
         }
         
     }
