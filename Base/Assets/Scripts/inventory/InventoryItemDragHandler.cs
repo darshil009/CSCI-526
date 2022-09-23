@@ -55,7 +55,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
         // }
 
 
-        float pickUpDistance = 10f;
+        float pickUpDistance = 15f;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit = new RaycastHit();
         ray.origin = Camera.main.transform.position;

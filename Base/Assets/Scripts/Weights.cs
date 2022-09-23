@@ -7,7 +7,7 @@ using TMPro;
 
 public class Weights : MonoBehaviour
 {
-    private int total_weights;
+    private float total_weights;
     [SerializeField] public Transform scale;
     [SerializeField] public LayerMask boxMask;
 
@@ -38,16 +38,32 @@ public class Weights : MonoBehaviour
     private void CheckBoxes()
     {
         Collider[] numObjects = Physics.OverlapBox(scale.position, transform.localScale/2, Quaternion.identity, boxMask);
-        var total = numObjects.Sum(obj => int.Parse(obj.tag[..1]));
+        float total = 0;
+        foreach (var obj in numObjects)
+        {
+            if (obj.gameObject.CompareTag("05lb"))
+            {
+                total += 0.5f;
+            }
+            else
+            {
+                total += int.Parse(obj.tag[..1]);
+            }
+            
+        }
         total_weights = total;
     }
 
     // Update is called once per frame
     void Update()
     {
-        weightText.text = total_weights.ToString() + " lb";
-        if (total_weights == 10) doorAction.changeDoor();
-        //weightText.text = "Well done";
+        weightText.text = total_weights + " lb";
+        if (total_weights == 10.5)
+        {
+            doorAction.changeDoor();
+            weightText.text = "Level 1 Complete";
+        }
+        
     }
     
     

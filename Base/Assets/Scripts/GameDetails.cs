@@ -8,15 +8,18 @@ public struct GemsCount
 }
 
 public static class GameDetails {
-    public static readonly string BlueGemsTag = "blue_gems";
-    public static readonly string RedGemsTag = "red_gems";
-    public static readonly string GreenGemsTag = "green_gems";
-    public static readonly string SpikeBallTag = "SPIKE_BALL";
+    // public static readonly string BlueGemsTag = "blue_gems";
+    // public static readonly string RedGemsTag = "red_gems";
+    // public static readonly string GreenGemsTag = "green_gems";
+    // public static readonly string SpikeBallTag = "SPIKE_BALL";
     public static readonly int EnemyVisionRadius = 5;
     public static float currentTotalWeight = 0;
     public static GemsCount NumGems;
-    public static Dictionary<Item.ItemType, int> weights = new Dictionary<Item.ItemType, int>()
+    public static Dictionary<Item.ItemType, float> weights = new Dictionary<Item.ItemType, float>()
     {
+        {
+            Item.ItemType.Block05LB, 0.5f
+        },
         {
             Item.ItemType.Block1LB, 1
         },

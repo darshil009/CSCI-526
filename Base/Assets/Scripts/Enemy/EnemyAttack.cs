@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
 
@@ -12,7 +13,7 @@ namespace Enemy
         [SerializeField] public NavMeshAgent navMesh;
         [SerializeField] public Transform player;
         [SerializeField] public LayerMask playerMask;
-
+        [SerializeField] public LayerMask boxMask;
         private float radius;
         private bool canSeePlayer;
         //private Vector3 startPosition;
@@ -48,7 +49,22 @@ namespace Enemy
         private void CheckForPlayer()
         {
             Collider[] rangeCheck = Physics.OverlapSphere(transform.position, radius, playerMask);
+            Collider[] collision = Physics.OverlapSphere(transform.position, 0.5f, playerMask);
 
+            if (collision.Length != 0)
+            {
+                
+                GameObject itemObj = Instantiate(InventoryResourceManager.GetPrefab(Item.ItemType.Block05LB)) as GameObject;
+                itemObj.GetComponent<BoxCollider>().isTrigger = false;
+                itemObj.GetComponent<Rigidbody>().isKinematic = true;
+                itemObj.GetComponent<BoxCollider>().isTrigger = true;
+                itemObj.transform.GetComponent<Rigidbody>().isKinematic = false;
+                itemObj.transform.GetComponent<Rigidbody>().velocity = new Vector3(0f,0f,0f);
+                itemObj.transform.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f,0f,0f);
+                itemObj.layer = 6;
+                itemObj.transform.position = navMesh.transform.position;
+                Destroy(navMesh.GameObject());
+            }
             if (rangeCheck.Length != 0)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, player.position);
