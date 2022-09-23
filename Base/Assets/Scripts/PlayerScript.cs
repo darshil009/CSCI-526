@@ -24,13 +24,9 @@ public class PlayerScript : MonoBehaviour
     public static float playerSpeed;
     private SentToGoogle sg;
     PlayerScript playerScript;
-    private bool canMove;
 
-
-    private GameObject weightObject = null;
-    public string tagname;
-
-    public string[] weight_tags = { "05lb", "1lb", "2lb", "3lb", "5lb" };
+    private bool isInCollision = false;
+    private Collider collidedWith = null;
 
     public PlayerScript()
     {
@@ -46,7 +42,6 @@ public class PlayerScript : MonoBehaviour
 
     private void Start()
     {
-        canMove = true;
         analyticsManager = new AnalyticsManager();
         analyticsManager.Reset(1);
         sg = new SentToGoogle();
@@ -58,50 +53,47 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        if (canMove)
-            playerSpeed = Mathf.Max(0.2f, (maxSpeed - (0.75f * GameDetails.currentTotalWeight)));
+        playerSpeed = Mathf.Max(0.2f, (maxSpeed - (0.75f * GameDetails.currentTotalWeight)));
         MovePlayer();
 
-        if (Input.GetKeyDown(KeyCode.E) && weightObject != null)
+         
+        if(isInCollision  && Input.GetKeyDown(KeyCode.E)){
+
+        Debug.Log("On trigger with tag "+collidedWith);
+        if(collidedWith.CompareTag("05lb"))
         {
-            Debug.Log(tagname);
-            if (tagname.Equals("05lb"))
-            {
-                
-                getInventoryManager().AddItem(new Block05());
-                GameDetails.currentTotalWeight += 0.5f;
-                decreaseSpeed(0.5f);
-                Destroy(weightObject);
-            }
-            else if (tagname.Equals("1lb"))
-            {
-                getInventoryManager().AddItem(new Block1());
-                GameDetails.currentTotalWeight += 1;
-                decreaseSpeed(1);
-                Destroy(weightObject);
-            }
-            else if (tagname.Equals("2lb"))
-            {
-                getInventoryManager().AddItem(new Block2());
-                GameDetails.currentTotalWeight += 2;
-                decreaseSpeed(2);
-                Destroy(weightObject);
-            }
-            else if (tagname.Equals("3lb"))
-            {
-                getInventoryManager().AddItem(new Block3());
-                decreaseSpeed(3);
-                GameDetails.currentTotalWeight += 3;
-                Destroy(weightObject);
-            }
-            else if (tagname.Equals("5lb"))
-            {
-                getInventoryManager().AddItem(new Block5());
-                decreaseSpeed(5);
-                GameDetails.currentTotalWeight += 5;
-                Destroy(weightObject);
-            }
+            getInventoryManager().AddItem(new Block05());
+            GameDetails.currentTotalWeight += 0.5f;
+            Destroy(collidedWith.gameObject);
         }
+        else if (collidedWith.CompareTag( "1lb"))
+        {
+            getInventoryManager().AddItem(new Block1());
+            GameDetails.currentTotalWeight += 1;
+            Destroy(collidedWith.gameObject);
+
+        }
+        else if (collidedWith.CompareTag( "2lb"))
+        {
+            getInventoryManager().AddItem(new Block2());
+            GameDetails.currentTotalWeight += 2;
+            Destroy(collidedWith.gameObject);
+            
+        }
+        else if (collidedWith.CompareTag( "3lb"))
+        {
+            getInventoryManager().AddItem(new Block3());
+            GameDetails.currentTotalWeight += 3;
+            Destroy(collidedWith.gameObject);
+        }
+        else if (collidedWith.CompareTag( "5lb"))
+        {
+            getInventoryManager().AddItem(new Block5());
+            GameDetails.currentTotalWeight += 5;
+            Destroy(collidedWith.gameObject);
+        }
+        }
+
     }
     //private void LateUpdate()
     //{
@@ -115,10 +107,10 @@ public class PlayerScript : MonoBehaviour
     //
     public async void freezePlayer(int seconds)
     {
-        canMove = false;
-        playerSpeed = 0.2f;
+        var temp = playerSpeed;
+        playerSpeed = 0.5f;
         await Task.Delay(seconds);
-        canMove = true;
+        playerSpeed = temp;
     }
     //
 
@@ -138,7 +130,7 @@ public class PlayerScript : MonoBehaviour
     }
 
 
-    public void decreaseSpeed(float weight)
+    public void decreaseSpeed(int weight)
     {
         playerSpeed -= (0.75f * weight);
         if (playerSpeed < 0)
@@ -193,30 +185,20 @@ public class PlayerScript : MonoBehaviour
     void OnTriggerEnter(Collider c)
     {
 
+        isInCollision = true;
+        collidedWith = c;
+        Debug.Log("Collided with "+collidedWith);
         if (c.CompareTag("Bullet"))
         {
             decreaseHealth(10);
             Destroy(c.gameObject);
         }
-
-        // Debug.Log("OnTrigger");
-        // Debug.Log(c.gameObject.tag);
-        // Debug.Log(weight_tags.Contains("05lb"));
-
-        if (weight_tags.Contains(c.gameObject.tag))
-        {
-            // playerScript = c.GetComponent<PlayerScript>();
-            weightObject = c.gameObject;
-            tagname = c.gameObject.tag;
-        }
     }
-    void OnTriggerExit(Collider c)
+
+    private void OnTriggerExit(Collider other) 
     {
-        if (weight_tags.Contains(c.gameObject.tag))
-        {
-            weightObject = null;
-            tagname = "";
-        } 
+        isInCollision = false;
+        collidedWith = null;
     }
 
     public InventoryManager getInventoryManager()
