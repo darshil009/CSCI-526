@@ -8,6 +8,7 @@ public class Item
 {
     public enum ItemType
     {
+        Block05LB,
         Block1LB,
         Block2LB,
         Block3LB,

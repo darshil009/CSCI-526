@@ -1,12 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Block1 : Block
+public class Block05: Block
 {
-    public Block1() : base(1f, ItemType.Block1LB)
+    public Block05():base(0.5f, ItemType.Block05LB)
     {
     }
 }
