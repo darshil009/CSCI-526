@@ -7,8 +7,7 @@ public class AnalyticsManager
 {
     int level;
     float timeLost;
-    float healthLost;
-    
+    float healthLost;    
 
     private static AnalyticsManager instance;
     // public static AnalyticsManager GetAnalyticsManager()

@@ -7,7 +7,7 @@ using TMPro;
 
 public class Weights : MonoBehaviour
 {
-    private int total_weights;
+    public static int total_weights;
     [SerializeField] public Transform scale;
     [SerializeField] public LayerMask boxMask;
 

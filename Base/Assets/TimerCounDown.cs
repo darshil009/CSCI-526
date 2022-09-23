@@ -27,12 +27,13 @@ public class TimerCounDown : MonoBehaviour
         }
         else
         {
+            int tw = Weights.total_weights;
             timeValue = 0;
             analyticsManager.RegisterEvent(GameEvent.TIME_UP, timeValue);
             IDictionary<string, string> analytics = analyticsManager.Publish();
             Debug.Log(analytics["level"] + " " + analytics["time"] + " " + analytics["health"]);
             // StartCoroutine(sg.Post("1", "2", "3"));
-            StartCoroutine(sg.Post(analytics["level"], analytics["time"], analytics["health"]));
+            StartCoroutine(sg.Post(analytics["level"], analytics["time"], analytics["health"], tw.ToString()));
             //SceneManager.LoadScene("Scenes/SampleScene");
             //analyticsManager.RegisterEvent(GameEvent.TIME_UP, timeValue);
             //analyticsManager.Publish();

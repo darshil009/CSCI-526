@@ -20,7 +20,7 @@ public class SentToGoogle
         
     }
 
-    public IEnumerator Post(string level, string timeLost, string healthLost)
+    public IEnumerator Post(string level, string timeLost, string healthLost, string total_weights)
     {
         // Create the form and enter responses
         WWWForm form = new WWWForm();
@@ -33,9 +33,12 @@ public class SentToGoogle
         form.AddField("entry.394529085", level);
         form.AddField("entry.643418424", timeLost);
         form.AddField("entry.842546645", healthLost);
+        form.AddField("entry.1636130689", total_weights);
         
-            
-            
+
+
+
+
         using (UnityWebRequest www = UnityWebRequest.Post(URL, form))
         {
             yield return www.SendWebRequest();
