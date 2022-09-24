@@ -36,7 +36,7 @@ public class timer : MonoBehaviour
             stopTimer = true;
             if (playDieAudio == false)
             {
-                playDieAudio = true;   
+                playDieAudio = true;
                 StartCoroutine(LoadMainScreen("MainScreen"));
             }
             //SceneManager.LoadScene(0);

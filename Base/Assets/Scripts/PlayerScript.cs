@@ -50,17 +50,18 @@ public class PlayerScript : MonoBehaviour
         maxSpeed = 5f;
         playerSpeed = 5f;
         PlayerHealth = 100;
+        GameDetails.currentTotalWeight = 0;
         _controller = GetComponent<CharacterController>();
     }
 
     private void Update()
     {
-        
+
         if (canMove)
             playerSpeed = Mathf.Max(0.2f, (maxSpeed - (0.75f * GameDetails.currentTotalWeight)));
         MovePlayer();
 
-         
+
         if(isInCollision  && Input.GetKeyDown(KeyCode.E)){
 
         Debug.Log("On trigger with tag "+collidedWith);
@@ -82,7 +83,7 @@ public class PlayerScript : MonoBehaviour
             getInventoryManager().AddItem(new Block2());
             GameDetails.currentTotalWeight += 2;
             Destroy(collidedWith.gameObject);
-            
+
         }
         else if (collidedWith.CompareTag( "3lb"))
         {
@@ -101,12 +102,12 @@ public class PlayerScript : MonoBehaviour
     }
     //private void LateUpdate()
     //{
-        
+
         // Debug.Log("Speed: " + playerSpeed + " Total Weight: " + totalWeight);
     //    MovePlayer();
     //}
-    
-    
+
+
 
     //
     public async void freezePlayer(int seconds)
@@ -143,7 +144,7 @@ public class PlayerScript : MonoBehaviour
         {
             _playerVelocity.y = 0f;
         }
-        
+
 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -152,8 +153,8 @@ public class PlayerScript : MonoBehaviour
                                 new Vector3(horizontalInput, 0, verticalInput);
         Vector3 movementDirection = movementInput.normalized;
 
-        
-        
+
+
         _controller.Move(movementDirection * (playerSpeed * Time.deltaTime));
          if (movementDirection != Vector3.zero)
         {
@@ -186,7 +187,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider c) 
+    private void OnTriggerExit(Collider c)
     {
 
         if(c.gameObject.tag.Contains("lb") ){
