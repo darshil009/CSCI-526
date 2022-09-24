@@ -1058,7 +1058,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 158769640}
-  m_LocalRotation: {x: 0.21261193, y: 0.00000012489012, z: -0.000000027174426, w: 0.97713673}
+  m_LocalRotation: {x: 0.21261193, y: 0.00000012489026, z: -0.000000027174456, w: 0.97713673}
   m_LocalPosition: {x: 0, y: 0.0000019073486, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1529,7 +1529,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 248044718}
-  m_LocalRotation: {x: 0.21261193, y: 0.000000108076975, z: -0.000000023516108, w: 0.97713673}
+  m_LocalRotation: {x: 0.21261193, y: 0.00000010807728, z: -0.000000023516174, w: 0.97713673}
   m_LocalPosition: {x: 0, y: 0.0000009536743, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5236,8 +5236,8 @@ MonoBehaviour:
   m_Strategy: 1
   m_MaximumEffort: 6
   m_SmoothingTime: 0
-  m_Damping: 0.5
-  m_DampingWhenOccluded: 6.14
+  m_Damping: 0.75
+  m_DampingWhenOccluded: 3
   m_OptimalTargetDistance: 6
 --- !u!1 &1420800677
 GameObject:
@@ -5464,7 +5464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inventoryUI: {fileID: 7500318975580306992}
-  rotationSpeed: 10
+  rotationSpeed: 2
   followCamera: {fileID: 963194227}
   jumpHeight: 1
   gravityValue: -9.81
