@@ -9,9 +9,9 @@ public class PlayerScript : MonoBehaviour
 {
     PlayerScript playerScript;
     AnalyticsManager analyticsManager;
-    
+
     [SerializeField] private InventoryUI _inventoryUI;
-    
+
     [SerializeField] private float rotationSpeed = 10f;
     [SerializeField] private Camera followCamera;
     [SerializeField] private float jumpHeight = 1.0f;
@@ -20,19 +20,19 @@ public class PlayerScript : MonoBehaviour
 
     public static float PlayerHealth;
     public static float playerSpeed;
-    
+
     private Vector3 _playerVelocity;
     private SentToGoogle sg;
     private CharacterController _controller;
     private InventoryManager _inventoryManager;
     private Collider collidedWith = null;
-    
+
     private bool _groundedPlayer;
     private float maxSpeed;
     private float? lastGroundedTime;
     private float? jumpButtonPressedTime;
     private bool isInCollision = false;
-    
+
     private bool canMove;
 
     public PlayerScript()
@@ -56,17 +56,18 @@ public class PlayerScript : MonoBehaviour
         maxSpeed = 5f;
         playerSpeed = 5f;
         PlayerHealth = 100;
+        GameDetails.currentTotalWeight = 0;
         _controller = GetComponent<CharacterController>();
     }
 
     private void Update()
     {
-        
+
         if (canMove)
             playerSpeed = Mathf.Max(0.2f, (maxSpeed - (0.75f * GameDetails.currentTotalWeight)));
         MovePlayer();
 
-         
+
         if(isInCollision  && Input.GetKeyDown(KeyCode.E)){
 
         Debug.Log("On trigger with tag "+collidedWith);
@@ -88,7 +89,7 @@ public class PlayerScript : MonoBehaviour
             getInventoryManager().AddItem(new Block2());
             GameDetails.currentTotalWeight += 2;
             Destroy(collidedWith.gameObject);
-            
+
         }
         else if (collidedWith.CompareTag( "3lb"))
         {
@@ -105,7 +106,7 @@ public class PlayerScript : MonoBehaviour
         }
 
     }
-    
+
     public async void freezePlayer(int seconds)
     {
         canMove = false;
@@ -150,7 +151,7 @@ public class PlayerScript : MonoBehaviour
         {
             jumpButtonPressedTime = Time.time;
         }
-        
+
 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -159,8 +160,8 @@ public class PlayerScript : MonoBehaviour
                                 new Vector3(horizontalInput, 0, verticalInput);
         Vector3 movementDirection = movementInput.normalized;
 
-        
-        
+
+
         _controller.Move(movementDirection * (playerSpeed * Time.deltaTime));
          if (movementDirection != Vector3.zero)
         {
@@ -171,7 +172,7 @@ public class PlayerScript : MonoBehaviour
 
         if (Time.time - lastGroundedTime <= jumpButtomGracePeriod)
         {
-            
+
             if (Time.time - jumpButtonPressedTime <= jumpButtomGracePeriod)
             {_playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
                 jumpButtonPressedTime = null;
@@ -198,7 +199,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider c) 
+    private void OnTriggerExit(Collider c)
     {
 
         if(c.gameObject.tag.Contains("lb") ){
