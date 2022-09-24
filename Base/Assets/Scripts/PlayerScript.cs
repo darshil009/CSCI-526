@@ -143,6 +143,7 @@ public class PlayerScript : MonoBehaviour
         {
             _playerVelocity.y = 0f;
         }
+        
 
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -151,9 +152,10 @@ public class PlayerScript : MonoBehaviour
                                 new Vector3(horizontalInput, 0, verticalInput);
         Vector3 movementDirection = movementInput.normalized;
 
+        
+        
         _controller.Move(movementDirection * (playerSpeed * Time.deltaTime));
-
-        if (movementDirection != Vector3.zero)
+         if (movementDirection != Vector3.zero)
         {
             Quaternion desiredRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
 

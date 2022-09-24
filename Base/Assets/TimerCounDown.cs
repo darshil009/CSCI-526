@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TimerCounDown : MonoBehaviour
 {
     AnalyticsManager analyticsManager;
-    public float timeValue = 90;
+    [SerializeField] public float timeValue = 180;
     public Text timerText;
     private SentToGoogle sg;
     // Start is called before the first frame update
