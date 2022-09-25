@@ -12,16 +12,13 @@ using UnityEngine.UI;
 
 public class UnstackedInventoryUI : InventoryUI
 {
-    /*public override void InitEventHandlers()
+    protected override void OnItemAddedInList(object sender, Item item)
     {
         
-        inventoryManager.OnItemAdded += OnItemAdded;
-        inventoryManager.OnItemChanged += OnItemChanged;
-    }*/
-    public override void OnItemAdded(Item item)
-    {
+
+        //Call item pick up to nofify other interested parties about the addition to inventory
+        //item.OnItemPickUp();
         
-        item.OnItemDropEvent += OnItemDroppedFromUI;
         Item.ItemType itemType = item.GetItemType();
         int index = itemSlotContainer.childCount-1;
         Transform itemSlotTemplateTransform =
@@ -34,16 +31,22 @@ public class UnstackedInventoryUI : InventoryUI
         itemImageTransform.GetComponent<Image>().overrideSprite =
             InventoryResourceManager.GetSprite(itemType);
         itemImageTransform.GetComponent<InventoryItemDragHandler>().SetItem(item);
+        itemImageTransform.GetComponent<InventoryItemDragHandler>().itemDroppedFromUIEvent += OnItemDroppedFromUI;
+
+        itemImageTransform.GetComponent<ClickHandler>().SetItem(item);
+        itemImageTransform.GetComponent<ClickHandler>().itemDroppedFromUIEvent += OnItemDroppedFromUI;
+
         itemSlotTemplateRectTransform.Find("itemCount").GetComponent<TextMeshProUGUI>().gameObject.SetActive(false);
     }
 
 
     private void OnItemDroppedFromUI(object sender, Item item)
     {
-        // Debug.Log("destroying slot template in UI");
         Destroy(itemToSlotTemplate[item].gameObject);
+        itemToSlotTemplate.Remove(item);
+        OnItemRemovedFromUI(item);
     }
-    public override void OnItemChanged(Tuple<Item,int,int> tuple)
+    public override void OnItemChangedInList(object sender, Tuple<Item,int,int> tuple)
     {
         OnItemRemoved(tuple);
 

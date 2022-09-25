@@ -16,6 +16,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Camera followCamera;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
+    [SerializeField] private float  itemsRadius = 3f;
+    [SerializeField] private LayerMask itemMask;
 
     private Vector3 _playerVelocity;
     private bool _groundedPlayer;
@@ -23,24 +25,37 @@ public class PlayerScript : MonoBehaviour
     public static float PlayerHealth;
     public static float playerSpeed;
     private SentToGoogle sg;
-    PlayerScript playerScript;
-
     private bool isInCollision = false;
     private Collider collidedWith = null;
     private bool canMove;
 
-    public PlayerScript()
-    {
-
-    }
+    private Item itemInHand;
 
     private void Awake()
     {
         _inventoryManager = new UnStackedInventoryManager();
         _inventoryUI.SetInventoryManager(_inventoryManager);
         _inventoryManager.SetInventoryUI(_inventoryUI);
+        _inventoryManager.itemAddedEvent+=OnItemPickUp;
+        _inventoryUI.OnItemRemovedFromUIEvent += OnItemDrop;
+        itemInHand = null;
     }
 
+
+    public Item getItemInHand()
+    {
+        return itemInHand;   
+    }
+
+    public void setItemInHand(Item item)
+    {
+        if(itemInHand!=null)
+        {
+            _inventoryManager.AddItem(item);
+        }
+        itemInHand = item;
+        
+    }
     private void Start()
     {
         canMove = true;
@@ -55,60 +70,30 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
-        
         if (canMove)
             playerSpeed = Mathf.Max(0.2f, (maxSpeed - (0.75f * GameDetails.currentTotalWeight)));
         MovePlayer();
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit = new RaycastHit();
+            ray.origin = Camera.main.transform.position;
+            // Debug.DrawRay(ray.origin,ray.direction,Color.green);
 
-         
-        if(isInCollision  && Input.GetKeyDown(KeyCode.E)){
+        if(Input.GetMouseButtonDown(0))
+        {
+            if (Physics.Raycast(ray.origin,ray.direction, out hit,GameDetails.pickDropDistance,itemMask)){
+                if(hit.transform.GetComponent<Light>().enabled){
+                    Debug.Log("Hit " + hit.transform.gameObject.name + " "+hit.point);
+                    Item item = ItemFactory.fromTag(hit.transform.tag);         
+                    _inventoryManager.AddItem(item);
+                    Destroy(hit.transform.gameObject);
+                }
 
-        Debug.Log("On trigger with tag "+collidedWith);
-        if(collidedWith.CompareTag("05lb"))
-        {
-            getInventoryManager().AddItem(new Block05());
-            GameDetails.currentTotalWeight += 0.5f;
-            Destroy(collidedWith.gameObject);
-        }
-        else if (collidedWith.CompareTag( "1lb"))
-        {
-            getInventoryManager().AddItem(new Block1());
-            GameDetails.currentTotalWeight += 1;
-            Destroy(collidedWith.gameObject);
-
-        }
-        else if (collidedWith.CompareTag( "2lb"))
-        {
-            getInventoryManager().AddItem(new Block2());
-            GameDetails.currentTotalWeight += 2;
-            Destroy(collidedWith.gameObject);
-            
-        }
-        else if (collidedWith.CompareTag( "3lb"))
-        {
-            getInventoryManager().AddItem(new Block3());
-            GameDetails.currentTotalWeight += 3;
-            Destroy(collidedWith.gameObject);
-        }
-        else if (collidedWith.CompareTag( "5lb"))
-        {
-            getInventoryManager().AddItem(new Block5());
-            GameDetails.currentTotalWeight += 5;
-            Destroy(collidedWith.gameObject);
         }
         }
 
     }
-    //private void LateUpdate()
-    //{
-        
-        // Debug.Log("Speed: " + playerSpeed + " Total Weight: " + totalWeight);
-    //    MovePlayer();
-    //}
-    
-    
 
-    //
+
     public async void freezePlayer(int seconds)
     {
         canMove = false;
@@ -116,7 +101,6 @@ public class PlayerScript : MonoBehaviour
         await Task.Delay(seconds);
         canMove = true;
     }
-    //
 
     public void decreaseHealth(int health)
     {
@@ -169,31 +153,69 @@ public class PlayerScript : MonoBehaviour
         _controller.Move(_playerVelocity * Time.deltaTime);
     }
 
-   void OnTriggerEnter(Collider c)
-    {
+    // private void OnTriggerEnter(Collider other) {
+    //      Debug.Log("trigger enter");
+    //     if(other.tag.EndsWith("lb"))
+    //     {
+    //         other.GetComponent<Light>().enabled = true;
+    //     }
+    // }
+    // private void OnTriggerExit(Collider other) {
+    //     Debug.Log("trigger exit");
+    //     if(other.tag.EndsWith("lb"))
+    //         other.GetComponent<Light>().enabled = false;
+    // }
 
-        if(c.gameObject.tag.Contains("lb") ){
-        isInCollision = true;
-        collidedWith = c;
-        Debug.Log("Collided with "+collidedWith);
-        if (c.CompareTag("Bullet"))
+
+    private void OnItemPickUp(object sender, Item item)
+    {
+        switch(item.GetItemType())
         {
-            decreaseHealth(10);
-            Destroy(c.gameObject);
-        }
+            case Item.ItemType.Block05LB:
+                GameDetails.currentTotalWeight+=0.5f;
+                break;
+            case Item.ItemType.Block1LB:
+                GameDetails.currentTotalWeight+=1f;
+                break;
+            case Item.ItemType.Block2LB:
+                GameDetails.currentTotalWeight+=2f;
+                break;
+            case Item.ItemType.Block3LB:
+                GameDetails.currentTotalWeight+=3f;
+                break;
+            case Item.ItemType.Block5LB:
+                GameDetails.currentTotalWeight+=5f;
+                break;
+            default:
+                break;
+                //Do something
         }
     }
 
-    private void OnTriggerExit(Collider c) 
+    private void OnItemDrop(object sender, Item item)
     {
+        Debug.Log("On item drop");
+        switch(item.GetItemType())
+        {
+            case Item.ItemType.Block05LB:
+                GameDetails.currentTotalWeight-=0.5f;
+                break;
+            case Item.ItemType.Block1LB:
+                GameDetails.currentTotalWeight-=1f;
+                break;
+            case Item.ItemType.Block2LB:
+                GameDetails.currentTotalWeight-=2f;
+                break;
+            case Item.ItemType.Block3LB:
+                GameDetails.currentTotalWeight-=3f;
+                break;
+            case Item.ItemType.Block5LB:
+                GameDetails.currentTotalWeight-=5f;
+                break;
 
-        if(c.gameObject.tag.Contains("lb") ){
-        isInCollision = false;
-        collidedWith = null;
         }
+
     }
-
-
     public InventoryManager getInventoryManager()
     {
         return _inventoryManager;
