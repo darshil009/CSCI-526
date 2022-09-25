@@ -35,4 +35,21 @@ public static class GameDetails {
             Item.ItemType.Block5LB, 5
         }
     };
+    
+    public static Dictionary<string, float> weights_from_tag = new Dictionary<string, float>()
+    {
+        
+        {
+            "1lb", 1
+        },
+        {
+            "2lb", 2
+        },
+        {
+            "3lb", 3
+        },
+        {
+            "5lb", 5
+        }
+    };
 }

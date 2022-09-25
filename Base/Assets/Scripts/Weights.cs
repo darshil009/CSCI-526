@@ -15,6 +15,7 @@ public class Weights : MonoBehaviour
     public TextMeshProUGUI weightText;
 
     private DoorBehavior doorAction;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -41,15 +42,10 @@ public class Weights : MonoBehaviour
         float total = 0;
         foreach (var obj in numObjects)
         {
-            if (obj.gameObject.CompareTag("05lb"))
+            if (GameDetails.weights_from_tag.ContainsKey(obj.tag))
             {
-                total += 0.5f;
+                total += GameDetails.weights_from_tag[obj.tag];
             }
-            else
-            {
-                total += int.Parse(obj.tag[..1]);
-            }
-            
         }
         total_weights = total;
     }

@@ -16,7 +16,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private Camera followCamera;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
-    [SerializeField] private float jumpButtomGracePeriod;
+    [SerializeField] private float jumpButtonGracePeriod = 0.2f;
     [SerializeField] private float  itemsRadius = 3f;
     [SerializeField] private LayerMask itemMask;
 
@@ -88,7 +88,7 @@ public class PlayerScript : MonoBehaviour
             //  Debug.DrawRay(ray.origin,ray.direction*100,Color.green);
 
         if(Input.GetMouseButtonDown(0))
-        {   Debug.Log("Hit left mouse");
+        {   
             if (Physics.Raycast(ray.origin,ray.direction, out hit,GameDetails.pickDropDistance,itemMask)){
                 Debug.Log("Hit " + hit.transform.gameObject.name + " "+hit.point);
                 if(hit.transform.GetComponent<Light>().enabled){
@@ -164,10 +164,10 @@ public class PlayerScript : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
         }
 
-        if (Time.time - lastGroundedTime <= jumpButtomGracePeriod)
+        if (Time.time - lastGroundedTime <= jumpButtonGracePeriod)
         {
 
-            if (Time.time - jumpButtonPressedTime <= jumpButtomGracePeriod)
+            if (Time.time - jumpButtonPressedTime <= jumpButtonGracePeriod)
             {_playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
                 jumpButtonPressedTime = null;
                 lastGroundedTime = null;
