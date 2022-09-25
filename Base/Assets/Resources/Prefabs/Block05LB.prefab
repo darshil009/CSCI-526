@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3641035594404271679}
   - component: {fileID: 3641035594404271672}
   - component: {fileID: 3641035594404271673}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 3641035594423029649}
   - component: {fileID: 3641035594423029650}
   - component: {fileID: 3641035594423029651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 3641035594479845709}
   - component: {fileID: 3641035594479845710}
   - component: {fileID: 3641035594479845711}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 3641035594596481579}
   - component: {fileID: 3641035594596482516}
   - component: {fileID: 3641035594596482517}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 3641035594849056940}
   - component: {fileID: 3641035594849056930}
   - component: {fileID: 3641035594849056931}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 3641035594884339216}
   - component: {fileID: 3641035594884339222}
   - component: {fileID: 3641035594884339223}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -685,7 +685,7 @@ GameObject:
   - component: {fileID: 3641035594977600764}
   - component: {fileID: 3641035594977600754}
   - component: {fileID: 3641035594977600755}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -821,7 +821,7 @@ GameObject:
   - component: {fileID: 3641035595063240656}
   - component: {fileID: 3641035595063240657}
   - component: {fileID: 3641035595063240658}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -922,6 +922,9 @@ GameObject:
   - component: {fileID: 3641035595513490167}
   - component: {fileID: 3641035595513490160}
   - component: {fileID: 3641035595513490161}
+  - component: {fileID: -1414214929492717090}
+  - component: {fileID: -7975396946374005561}
+  - component: {fileID: 5116752951789738401}
   m_Layer: 6
   m_Name: Block05LB
   m_TagString: 05lb
@@ -957,6 +960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efcbf1f12423343799f6c71f2bdb5ef2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerScript: {fileID: 0}
 --- !u!65 &3641035595513490160
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -986,6 +990,93 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1414214929492717090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3641035595513490162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15aa10812d2ff4c91bb7f411a1154fe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!108 &-7975396946374005561
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3641035595513490162}
+  m_Enabled: 0
+  serializedVersion: 10
+  m_Type: 2
+  m_Shape: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Intensity: 5
+  m_Range: 1
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!135 &5116752951789738401
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3641035595513490162}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3641035595756093616
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,7 +1088,7 @@ GameObject:
   - component: {fileID: 3641035595756093623}
   - component: {fileID: 3641035595756093621}
   - component: {fileID: 3641035595756093622}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
