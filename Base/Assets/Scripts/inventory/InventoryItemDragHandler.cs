@@ -10,9 +10,15 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
     private RectTransform itemSlotTemplate;
     private RectTransform border;
     private GameObject itemObj = null;
+    private Image spriteImage = null;
+    private Rigidbody rigidbody = null;
+    private BoxCollider boxCollider = null;
     [SerializeField] private PlayerScript playerScript;
 
     [SerializeField] private LayerMask planeMask;
+    [SerializeField] private LayerMask exceptBoxesMask;
+
+    public event EventHandler<Item> itemDroppedFromUIEvent;
     private Item item;
     private void Awake()
     {
@@ -29,121 +35,92 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
     {
         return item;
     }
+
+    
     public void OnBeginDrag(PointerEventData eventData)
     {
 
         itemObj= Instantiate(InventoryResourceManager.GetPrefab(item.GetItemType())) as GameObject;
-        itemObj.GetComponent<BoxCollider>().isTrigger = false;
-        itemObj.GetComponent<Rigidbody>().isKinematic = true;
-        GetComponent<Image>().enabled = false;
+        // itemObj.GetComponent<BoxCollider>().isTrigger = false;
+        // itemObj.GetComponent<Rigidbody>().isKinematic = true;
+        spriteImage = GetComponent<Image>();
+        rigidbody = itemObj.transform.GetComponent<Rigidbody>();
+        spriteImage.enabled = false;
+        itemObj.transform.position = playerScript.transform.position;
+        boxCollider =  itemObj.GetComponent<BoxCollider>();
         // Debug.Log("On begin drag");
     }
 
     private void CalculateWorldPosition()
     {
-
-
-        // var a = -30 * Mathf.Deg2Rad;
-        // var dir = (playerScript.transform.forward * Mathf.Cos(a) + transform.right * Mathf.Sin(a)).normalized;
-        // Debug.DrawRay(playerScript.transform.position,dir*100, Color.green);
-
-        // float pickUpDistance = 20f;
-        // if(Physics.Raycast(playerScript.transform.position,dir*100,out RaycastHit raycastHit,pickUpDistance))
-        // {
-        //     Debug.Log("hit" +raycastHit.point);
-        //     itemObj.transform.position = raycastHit.point;
-        // }
-
-
-        float pickUpDistance = 15f;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit = new RaycastHit();
-        ray.origin = Camera.main.transform.position;
-        Debug.DrawRay(ray.origin,ray.direction,Color.green);
 
-        if (Physics.Raycast(ray.origin,ray.direction, out hit,pickUpDistance,planeMask)){
-                /*print("Hit " + hit.transform.gameObject.name + " "+hit.point);
-                print("Local Hit "+playerScript.transform.InverseTransformPoint(hit.point));
-                print("New position"+ (playerScript.transform.position + playerScript.transform.InverseTransformPoint(hit.point)));
-                itemObj.transform.position = Vector3.Lerp(itemObj.transform.position,playerScript.transform.position + playerScript.transform.InverseTransformPoint(hit.point)+new Vector3(0,2,0),0.5f);*/
-                Debug.Log("Item "+ itemObj);
-                itemObj.transform.position = hit.point+new Vector3(0,1,0);
-
-
-
-
-        }
         
 
+        ray.origin = Camera.main.transform.position;
+        if (Physics.Raycast(ray.origin,ray.direction, out hit,GameDetails.pickDropDistance,planeMask)){
+                Vector3 position = hit.point+new Vector3(0,1,0);
+                itemObj.transform.position = position;
+        }
     }
     public void OnDrag(PointerEventData eventData)
-    {
-        // Debug.Log("Dragging");
-        // Debug.Log("Position on drag "+eventData);
-        // Debug.Log("Mouse position " + Input.mousePosition);
-        
-
-        
-        CalculateWorldPosition();
-        /*Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        Debug.Log("Ray origin"+ray.origin+" ray direction"+ray.direction);
-        Debug.DrawRay(ray.origin, ray.origin + ray.direction, Color.green);
-
-        if (Physics.Raycast(ray.origin, ray.origin + ray.direction * 200f, out hit)){
-                print("Hit");
-            Vector3 v3 = hit.point;
-            v3.z +=100;
-            Debug.DrawRay(ray.origin, v3, Color.black);
-        }*/
-
-
+    {      
+        setNoPhysics();
+        //CalculateWorldPosition();
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         
+        RaycastHit hit;  
+        Physics.Linecast(playerScript.transform.position, itemObj.transform.position,out hit,exceptBoxesMask);
+
         if (itemSlotContainer != null)
         {
-            // Debug.Log("Parent is " + itemSlotContainer.gameObject.name);
-            if (!RectTransformUtility.RectangleContainsScreenPoint(itemSlotContainer, Input.mousePosition))
+            Debug.Log("hit collider "+hit.collider);
+            if (!RectTransformUtility.RectangleContainsScreenPoint(itemSlotContainer, Input.mousePosition) &&
+                     hit.collider == null)
             {
+                setNoPhysics();
+                TriggerItemDroppedFromUIEvent(item);
+                itemObj.layer = LayerMask.NameToLayer("boxes");
 
-                /*GameObject newItem = Instantiate(InventoryResourceManager.GetPrefab(item.GetItemType())) as GameObject;
-                Vector3 mousePos = new Vector3(Input.mousePosition.x, 0, Input.mousePosition.y);
-                Vector3 worldPosition;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray.origin, ray.origin + ray.direction * 100f, out hit)){
-                    Debug.DrawRay(ray.origin, ray.origin + ray.direction * 100f, Color.green); print("Hit");
-                    worldPosition = hit.point;
-                }
-                else
-                    worldPosition = ray.origin + ray.direction * 100f;
-                newItem.transform.position = worldPosition;
-                Debug.Log("Item removed and placed on maze" + Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                */
-                //CalculateWorldPosition();
-                itemObj.GetComponent<BoxCollider>().isTrigger = true;
-                itemObj.transform.GetComponent<Rigidbody>().isKinematic = false;
-                itemObj.transform.GetComponent<Rigidbody>().velocity = new Vector3(0f,0f,0f);
-                itemObj.transform.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f,0f,0f);
-                itemObj.layer = 6;
-                item.OnItemDrop();
             }
             else
             {
-                Destroy(itemObj);
-                itemObj=null;
-                Debug.Log("Item removed and placed on panel");
-                GetComponent<Image>().enabled = true;
-                transform.localPosition = Vector3.zero;
+                placeItemBackInInventoryPanel();
+
             }
         }
     }
 
+
+    void placeItemBackInInventoryPanel()
+    {
+        Destroy(itemObj);
+        itemObj=null;
+        Debug.Log("Item removed and placed on panel");
+        spriteImage.enabled = true;
+        transform.localPosition = Vector3.zero;
+    }
+    void setNoPhysics()
+    {
+        // boxCollider.isTrigger = true;
+        // rigidbody.isKinematic = false;
+        rigidbody.velocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
+    }
+    private void TriggerItemDroppedFromUIEvent(Item item)
+    {
+        itemDroppedFromUIEvent?.Invoke(this,item);
+    }
     private void Update()
     {
+        if(itemObj){
+            CalculateWorldPosition();
+            setNoPhysics();
+        }
     }
 
 }

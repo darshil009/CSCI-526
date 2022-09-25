@@ -11,28 +11,20 @@ public class UnStackedInventoryManager:InventoryManager
     {
         itemOrder = new LinkedList<Item.ItemType>();
         items = new LinkedList<Item>();
-
     }
 
     public override void AddItem(Item item)
     {
-        item.OnItemDropEvent += OnItemDroppedFromUI;
+
+        //item.OnItemDropEvent += OnItemDroppedFromUI;
         itemOrder.AddLast(item.GetItemType());
         items.AddLast(item);
-        //OnItemAddProcessed(item);
-        inventoryUI.OnItemAdded(item);
-            
-        
-        
+        OnItemAddProcessed(item);
     }
 
-    private void OnItemDroppedFromUI(object sender, Item item)
+    protected override void OnItemRemovedFromUI(object sender, Item item)
     {
         // Debug.Log("Item removed from inventory");
-        RemoveItem(item);
-    }
-    public override void RemoveItem(Item item)
-    {
         items.Remove(item);
     }
 }

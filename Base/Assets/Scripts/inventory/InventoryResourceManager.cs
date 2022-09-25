@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InventoryResourceManager : MonoBehaviour
+public static class InventoryResourceManager
 {
  
 

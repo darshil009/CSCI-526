@@ -15,6 +15,8 @@ public static class GameDetails {
     public static readonly int EnemyVisionRadius = 6;
     public static float currentTotalWeight = 0;
     public static GemsCount NumGems;
+
+    public static float pickDropDistance = 15f;
     public static Dictionary<Item.ItemType, float> weights = new Dictionary<Item.ItemType, float>()
     {
         {

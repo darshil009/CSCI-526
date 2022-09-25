@@ -37,7 +37,7 @@ public class StackedInventoryManager:InventoryManager
         
     }
 
-    public override void RemoveItem(Item item)
+    protected override void OnItemRemovedFromUI(object senderm, Item item)
     {
         Debug.Log("remove item");
         Item.ItemType itemType = item.GetItemType();

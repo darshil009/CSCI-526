@@ -8,13 +8,7 @@ using UnityEngine.UI;
 
 public class StackedInventoryUI : InventoryUI
 { 
-    /*public override void InitEventHandlers()
-    {
-        Debug.Log("Setting event handlers");
-        inventoryManager.OnItemAdded += OnItemAdded;
-        inventoryManager.OnItemChanged += OnItemChanged;
-    }*/
-    public override void OnItemAdded(Item item)
+    protected override void OnItemAddedInList(object sender, Item item)
     {
         int index = itemSlotContainer.childCount-1;
         Item.ItemType itemType = item.GetItemType();
@@ -29,7 +23,7 @@ public class StackedInventoryUI : InventoryUI
     
     
     
-    public override void OnItemChanged(Tuple<Item,int,int> tuple)
+    public override void OnItemChangedInList(object sender, Tuple<Item,int,int> tuple)
     {
         Item item = tuple.Item1;
         Item.ItemType itemType = item.GetItemType();

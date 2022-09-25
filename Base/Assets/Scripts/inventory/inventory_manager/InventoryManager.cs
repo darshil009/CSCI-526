@@ -8,14 +8,12 @@ public abstract class InventoryManager
 
     
     protected LinkedList<Item.ItemType> itemOrder;
-    public event EventHandler<Item> OnItemAdded;
-    public event EventHandler<Tuple<Item,int,int>> OnItemChanged;
+    public event EventHandler<Item> itemAddedEvent;
+    public event EventHandler<Tuple<Item,int,int>> itemChangedEvent;
     public InventoryUI inventoryUI;
 
 
     public abstract void AddItem(Item item);
-
-    public abstract void RemoveItem(Item item);
     public LinkedList<Item.ItemType> GetItemOrder()
     {
         return itemOrder;
@@ -24,14 +22,17 @@ public abstract class InventoryManager
     public void SetInventoryUI(InventoryUI inventoryUI)
     {
         this.inventoryUI = inventoryUI;
+        inventoryUI.OnItemRemovedFromUIEvent += OnItemRemovedFromUI;
     }
     protected virtual void OnItemAddProcessed(Item item)
     {
-        OnItemAdded?.Invoke(this,item);
+        itemAddedEvent?.Invoke(this,item);
     }
     protected virtual void OnItemChangeProcessed(Item item,int index, int count)
     {
-        OnItemChanged?.Invoke(this,new Tuple<Item, int,int>(item,index,count));
+        itemChangedEvent?.Invoke(this,new Tuple<Item, int,int>(item,index,count));
     }
+
+     protected abstract void OnItemRemovedFromUI(object sender, Item item);
 }
 
