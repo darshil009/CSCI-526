@@ -42,12 +42,13 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
 
         itemObj= Instantiate(InventoryResourceManager.GetPrefab(item.GetItemType())) as GameObject;
         // itemObj.GetComponent<BoxCollider>().isTrigger = false;
-        // itemObj.GetComponent<Rigidbody>().isKinematic = true;
         spriteImage = GetComponent<Image>();
         rigidbody = itemObj.transform.GetComponent<Rigidbody>();
         spriteImage.enabled = false;
         itemObj.transform.position = playerScript.transform.position;
         boxCollider =  itemObj.GetComponent<BoxCollider>();
+
+        rigidbody.useGravity = false;
         // Debug.Log("On begin drag");
     }
 
@@ -85,6 +86,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
                 setNoPhysics();
                 TriggerItemDroppedFromUIEvent(item);
                 itemObj.layer = LayerMask.NameToLayer("boxes");
+                rigidbody.useGravity = true;
 
             }
             else
