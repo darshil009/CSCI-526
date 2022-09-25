@@ -70,7 +70,6 @@ public class PlayerScript : MonoBehaviour
 
         if(isInCollision  && Input.GetKeyDown(KeyCode.E)){
 
-        Debug.Log("On trigger with tag "+collidedWith);
         if(collidedWith.CompareTag("05lb"))
         {
             getInventoryManager().AddItem(new Block05());
@@ -120,12 +119,11 @@ public class PlayerScript : MonoBehaviour
     {
         float tw = Weights.total_weights;
         PlayerHealth -= health;
-        Debug.Log("Player Health: " + PlayerHealth);
         if (PlayerHealth <= 0)
         {
             analyticsManager.RegisterEvent(GameEvent.HEALTH_LOST, PlayerHealth);
             IDictionary<string, string> analytics = analyticsManager.Publish();
-            Debug.Log(analytics["level"] + " " + analytics["time"] + " " + analytics["health"] + " " + tw);
+            // Debug.Log(analytics["level"] + " " + analytics["time"] + " " + analytics["health"] + " " + tw);
             // StartCoroutine(sg.Post("1", "2", "3"));
             StartCoroutine(sg.Post(analytics["level"], analytics["time"], analytics["health"], tw.ToString()));
             SceneManager.LoadScene("Scenes/SampleScene");
@@ -186,16 +184,15 @@ public class PlayerScript : MonoBehaviour
 
    void OnTriggerEnter(Collider c)
     {
-
-        if(c.gameObject.tag.Contains("lb") ){
-        isInCollision = true;
-        collidedWith = c;
-        Debug.Log("Collided with "+collidedWith);
         if (c.CompareTag("Bullet"))
         {
             decreaseHealth(10);
             Destroy(c.gameObject);
         }
+
+        if(c.gameObject.tag.Contains("lb") ){
+            isInCollision = true;
+            collidedWith = c;
         }
     }
 

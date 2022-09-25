@@ -39,12 +39,12 @@ namespace Enemy
 
         private void CheckForPlayer()
         {
-            Collider[] rangeCheck = Physics.OverlapSphere(transform.position, radius, playerMask);
+            Collider[] rangeCheck = Physics.OverlapSphere(startPos, radius, playerMask);
 
             if (rangeCheck.Length != 0)
             {
                 Transform target = rangeCheck[0].transform;
-                float distanceToTarget = Vector3.Distance(transform.position, target.position);
+                float distanceToTarget = Vector3.Distance(startPos, target.position);
                 canSeePlayer = distanceToTarget <= radius;
             }
             else canSeePlayer = false;
