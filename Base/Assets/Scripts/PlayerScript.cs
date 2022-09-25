@@ -85,7 +85,7 @@ public class PlayerScript : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit = new RaycastHit();
             ray.origin = Camera.main.transform.position;
-             Debug.DrawRay(ray.origin,ray.direction*100,Color.green);
+            //  Debug.DrawRay(ray.origin,ray.direction*100,Color.green);
 
         if(Input.GetMouseButtonDown(0))
         {   Debug.Log("Hit left mouse");
