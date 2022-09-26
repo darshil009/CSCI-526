@@ -1,9 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Threading.Tasks;
-using System.Linq;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -19,8 +18,6 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float jumpButtonGracePeriod = 0.2f;
     [SerializeField] private float itemsRadius = 3f;
     [SerializeField] private LayerMask itemMask;
-    //[SerializeField] private GameObject mainCinemachine;
-    //[SerializeField] private GameObject backUpCineMacine;
 
     public static float PlayerHealth;
     public static float playerSpeed;
@@ -83,10 +80,11 @@ public class PlayerScript : MonoBehaviour
 
     private void Update()
     {
+
         if (canMove)
             playerSpeed = Mathf.Max(0.2f, (maxSpeed - (0.75f * GameDetails.currentTotalWeight)));
+        
         MovePlayer();
-
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit = new RaycastHit();
@@ -108,11 +106,16 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-    public async void freezePlayer(int seconds)
+    public void freezePlayer(float seconds)
     {
+        playerSpeed = 1f;
         canMove = false;
-        playerSpeed = 0.5f;
-        await Task.Delay(seconds);
+        StartCoroutine(UnFreezePlayer(seconds));
+    }
+    
+    private IEnumerator UnFreezePlayer(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
         canMove = true;
     }
 
@@ -124,8 +127,6 @@ public class PlayerScript : MonoBehaviour
         {
             analyticsManager.RegisterEvent(GameEvent.HEALTH_LOST, PlayerHealth);
             IDictionary<string, string> analytics = analyticsManager.Publish();
-            // Debug.Log(analytics["level"] + " " + analytics["time"] + " " + analytics["health"] + " " + tw);
-            // StartCoroutine(sg.Post("1", "2", "3"));
             StartCoroutine(sg.Post(analytics["level"], analytics["time"], analytics["health"], tw.ToString()));
             SceneManager.LoadScene("Scenes/SampleScene");
         }
