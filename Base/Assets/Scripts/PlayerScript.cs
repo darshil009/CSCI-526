@@ -86,6 +86,8 @@ public class PlayerScript : MonoBehaviour
         if (canMove)
             playerSpeed = Mathf.Max(0.2f, (maxSpeed - (0.75f * GameDetails.currentTotalWeight)));
         MovePlayer();
+
+
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit = new RaycastHit();
         ray.origin = Camera.main.transform.position;
@@ -144,7 +146,7 @@ public class PlayerScript : MonoBehaviour
             lastGroundedTime = Time.time;
         }
     
-        if (Input.GetButton("Jump"))
+        if (Input.GetButtonDown("Jump"))
         {
             jumpButtonPressedTime = Time.time;
         }
