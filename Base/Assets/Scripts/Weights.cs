@@ -12,13 +12,17 @@ public class Weights : MonoBehaviour
     [SerializeField] public LayerMask boxMask;
 
     [SerializeField] private GameObject door;
-    public TextMeshProUGUI weightText;
+    [SerializeField] public TextMeshProUGUI weightText;
+    [SerializeField] public TextMeshProUGUI doorText;
 
     private DoorBehavior doorAction;
+    private bool isDoorOpen;
     
     // Start is called before the first frame update
     void Start()
     {
+        isDoorOpen = false;
+        doorText.text = "10 lbs";
         total_weights = 0;
         doorAction = door.AddComponent<DoorBehavior>();
         StartCoroutine(CheckForBoxes());
@@ -53,11 +57,14 @@ public class Weights : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        weightText.text = total_weights + " lb";
-        if (total_weights == 10.5)
+        if (!isDoorOpen)
+            weightText.text = total_weights + "/10 lb";
+        if (total_weights == 10 || isDoorOpen)
         {
             doorAction.changeDoor();
             weightText.text = "DOOR OPEN";
+            doorText.text = "";
+            isDoorOpen = true;
         }
         
     }

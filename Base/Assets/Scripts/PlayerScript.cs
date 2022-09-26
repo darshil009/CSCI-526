@@ -19,6 +19,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float jumpButtonGracePeriod = 0.2f;
     [SerializeField] private float itemsRadius = 3f;
     [SerializeField] private LayerMask itemMask;
+    //[SerializeField] private GameObject mainCinemachine;
+    //[SerializeField] private GameObject backUpCineMacine;
 
     public static float PlayerHealth;
     public static float playerSpeed;
@@ -150,22 +152,23 @@ public class PlayerScript : MonoBehaviour
     
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-    
+
+
         Vector3 movementInput = Quaternion.Euler(0, followCamera.transform.eulerAngles.y, 0) *
                                 new Vector3(0, 0, verticalInput);
         Vector3 movementDirection = movementInput.normalized;
         _controller.Move(movementDirection * (playerSpeed * Time.deltaTime));
+
+        // if (movementDirection != Vector3.zero)
+        //{
+        //    Quaternion desiredRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
         
+        //    transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
+        //}
+
         rotation = new Vector3(0, horizontalInput * rotationSpeed * Time.deltaTime, 0);
         transform.Rotate(rotation);
-        
-         // if (movementDirection != Vector3.zero)
-        // {
-        //     Quaternion desiredRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-        //
-        //     transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
-        // }
-    
+
         if (Time.time - lastGroundedTime <= jumpButtonGracePeriod)
         {
     
