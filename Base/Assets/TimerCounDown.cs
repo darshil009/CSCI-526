@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class TimerCounDown : MonoBehaviour
 {
     AnalyticsManager analyticsManager;
     [SerializeField] public float timeValue = 180;
-    public Text timerText;
+    public TextMeshProUGUI timerText;
     private SentToGoogle sg;
-    // Start is called before the first frame update
+    public bool isBlink = false;
+    
     void Start()
     {
         analyticsManager = new AnalyticsManager();
         analyticsManager.Reset(1);
         sg = new SentToGoogle();
+        //timer = Random.Range(minTime, maxTime);
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         if (timeValue > 0)
@@ -50,7 +53,17 @@ public class TimerCounDown : MonoBehaviour
         }
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);
         float seconds = Mathf.FloorToInt(timeToDisplay % 60);
+        if (minutes==0 && seconds>=55)
+        {
+                timerText.enabled = !timerText.enabled;
+                timerText.color = Color.red;
 
+        }
+        else if (minutes==0 && seconds<50)
+        {
+            timerText.enabled = true;
+            timerText.color = Color.red;
+        }
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
