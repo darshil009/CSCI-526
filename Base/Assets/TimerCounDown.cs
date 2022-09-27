@@ -7,14 +7,17 @@ using TMPro;
 
 public class TimerCounDown : MonoBehaviour
 {
+    
     AnalyticsManager analyticsManager;
     [SerializeField] public float timeValue = 180;
     public TextMeshProUGUI timerText;
     private SentToGoogle sg;
     public bool isBlink = false;
-    
+    public GameOverScript gameOverScript;
+
     void Start()
     {
+        Time.timeScale = 1;
         analyticsManager = new AnalyticsManager();
         analyticsManager.Reset(1);
         sg = new SentToGoogle();
@@ -40,7 +43,10 @@ public class TimerCounDown : MonoBehaviour
             //SceneManager.LoadScene("Scenes/SampleScene");
             //analyticsManager.RegisterEvent(GameEvent.TIME_UP, timeValue);
             //analyticsManager.Publish();
-            SceneManager.LoadScene("Scenes/SampleScene");
+            //SceneManager.LoadScene("Scenes/SampleScene");
+            Time.timeScale = 0;
+            gameOverScript.gameOverDisplay();
+
         }
         DisplayTime(timeValue);
     }
