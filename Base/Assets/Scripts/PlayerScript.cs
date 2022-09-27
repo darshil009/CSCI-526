@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Collections;
+using TMPro;
+using UnityEngine.UI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -19,10 +22,10 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float jumpButtonGracePeriod = 0.2f;
     [SerializeField] private float  itemsRadius = 3f;
     [SerializeField] private LayerMask itemMask;
+    [SerializeField] private TextMeshProUGUI healthLoss;
 
     public static float PlayerHealth;
     public static float playerSpeed;
-
     private Vector3 _playerVelocity;
     private SentToGoogle sg;
     private CharacterController _controller;
@@ -34,13 +37,13 @@ public class PlayerScript : MonoBehaviour
     private float maxSpeed;
     private float? lastGroundedTime;
     private float? jumpButtonPressedTime;
-
     private bool canMove;
 
     private Item itemInHand;
 
     private void Awake()
     {
+        //healthLoss = new playerScript.GetComponent<TMPro.TextMeshProUGUI>();
         _inventoryManager = new UnStackedInventoryManager();
         _inventoryUI.SetInventoryManager(_inventoryManager);
         _inventoryManager.SetInventoryUI(_inventoryUI);
@@ -115,6 +118,8 @@ public class PlayerScript : MonoBehaviour
     {
         float tw = Weights.total_weights;
         PlayerHealth -= health;
+        displayPopUp(health);
+
         if (PlayerHealth <= 0)
         {
             analyticsManager.RegisterEvent(GameEvent.HEALTH_LOST, PlayerHealth);
@@ -238,5 +243,18 @@ public class PlayerScript : MonoBehaviour
                     break;
             }
 
+    }
+
+    void displayPopUp(int amt)
+    {
+        String amount = "-" + amt.ToString() + " XP";
+        healthLoss.text = amount;
+        StartCoroutine(disappearPopup());
+    }
+
+    public IEnumerator disappearPopup()
+    {
+        yield return new WaitForSeconds(1);
+        healthLoss.text = "";
     }
 }
