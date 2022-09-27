@@ -39,6 +39,8 @@ public class PlayerScript : MonoBehaviour
 
     private Item itemInHand;
 
+    public GameOverScript gameOverScript = new GameOverScript();
+
     private void Awake()
     {
         _inventoryManager = new UnStackedInventoryManager();
@@ -128,7 +130,10 @@ public class PlayerScript : MonoBehaviour
             analyticsManager.RegisterEvent(GameEvent.HEALTH_LOST, PlayerHealth);
             IDictionary<string, string> analytics = analyticsManager.Publish();
             StartCoroutine(sg.Post(analytics["level"], analytics["time"], analytics["health"], tw.ToString()));
-            SceneManager.LoadScene("Scenes/SampleScene");
+            Time.timeScale = 0;
+            gameOverScript.gameOverDisplay();
+            //SceneManager.LoadScene("Scenes/SampleScene");
+            
         }
     }
 
