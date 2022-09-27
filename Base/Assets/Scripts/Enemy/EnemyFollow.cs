@@ -14,8 +14,13 @@ namespace Enemy
         private float radius;
         private bool canSeePlayer;
         private Vector3 startPos;
+        private Collider[] results;
+        WaitForSeconds wait;
+        
         void Start()
         {
+            wait = new WaitForSeconds(0.1f);
+            results = new Collider[1];
             var multiplier = 1;
             if (navMesh.CompareTag("Enemy_health")) multiplier = 2;
             startPos = navMesh.transform.position;
@@ -27,9 +32,6 @@ namespace Enemy
 
         private IEnumerator CheckIfPlayerVisible()
         {
-
-            WaitForSeconds wait = new WaitForSeconds(0.1f);
-
             while (true)
             {
                 CheckForPlayer();
@@ -39,11 +41,11 @@ namespace Enemy
 
         private void CheckForPlayer()
         {
-            Collider[] rangeCheck = Physics.OverlapSphere(startPos, radius, playerMask);
+            var size = Physics.OverlapSphereNonAlloc(startPos, radius, results, playerMask);
 
-            if (rangeCheck.Length != 0)
+            if (size!= 0)
             {
-                Transform target = rangeCheck[0].transform;
+                Transform target = results[0].transform;
                 float distanceToTarget = Vector3.Distance(startPos, target.position);
                 canSeePlayer = distanceToTarget <= radius;
             }

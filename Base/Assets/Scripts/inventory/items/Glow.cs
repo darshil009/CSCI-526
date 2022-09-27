@@ -1,30 +1,48 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Glow : MonoBehaviour
 {
+    private Light light;
+    private bool _isEnabled;
+    private LayerMask _playerMask;
+    private Collider[] _results;
 
-
-Light light;
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        _results = new Collider[1];
+        _playerMask = LayerMask.GetMask("Player");
+        _isEnabled = false;
         light = transform.GetComponent<Light>();
         light.enabled = false;
     }
 
-private void Update() {
-    Collider[] hitColliders = Physics.OverlapSphere(transform.position,3f);
-    bool enable = false;
-        foreach (Collider hitCollider in hitColliders)
-        {
-            if(hitCollider.CompareTag("Player"))
-                enable = true;
-            //Debug.Log(hitCollider.tag + " "+ hitCollider.gameObject.layer);
-            //Debug.Log("Layer mask for boxes"+LayerMask.GetMask(("boxes")));
-        }
-        light.enabled = enable;
+    private void Update()
+    {
         
-}
+        var size = Physics.OverlapSphereNonAlloc(transform.position, 3f, _results, _playerMask);
+        if (size != 0)
+            _isEnabled = true;
+        else
+        {
+            _isEnabled = false;
+            light.color = Color.white;
+        }
+        light.enabled = _isEnabled;
+    }
+
+    private void OnMouseEnter()
+    {
+        if (_isEnabled)
+            light.color = Color.green;
+    }
+
+    private void OnMouseExit()
+    {
+        if (_isEnabled)
+            light.color = Color.white;
+    }
 }

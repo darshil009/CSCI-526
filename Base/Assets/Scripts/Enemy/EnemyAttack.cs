@@ -17,6 +17,8 @@ namespace Enemy
         // [SerializeField] public LayerMask boxMask;
         private float radius;
         private bool canSeePlayer;
+
+        private Collider[] results;
         //private Vector3 startPosition;
 
         //Attacking
@@ -27,6 +29,7 @@ namespace Enemy
 
         void Start()
         {
+            results = new Collider[1];
             //radius = GameDetails.EnemyVisionRadius;
             radius = GameDetails.EnemyVisionRadius * 0.75f;
             canSeePlayer = false;
@@ -49,11 +52,11 @@ namespace Enemy
 
         private void CheckForPlayer()
         {
-            Collider[] rangeCheck = Physics.OverlapSphere(transform.position, radius, playerMask);
-            
-            if (rangeCheck.Length != 0)
+            var size = Physics.OverlapSphereNonAlloc(transform.position, radius, results, playerMask);
+
+            if (size != 0)
             {
-                Transform target = rangeCheck[0].transform;
+                Transform target = results[0].transform;
                 Vector3 directionToTarget = (target.position - transform.position).normalized;
                 float distanceToTarget = Vector3.Distance(transform.position, player.position);
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, wallMaks) &&
