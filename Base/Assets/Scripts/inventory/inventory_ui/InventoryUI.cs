@@ -8,7 +8,7 @@ public abstract class InventoryUI : MonoBehaviour
 {
     protected InventoryManager inventoryManager;
     protected Transform itemSlotContainer;
-    protected Transform itemSlotTemplate;
+    public Transform itemSlotTemplate;
     protected Dictionary<Item, Transform> itemToSlotTemplate;
 
     protected abstract void OnItemAddedInList( object sender, Item item);
