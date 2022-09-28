@@ -3,7 +3,8 @@ using UnityEngine;
 public class Collect : MonoBehaviour
 {
     
-
-    [SerializeField] private PlayerScript playerScript;
+    private void OnCollisionEnter(Collision other) {
+        
+    }
 
 }

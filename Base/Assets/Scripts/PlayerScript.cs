@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float itemsRadius = 3f;
     [SerializeField] private LayerMask itemMask;
 
+    public event EventHandler<Item> firstLightEvent;
     public static float PlayerHealth;
     public static float playerSpeed;
 
@@ -85,9 +86,7 @@ public class PlayerScript : MonoBehaviour
 
         if (canMove)
             playerSpeed = Mathf.Max(0.2f, (maxSpeed - (0.75f * GameDetails.currentTotalWeight)));
-        
-        MovePlayer();
-
+            MovePlayer();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit = new RaycastHit();
         ray.origin = Camera.main.transform.position;
@@ -161,7 +160,10 @@ public class PlayerScript : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-
+        if(GameDetails.pause)
+        {
+            horizontalInput = verticalInput = 0f;
+        }
         Vector3 movementInput = Quaternion.Euler(0, followCamera.transform.eulerAngles.y, 0) *
                                 new Vector3(0, 0, verticalInput);
         Vector3 movementDirection = movementInput.normalized;
@@ -208,22 +210,23 @@ public class PlayerScript : MonoBehaviour
 
     private void OnItemPickUp(object sender, Item item)
     {
-        switch (item.GetItemType())
+        GameDetails.firstItemPickedUp = true;
+        switch(item.GetItemType())
         {
             case Item.ItemType.Block05LB:
-                GameDetails.currentTotalWeight += 0.5f;
+                GameDetails.currentTotalWeight+=0.5f;
                 break;
             case Item.ItemType.Block1LB:
-                GameDetails.currentTotalWeight += 1f;
+                GameDetails.currentTotalWeight+=1f;
                 break;
             case Item.ItemType.Block2LB:
-                GameDetails.currentTotalWeight += 2f;
+                GameDetails.currentTotalWeight+=2f;
                 break;
             case Item.ItemType.Block3LB:
-                GameDetails.currentTotalWeight += 3f;
+                GameDetails.currentTotalWeight+=3f;
                 break;
             case Item.ItemType.Block5LB:
-                GameDetails.currentTotalWeight += 5f;
+                GameDetails.currentTotalWeight+=5f;
                 break;
             default:
                 break;
@@ -232,25 +235,27 @@ public class PlayerScript : MonoBehaviour
 
     private void OnItemDrop(object sender, Item item)
     {
-        switch (item.GetItemType())
-        {
-            case Item.ItemType.Block05LB:
-                GameDetails.currentTotalWeight -= 0.5f;
-                break;
-            case Item.ItemType.Block1LB:
-                GameDetails.currentTotalWeight -= 1f;
-                break;
-            case Item.ItemType.Block2LB:
-                GameDetails.currentTotalWeight -= 2f;
-                break;
-            case Item.ItemType.Block3LB:
-                GameDetails.currentTotalWeight -= 3f;
-                break;
-            case Item.ItemType.Block5LB:
-                GameDetails.currentTotalWeight -= 5f;
-                break;
-            default:
-                break;
-        }
+        GameDetails.firstItemDropped = true;
+            switch(item.GetItemType())
+            {
+                case Item.ItemType.Block05LB:
+                    GameDetails.currentTotalWeight-=0.5f;
+                    break;
+                case Item.ItemType.Block1LB:
+                    GameDetails.currentTotalWeight-=1f;
+                    break;
+                case Item.ItemType.Block2LB:
+                    GameDetails.currentTotalWeight-=2f;
+                    break;
+                case Item.ItemType.Block3LB:
+                    GameDetails.currentTotalWeight-=3f;
+                    break;
+                case Item.ItemType.Block5LB:
+                    GameDetails.currentTotalWeight-=5f;
+                    break;
+                default:
+                    break;
+            }
+
     }
 }

@@ -19,6 +19,8 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
     [SerializeField] private LayerMask exceptBoxesMask;
 
     public event EventHandler<Item> itemDroppedFromUIEvent;
+
+    [SerializeField] ErrorCanvas errorCanvas;
     private Item item;
     private void Awake()
     {
@@ -91,6 +93,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
             }
             else
             {
+                errorCanvas.ShowError("Cannot place the block here.");
                 placeItemBackInInventoryPanel();
 
             }
