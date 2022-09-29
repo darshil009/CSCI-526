@@ -20,7 +20,7 @@ public class SentToGoogle
         
     }
 
-    public IEnumerator Post(string level, string timeLost, string healthLost, string total_weights)
+    public IEnumerator Post(string level, List<int> timeList, List<int> healthList, List<int> weightList, string completed, string funct)
     {
         // Create the form and enter responses
         WWWForm form = new WWWForm();
@@ -30,11 +30,29 @@ public class SentToGoogle
         //form.AddField("entry.2106587218", level);
         //form.AddField("entry.1708535033", timeLost);
         //form.AddField("entry.372281974", healthLost);
-        form.AddField("entry.394529085", level);
-        form.AddField("entry.643418424", timeLost);
-        form.AddField("entry.842546645", healthLost);
-        form.AddField("entry.1636130689", total_weights);
-        
+        //form.AddField("entry.394529085", level);
+        //form.AddField("entry.643418424", timeLost);
+        //form.AddField("entry.842546645", healthLost);
+        //form.AddField("entry.1636130689", total_weights);
+        Debug.Log("==================**************************=============================");
+        Debug.Log("funct =" + funct);
+        Debug.Log("Level =" + level);
+        Debug.Log("completed =" + completed);
+
+        for (int i=0; i<timeList.Count; i++)
+        {
+            Debug.Log("timeList =" + timeList[i]);
+        }
+
+        for (int i = 0; i < healthList.Count; i++)
+        {
+            Debug.Log("healthList =" + healthList[i]);
+        }
+
+        for (int i = 0; i < weightList.Count; i++)
+        {
+            Debug.Log("weightList =" + weightList[i]);
+        }
 
 
 

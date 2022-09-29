@@ -22,8 +22,9 @@ namespace Enemy
             if (playerScript!=null)
             {
                 playerScript.decreaseHealth(30);
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
+            
         }
     }
 }

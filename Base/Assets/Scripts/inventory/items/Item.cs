@@ -8,6 +8,7 @@ public class Item
 {
     public enum ItemType
     {
+        Block05LB,
         Block1LB,
         Block2LB,
         Block3LB,
@@ -27,17 +28,19 @@ public class Item
     }
 
     public event EventHandler<Item> OnItemDropEvent;
+    public event EventHandler<Item> OnItemPickUpEvent;
 
+    public void OnItemPickUp()
+    {
+        OnItemPickUpEvent?.Invoke(this,this);
+    }
     public void OnItemDrop()
     {
         OnItemDropEvent?.Invoke(this,this);
-        GameDetails.currentTotalWeight -= GameDetails.weights[this.GetItemType()];
-
     }
 
     public Item(ItemType itemType)
     {
         this.itemType = itemType;
     }
-
 }

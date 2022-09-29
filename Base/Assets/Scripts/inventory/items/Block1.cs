@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Block1 : Block
 {
-    public Block1() : base(1, ItemType.Block1LB)
+    public Block1() : base(1f, ItemType.Block1LB)
     {
     }
 }

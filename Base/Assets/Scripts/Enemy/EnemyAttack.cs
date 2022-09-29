@@ -1,6 +1,7 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
 
@@ -12,9 +13,12 @@ namespace Enemy
         [SerializeField] public NavMeshAgent navMesh;
         [SerializeField] public Transform player;
         [SerializeField] public LayerMask playerMask;
-
+        [SerializeField] public LayerMask wallMaks;
+        // [SerializeField] public LayerMask boxMask;
         private float radius;
         private bool canSeePlayer;
+
+        private Collider[] results;
         //private Vector3 startPosition;
 
         //Attacking
@@ -25,6 +29,7 @@ namespace Enemy
 
         void Start()
         {
+            results = new Collider[1];
             //radius = GameDetails.EnemyVisionRadius;
             radius = GameDetails.EnemyVisionRadius * 0.75f;
             canSeePlayer = false;
@@ -47,23 +52,26 @@ namespace Enemy
 
         private void CheckForPlayer()
         {
-            Collider[] rangeCheck = Physics.OverlapSphere(transform.position, radius, playerMask);
+            var size = Physics.OverlapSphereNonAlloc(transform.position, radius, results, playerMask);
 
-            if (rangeCheck.Length != 0)
+            if (size != 0)
             {
+                Transform target = results[0].transform;
+                Vector3 directionToTarget = (target.position - transform.position).normalized;
                 float distanceToTarget = Vector3.Distance(transform.position, player.position);
-                canSeePlayer = distanceToTarget <= radius;
-                Debug.Log(canSeePlayer + " " + distanceToTarget + ' ' + radius);
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, wallMaks) &&
+                    distanceToTarget <= radius)
+                    canSeePlayer = true;
+                else canSeePlayer = false;
             }
             else canSeePlayer = false;
         }
 
 
         // Update is called once per frame
-        void Update()
+        void LateUpdate()
         {
             if (canSeePlayer) ShootGun();
-            //else navMesh.SetDestination(startPosition);
         }
 
         void ShootGun()
@@ -77,7 +85,6 @@ namespace Enemy
                 rb.tag = "Bullet";
                 rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
                 rb.AddForce(transform.up * 8f, ForceMode.Impulse);
-                
                 Destroy(rb.gameObject, 1);
                 
                 //End of attack code

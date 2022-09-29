@@ -7,17 +7,23 @@ using TMPro;
 
 public class Weights : MonoBehaviour
 {
-    public static int total_weights;
+    public static float total_weights;
+    private SentToGoogle sg;
     [SerializeField] public Transform scale;
     [SerializeField] public LayerMask boxMask;
 
     [SerializeField] private GameObject door;
-    public TextMeshProUGUI weightText;
+    [SerializeField] public TextMeshProUGUI weightText;
+    [SerializeField] public TextMeshProUGUI doorText;
 
     private DoorBehavior doorAction;
+    private bool isDoorOpen;
+    
     // Start is called before the first frame update
     void Start()
     {
+        isDoorOpen = false;
+        doorText.text = "10 lbs";
         total_weights = 0;
         doorAction = door.AddComponent<DoorBehavior>();
         StartCoroutine(CheckForBoxes());
@@ -38,16 +44,36 @@ public class Weights : MonoBehaviour
     private void CheckBoxes()
     {
         Collider[] numObjects = Physics.OverlapBox(scale.position, transform.localScale/2, Quaternion.identity, boxMask);
-        var total = numObjects.Sum(obj => int.Parse(obj.tag[..1]));
+        float total = 0;
+        foreach (var obj in numObjects)
+        {
+            if (GameDetails.weights_from_tag.ContainsKey(obj.tag))
+            {
+                total += GameDetails.weights_from_tag[obj.tag];
+            }
+        }
         total_weights = total;
     }
 
     // Update is called once per frame
     void Update()
     {
-        weightText.text = total_weights.ToString() + " lb";
-        if (total_weights == 10) doorAction.changeDoor();
-        //weightText.text = "Well done";
+        if (!isDoorOpen)
+            weightText.text = total_weights + "/10 lb";
+        if (total_weights == 10 || isDoorOpen)
+        {
+            List<int> tl = TimerCounDown.timeList;
+            List<int> hl = TimerCounDown.healthList;
+            List<int> wl = TimerCounDown.weightList;
+            doorAction.changeDoor();
+            weightText.text = "DOOR OPEN";
+            doorText.text = "";
+            isDoorOpen = true;
+
+            StartCoroutine(sg.Post("1", tl, hl, wl, "1", "2"));
+
+        }
+        
     }
     
     
