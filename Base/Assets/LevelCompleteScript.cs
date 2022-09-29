@@ -18,7 +18,8 @@ public class LevelCompleteScript : MonoBehaviour
 
     public void menuButton()
     {
-
+        SceneManager.LoadScene("Scenes/InstructionsMenu");
+        Time.timeScale = 1;
     }
     public void nextLevelButton()
     {

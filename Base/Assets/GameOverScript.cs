@@ -21,7 +21,8 @@ public class GameOverScript : MonoBehaviour
 
     public void menuButton()
     {
-
+        SceneManager.LoadScene("Scenes/InstructionsMenu");
+        Time.timeScale = 1;
     }
 
 }
