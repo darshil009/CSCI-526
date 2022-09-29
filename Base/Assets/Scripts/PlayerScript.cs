@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float jumpButtonGracePeriod = 0.2f;
     [SerializeField] private float itemsRadius = 3f;
     [SerializeField] private LayerMask itemMask;
+    [SerializeField] private TextMeshProUGUI healthLoss;
 
     public event EventHandler<Item> firstLightEvent;
     public static float PlayerHealth;
@@ -124,6 +126,7 @@ public class PlayerScript : MonoBehaviour
     {
         float tw = Weights.total_weights;
         PlayerHealth -= health;
+        displayPopUp(health);
         if (PlayerHealth <= 0)
         {
             analyticsManager.RegisterEvent(GameEvent.HEALTH_LOST, PlayerHealth);
@@ -257,5 +260,18 @@ public class PlayerScript : MonoBehaviour
                     break;
             }
 
+    }
+
+    void displayPopUp(int amt)
+    {
+        String amount = "-" + amt.ToString() + " XP";
+        healthLoss.text = amount;
+        StartCoroutine(disappearPopup());
+    }
+
+    public IEnumerator disappearPopup()
+    {
+        yield return new WaitForSeconds(0.75f);
+        healthLoss.text = "";
     }
 }
