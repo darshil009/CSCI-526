@@ -26,7 +26,7 @@ public static class GameDetails {
     public static bool firstItemDropped = false;
     public static bool tutorialEnded = false;
     public static bool canDragFirstItem = false;
-
+    
     public static Dictionary<Item.ItemType, float> weights = new Dictionary<Item.ItemType, float>()
     {
         {
@@ -62,4 +62,13 @@ public static class GameDetails {
             "5lb", 5
         }
     };
+
+    public static void reset(){
+        firstLight = true;
+        pause = false;
+        firstItemPickedUp = false;
+        firstItemDropped = false;
+        tutorialEnded = false;
+        canDragFirstItem = false;
+    }
 }
