@@ -27,6 +27,8 @@ public class TimerCounDown : MonoBehaviour
     
     void Update()
     {
+        if(!GameDetails.tutorialEnded) return;
+        
         if (timeValue > 0)
         {
             timeValue -= Time.deltaTime;

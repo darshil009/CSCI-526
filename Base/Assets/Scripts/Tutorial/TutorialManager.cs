@@ -13,15 +13,23 @@ public class TutorialManager : MonoBehaviour
     private int index;
     
     private void Start() {
-
+        GameDetails.tutorialEnded = false;
         WASDTutorial wASDScript = children[0].transform.GetComponent<WASDTutorial>();
         wASDScript.done += incrementIndex;
         PickUpTutorial pickupScript = children[1].transform.GetComponent<PickUpTutorial>();
         pickupScript.done += incrementIndex;
-        InventoryTutorial inventoryTutorial = children[2].transform.GetComponent<InventoryTutorial>();
+        
+        SpeedTutorial SpeedTutorialScript = children[2].transform.GetComponent<SpeedTutorial>();
+        SpeedTutorialScript.done += incrementIndex;
+
+        InventoryTutorial inventoryTutorial = children[3].transform.GetComponent<InventoryTutorial>();
         inventoryTutorial.done += incrementIndex;
-        EscapeTutorial escapeTutorial = children[3].transform.GetComponent<EscapeTutorial>();
-        escapeTutorial.done+=incrementIndex;
+        
+        TimerTutorial timerTutorial = children[4].transform.GetComponent<TimerTutorial>();
+        timerTutorial.done += incrementIndex;
+
+        //EscapeTutorial escapeTutorial = children[5].transform.GetComponent<EscapeTutorial>();
+        //escapeTutorial.done+=incrementIndex;
         //Uncommenting this causes a block dont know why
         // for(int i=0;i<children.Length;i++)
         // children[i].SetActive(false);
@@ -50,14 +58,18 @@ public class TutorialManager : MonoBehaviour
                 case 2:
                     children[index].SetActive(true);
                 break;
+                
                 case 3:
                 children[index].SetActive(true);
-
                 break;
 
+                case 4:
+                children[index].SetActive(true);
+                break;
             }
             yield return null;
         }
+        GameDetails.tutorialEnded = true;
         yield break;
     }
 

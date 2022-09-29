@@ -10,7 +10,7 @@ public class ErrorCanvas : MonoBehaviour
     private string text;
     void Start()
     {
-        errorText = transform.Find("ErrorText").gameObject;
+        errorText = transform.Find("ErrorPrompt").gameObject;
         errorText.SetActive(false);
         
     }

@@ -41,7 +41,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
     
     public void OnBeginDrag(PointerEventData eventData)
     {
-
+        if(GameDetails.canDragFirstItem == false)return;
         itemObj= Instantiate(InventoryResourceManager.GetPrefab(item.GetItemType())) as GameObject;
         // itemObj.GetComponent<BoxCollider>().isTrigger = false;
         spriteImage = GetComponent<Image>();
@@ -69,12 +69,14 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
     }
     public void OnDrag(PointerEventData eventData)
     {      
+        if(GameDetails.canDragFirstItem == false)return;
         setNoPhysics();
         //CalculateWorldPosition();
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if(GameDetails.canDragFirstItem == false)return;
         
         RaycastHit hit;  
         Physics.Linecast(playerScript.transform.position, itemObj.transform.position,out hit,exceptBoxesMask);
@@ -122,7 +124,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
     }
     private void Update()
     {
-        if(itemObj){
+        if(itemObj && GameDetails.canDragFirstItem == true){
             CalculateWorldPosition();
             setNoPhysics();
         }

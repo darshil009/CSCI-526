@@ -23,7 +23,7 @@ public class PickUpTutorial : MonoBehaviour
     // Total distance between the markers.
     private float journeyLength;
 
-private Transform arrowTransform;
+    private Transform arrowTransform;
     [SerializeField] private float speed = 1.0F;
 
     
@@ -75,12 +75,12 @@ IEnumerator DrawMousePointer()
         arrowTransform.position = Camera.main.WorldToScreenPoint(tutorialManager.lightItemTransform.position);
         //pickUpPointerTransform.position = Camera.main.WorldToScreenPoint(playerScript.transform.position);
         while(true){
-        time+=Time.deltaTime;
-        if(GameDetails.firstItemPickedUp){
-                GameDetails.firstItemPickedUp = false;
-                GameDetails.pause = false;
-                done?.Invoke(this,true); 
-                yield break;
+            time+=Time.deltaTime;
+            if(GameDetails.firstItemPickedUp){
+                    GameDetails.firstItemPickedUp = false;
+                    GameDetails.pause = false;
+                    done?.Invoke(this,true); 
+                    yield break;
             }
             else{
                 if(time>3f){

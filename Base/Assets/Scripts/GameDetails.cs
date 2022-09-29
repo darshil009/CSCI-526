@@ -23,8 +23,10 @@ public static class GameDetails {
     public static bool firstLight = true;
     public static bool pause = false;
     public static bool firstItemPickedUp = false;
-
     public static bool firstItemDropped = false;
+    public static bool tutorialEnded = false;
+    public static bool canDragFirstItem = false;
+
     public static Dictionary<Item.ItemType, float> weights = new Dictionary<Item.ItemType, float>()
     {
         {
