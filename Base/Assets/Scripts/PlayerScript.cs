@@ -127,11 +127,19 @@ public class PlayerScript : MonoBehaviour
         float tw = Weights.total_weights;
         PlayerHealth -= health;
         displayPopUp(health);
-        if (PlayerHealth <= 0)
+        if (PlayerHealth < 0)
         {
-            analyticsManager.RegisterEvent(GameEvent.HEALTH_LOST, PlayerHealth);
-            IDictionary<string, string> analytics = analyticsManager.Publish();
-            StartCoroutine(sg.Post(analytics["level"], analytics["time"], analytics["health"], tw.ToString()));
+            List<int> tl = TimerCounDown.timeList;
+            List<int> hl = TimerCounDown.healthList;
+            List<int> wl = TimerCounDown.weightList;
+            Debug.Log("=====================>>>>>>>>>>>>>>>>>>>>>>>>>");
+            Debug.Log("tl =" + tl);
+            //analyticsManager.RegisterEvent(GameEvent.HEALTH_LOST, PlayerHealth);
+            //IDictionary<string, string> analytics = analyticsManager.Publish();
+            StartCoroutine(sg.Post("1", tl, hl, wl, "0", "3", (10 - tw).ToString(), null));
+            // analyticsManager.RegisterEvent(GameEvent.HEALTH_LOST, PlayerHealth);
+            // IDictionary<string, string> analytics = analyticsManager.Publish();
+            // StartCoroutine(sg.Post(analytics["level"], analytics["time"], analytics["health"], tw.ToString()));
             Time.timeScale = 0;
             gameOverScript.gameOverDisplay();
             //SceneManager.LoadScene("Scenes/SampleScene");
