@@ -6,8 +6,10 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class SentToGoogle
 {
-    [SerializeField] private string URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSc_RXFRLw-bVQ4KFvU2pWO8XjQl1chBg5PCFLhoaeRDrs0W1A/formResponse";
-    
+    [SerializeField] private string URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfNIA39IsILOypivJKLNpJKomU98_2KvpH2b-kue32YqZKSfQ/formResponse";
+    public static List<string> entryListTime = new List<string>();
+    public static List<string> entryListHealth = new List<string>();
+    public static List<string> entryListWeights = new List<string>();
 
 
     public void Send(string level, float timeLost, float healthLost)
@@ -20,10 +22,81 @@ public class SentToGoogle
         
     }
 
-    public IEnumerator Post(string level, List<int> timeList, List<int> healthList, List<int> weightList, string completed, string funct)
+    public IEnumerator Post(string level, List<int> timeList, List<int> healthList, List<int> weightList, string completed, string funct, string weights_remaining, string time_remaining)
     {
+        Debug.Log("here...............................");
+        entryListTime.Add("entry.1901563906");
+        entryListTime.Add("entry.1823601596");
+        entryListTime.Add("entry.1149332147");
+        entryListTime.Add("entry.1832287611");
+        entryListTime.Add("entry.61611077");
+        entryListTime.Add("entry.880179314");
+        entryListTime.Add("entry.1903063886");
+
+        entryListHealth.Add("entry.210257491");
+        entryListHealth.Add("entry.2081236379");
+        entryListHealth.Add("entry.1508888616");
+        entryListHealth.Add("entry.1961570879");
+        entryListHealth.Add("entry.2119062654");
+        entryListHealth.Add("entry.308061001");
+        entryListHealth.Add("entry.150889121");
+
+
+        entryListWeights.Add("entry.711737386");
+        entryListWeights.Add("entry.818728102");
+        entryListWeights.Add("entry.1785092299");
+        entryListWeights.Add("entry.987648654");
+        entryListWeights.Add("entry.1735320421");
+        entryListWeights.Add("entry.2063289579");
+        entryListWeights.Add("entry.709955127");
         // Create the form and enter responses
         WWWForm form = new WWWForm();
+
+        //entry.1823601596 : Time 30
+        //entry.1149332147 : Time: 60
+        //entry.1832287611 : Time 90
+        //entry.616110772 : Time 120
+        //entry.880179314 : Time 150
+        //entry.1903063886 : Time 180
+        //entry.2081236379 : health 30
+        //entry.1508888616 : health 60
+        //entry.1961570879 : health 90
+        //entry.2119062654 : health 120
+        //entry.308061001 : health 150
+        //entry.150889121 : health 180
+        //entry.818728102 : weights 30
+        //entry.1785092299 : weights 60
+        //entry.987648654 : weights 90
+        //entry.1735320421 : weights 120
+        //entry.2063289579 : weights 150
+        //entry.709955127 : weights 180
+        //entry.711737386 : weights 0
+        //entry.1901563906 : Time 0
+        //entry.210257491 : health 0
+        //entry.680257617 : level
+        //entry.1661973971 : completed
+        //entry.2038632042 : time remaining
+        //entry.1978893941 : weights remaing
+
+        for (int i=0; i<timeList.Count;i++)
+        {
+            form.AddField(entryListTime[i], timeList[i].ToString());
+            form.AddField(entryListHealth[i], healthList[i].ToString());
+            form.AddField(entryListWeights[i], weightList[i].ToString());
+        }
+        Debug.Log("There.................");
+        form.AddField("entry.680257617", level);
+        form.AddField("entry.1661973971", completed);
+        Debug.Log("There1.................");
+        if (time_remaining != null)
+        {
+            form.AddField("entry.2038632042", time_remaining);
+        }
+        Debug.Log("There2.................");
+        if (weights_remaining != null)
+        {
+            form.AddField("entry.1978893941", weights_remaining);
+        }
         // form.AddField("entry.1043481993", level);
         // form.AddField("entry.1258024626", timeLost);
         // form.AddField("entry.1136302750", healthLost);
@@ -38,6 +111,11 @@ public class SentToGoogle
         Debug.Log("funct =" + funct);
         Debug.Log("Level =" + level);
         Debug.Log("completed =" + completed);
+       
+            Debug.Log("weights_remaining =" + weights_remaining);
+        
+
+        Debug.Log("time_remaining =" + time_remaining);
 
         for (int i=0; i<timeList.Count; i++)
         {

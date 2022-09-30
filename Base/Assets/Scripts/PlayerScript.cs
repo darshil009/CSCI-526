@@ -133,7 +133,7 @@ public class PlayerScript : MonoBehaviour
             //analyticsManager.RegisterEvent(GameEvent.HEALTH_LOST, PlayerHealth);
             //IDictionary<string, string> analytics = analyticsManager.Publish();
             Debug.Log("(((((((((((((((()))))))))))))))))))))))))))))))))))");
-            StartCoroutine(sg.Post("1", tl, hl, wl, "0", "3"));
+            StartCoroutine(sg.Post("1", tl, hl, wl, "0", "3", (10-tw).ToString(), null)) ;
             Time.timeScale = 0;
             gameOverScript.gameOverDisplay();
             //SceneManager.LoadScene("Scenes/SampleScene");

@@ -62,15 +62,15 @@ public class Weights : MonoBehaviour
             weightText.text = total_weights + "/10 lb";
         if (total_weights == 10 || isDoorOpen)
         {
-            List<int> tl = TimerCounDown.timeList;
-            List<int> hl = TimerCounDown.healthList;
-            List<int> wl = TimerCounDown.weightList;
+            //List<int> tl = TimerCounDown.timeList;
+            //List<int> hl = TimerCounDown.healthList;
+            //List<int> wl = TimerCounDown.weightList;
             doorAction.changeDoor();
             weightText.text = "DOOR OPEN";
             doorText.text = "";
-            isDoorOpen = true;
+            isDoorOpen = true;  
 
-            StartCoroutine(sg.Post("1", tl, hl, wl, "1", "2"));
+            //StartCoroutine(sg.Post("1", tl, hl, wl, "1", "2"));
 
         }
         

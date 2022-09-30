@@ -9,10 +9,11 @@ public class TimerCounDown : MonoBehaviour
 {
     
     AnalyticsManager analyticsManager;
-    [SerializeField] public float timeValue = 180;
+    [SerializeField] public static float timeValue = 180;
     public TextMeshProUGUI timerText;
     private SentToGoogle sg;
     public bool isBlink = false;
+    public bool isRoutineCalled = false;
     public GameOverScript gameOverScript;
     public static List<int> timeList = new List<int>();
     public static List<int> healthList = new List<int>();
@@ -58,12 +59,16 @@ public class TimerCounDown : MonoBehaviour
         {
             float tw = Weights.total_weights;
             timeValue = 0;
-            analyticsManager.RegisterEvent(GameEvent.TIME_UP, timeValue);
+            // analyticsManager.RegisterEvent(GameEvent.TIME_UP, timeValue);
             //IDictionary<string, string> analytics = analyticsManager.Publish();
             //Debug.Log(analytics["level"] + " " + analytics["time"] + " " + analytics["health"] + " " + tw);
             // StartCoroutine(sg.Post("1", "2", "3"));
             //StartCoroutine(sg.Post(analytics["level"], analytics["time"], analytics["health"], tw.ToString()));
-            StartCoroutine(sg.Post("1", timeList, healthList, weightList, "0", "1"));
+            if (isRoutineCalled == false)
+            {
+                isRoutineCalled = true;
+                StartCoroutine(sg.Post("1", timeList, healthList, weightList, "0", "1", (10-tw).ToString(), null));
+            }
             //SceneManager.LoadScene("Scenes/SampleScene");
             //analyticsManager.RegisterEvent(GameEvent.TIME_UP, timeValue);
             //analyticsManager.Publish();
