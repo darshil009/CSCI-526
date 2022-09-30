@@ -17,7 +17,6 @@ public class Glow : MonoBehaviour
         light = transform.GetComponent<Light>();
         light.enabled = false;
         if(transform.root.Find("TutorialManager")!=null){
-            Debug.Log("tutorial manager found");
             tutorialManagerScript = transform.root.Find("TutorialManager").GetComponent<TutorialManager>();
 
         }

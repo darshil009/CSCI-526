@@ -40,13 +40,10 @@ public class TutorialManager : MonoBehaviour
     }
     IEnumerator DisplayTutorial()
     {
-        Debug.Log("display tutorial coroutine");
         while(index<children.Length && !GameDetails.tutorialEnded){
             while(index<children.Length && children[index].activeSelf==true)
                 yield return null;
             
-            Debug.Log("tutorial manager: index: " + index);
-
             if(index-1>=0)
             children[index-1].SetActive(false);
             switch(index)
@@ -55,9 +52,7 @@ public class TutorialManager : MonoBehaviour
                     children[index].SetActive(true);
                     break;
                 case 1:
-                //Debug.Log("tutorial manager: lightItemTransform: " + lightItemTransform);
-               // Debug.Log("tutorial manager: firstLightOn: " + firstLightOn + "light Item transform " + lightItemTransform + " GameDetails.pause: " + GameDetails.pause);
-
+                
                 if(lightItemTransform!=null && firstLightOn)
                 {
                     firstLightOn = false;
@@ -84,7 +79,7 @@ public class TutorialManager : MonoBehaviour
 
     public void OnFirstLight(Transform transform)
     {
-        Debug.Log("On first light on");
+        Debug.Log("TutorialManager: On first light on");
         firstLightOn =true;
         lightItemTransform = transform;
     }
@@ -92,7 +87,7 @@ public class TutorialManager : MonoBehaviour
 
     private void incrementIndex(object sender, bool done)
     {
-        Debug.Log("Incrementing");
+        Debug.Log("TutorialManager: Incrementing");
         if(done)
         {
             index++;

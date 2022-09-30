@@ -14,16 +14,16 @@ public class GameController : MonoBehaviour
      // called first
     void OnEnable()
     {
-        Debug.Log("OnEnable called");
+        Debug.Log("GameController: OnEnable called");
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
 
-            Debug.Log("OnSceneLoaded: " + scene.name);
+            Debug.Log("GameController: OnSceneLoaded: " + scene.name);
             GameDetails.reset();
-            Debug.Log(mode);
+           // Debug.Log(mode);
 
         }
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour
     // called when the game is terminated
     void OnDisable()
     {
-        Debug.Log("OnDisable");
+        Debug.Log("GameController: OnDisable");
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
