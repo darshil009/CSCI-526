@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.AI;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float itemsRadius = 3f;
     [SerializeField] private LayerMask itemMask;
     [SerializeField] private TextMeshProUGUI healthLoss;
+    [SerializeField] private NavMeshSurface navMeshSurface;
 
     public event EventHandler<Item> firstLightEvent;
     public static float PlayerHealth;
@@ -87,7 +89,7 @@ public class PlayerScript : MonoBehaviour
     {
 
         if (canMove)
-            playerSpeed = Mathf.Max(0.2f, (maxSpeed - (0.75f * GameDetails.currentTotalWeight)));
+            playerSpeed = Mathf.Max(0.2f, (maxSpeed - (0.4f * GameDetails.currentTotalWeight)));
         MovePlayer();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit = new RaycastHit();
@@ -267,6 +269,7 @@ public class PlayerScript : MonoBehaviour
                 default:
                     break;
             }
+            navMeshSurface.BuildNavMesh();
 
     }
 
