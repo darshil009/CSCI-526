@@ -25,7 +25,7 @@ public class Glow : MonoBehaviour
     private void Update()
     {
         
-        var size = Physics.OverlapSphereNonAlloc(transform.position, 3f, _results, _playerMask);
+        var size = Physics.OverlapSphereNonAlloc(transform.position, GameDetails.lightOnRadius, _results, _playerMask);
         if (size != 0){
             if(GameDetails.firstLight)
                 {
@@ -42,11 +42,11 @@ public class Glow : MonoBehaviour
         }
         if(light)
         {
-            if(GameDetails.pause && light.enabled)
-            {
-                return;
-            }
-            else
+            // if(GameDetails.pause && light.enabled && _isEnabled)
+            // {
+            //     return;
+            // }
+            // else
             light.enabled = _isEnabled;
         }
     }
@@ -62,4 +62,5 @@ public class Glow : MonoBehaviour
         if (_isEnabled)
             light.color = Color.white;
     }
+
 }
