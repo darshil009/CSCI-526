@@ -15,7 +15,8 @@ public static class GameDetails {
     public static readonly int EnemyVisionRadius = 6;
     public static float currentTotalWeight = 0;
     public static GemsCount NumGems;
-    public static float pickDropDistance = 15f;
+    public static float dropItemDistance = 125f;
+    public static float pickItemDistance = 12.5f;
 
     public static float lightOnRadius = 3f;
 

@@ -13,10 +13,13 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
     private Image spriteImage = null;
     private Rigidbody rigidbody = null;
     private BoxCollider boxCollider = null;
+    private Light lightComponent = null;
     [SerializeField] private PlayerScript playerScript;
 
-    [SerializeField] private LayerMask planeMask;
+    [SerializeField] private LayerMask wallsPlaneMask;
     [SerializeField] private LayerMask exceptBoxesMask;
+
+    [SerializeField] private LayerMask playerMask;
 
     public event EventHandler<Item> itemDroppedFromUIEvent;
 
@@ -39,6 +42,10 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
     }
 
     
+    // private Vector3 ScreenToWorld(Vector3 pos)
+    // {
+
+    // }
     public void OnBeginDrag(PointerEventData eventData)
     {
         if(GameDetails.canDragFirstItem == false)return;
@@ -49,22 +56,35 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
         spriteImage.enabled = false;
         itemObj.transform.position = playerScript.transform.position;
         boxCollider =  itemObj.GetComponent<BoxCollider>();
-
+        lightComponent = itemObj.GetComponent<Light>();
         rigidbody.useGravity = false;
-        // Debug.Log("On begin drag");
     }
 
     private void CalculateWorldPosition()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit = new RaycastHit();
-
-        
-
         ray.origin = Camera.main.transform.position;
-        if (Physics.Raycast(ray.origin,ray.direction, out hit,GameDetails.pickDropDistance,planeMask)){
-                Vector3 position = hit.point+new Vector3(0,1,0);
-                itemObj.transform.position = position;
+        if (Physics.Raycast(ray.origin,ray.direction, out hit,GameDetails.dropItemDistance,wallsPlaneMask)){
+            Vector3 hitPosition = hit.point;
+            Vector3 playerPosition = playerScript.transform.position;
+            hitPosition.y=1;
+            playerPosition.y = hitPosition.y;
+            Vector3 dir = hitPosition-playerPosition;
+            dir = dir.normalized;
+            if(Vector3.Distance(playerPosition,hitPosition)>GameDetails.lightOnRadius){
+                hitPosition = playerPosition +  dir*GameDetails.lightOnRadius;
+                
+            }
+            else if(Vector3.Distance(playerPosition,hitPosition)>2f){
+                hitPosition = playerPosition +  dir*2;
+            }
+            else 
+            {
+                hitPosition = playerPosition +  dir*1;
+            }
+            itemObj.transform.position = hitPosition;
+
         }
     }
     public void OnDrag(PointerEventData eventData)

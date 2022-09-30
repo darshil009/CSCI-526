@@ -43,7 +43,7 @@ public class TutorialManager : MonoBehaviour
         while(index<children.Length && !GameDetails.tutorialEnded){
             while(index<children.Length && children[index].activeSelf==true)
                 yield return null;
-            
+        
             if(index-1>=0)
             children[index-1].SetActive(false);
             switch(index)

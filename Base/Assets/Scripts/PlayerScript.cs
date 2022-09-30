@@ -98,15 +98,15 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (Physics.Raycast(ray.origin, ray.direction, out hit, GameDetails.pickDropDistance, itemMask))
+            if (Physics.Raycast(ray.origin, ray.direction, out hit, GameDetails.pickItemDistance, itemMask))
             {
                 Debug.Log("Hit " + hit.transform.gameObject.name + " " + hit.point);
-                if (hit.transform.GetComponent<Light>().enabled)
-                {
-                    Item item = ItemFactory.fromTag(hit.transform.tag);
-                    _inventoryManager.AddItem(item);
-                    Destroy(hit.transform.gameObject);
-                }
+                    if (hit.transform.GetComponent<Light>().enabled)
+                    {
+                        Item item = ItemFactory.fromTag(hit.transform.tag);
+                        _inventoryManager.AddItem(item);
+                        Destroy(hit.transform.gameObject);
+                    }
             }
         }
     }
