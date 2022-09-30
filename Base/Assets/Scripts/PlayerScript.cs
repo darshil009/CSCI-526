@@ -88,7 +88,7 @@ public class PlayerScript : MonoBehaviour
 
         if (canMove)
             playerSpeed = Mathf.Max(0.2f, (maxSpeed - (0.75f * GameDetails.currentTotalWeight)));
-            MovePlayer();
+        MovePlayer();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit = new RaycastHit();
         ray.origin = Camera.main.transform.position;
@@ -264,7 +264,7 @@ public class PlayerScript : MonoBehaviour
 
     void displayPopUp(int amt)
     {
-        String amount = "-" + amt.ToString() + " XP";
+        String amount = "-" + amt + " HP";
         healthLoss.text = amount;
         StartCoroutine(disappearPopup());
     }
