@@ -6,7 +6,8 @@ using static UnityEngine.EventSystems.EventTrigger;
 
 public class SentToGoogle
 {
-    [SerializeField] private string URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfNIA39IsILOypivJKLNpJKomU98_2KvpH2b-kue32YqZKSfQ/formResponse";
+    // [SerializeField] private string URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfNIA39IsILOypivJKLNpJKomU98_2KvpH2b-kue32YqZKSfQ/formResponse";
+    [SerializeField] private string URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfTiFRIZN6NmPcWoNikLwz8o5-Hc4xAOIJNvbDT3VS1J2H3mA/formResponse";
     public static List<string> entryListTime = new List<string>();
     public static List<string> entryListHealth = new List<string>();
     public static List<string> entryListWeights = new List<string>();
@@ -25,30 +26,52 @@ public class SentToGoogle
     public IEnumerator Post(string level, List<int> timeList, List<int> healthList, List<int> weightList, string completed, string funct, string weights_remaining, string time_remaining)
     {
         Debug.Log("here...............................");
-        entryListTime.Add("entry.1901563906");
-        entryListTime.Add("entry.1823601596");
-        entryListTime.Add("entry.1149332147");
-        entryListTime.Add("entry.1832287611");
-        entryListTime.Add("entry.61611077");
-        entryListTime.Add("entry.880179314");
-        entryListTime.Add("entry.1903063886");
+        // entryListTime.Add("entry.1901563906"); // entry.1510320122
+        // entryListTime.Add("entry.1823601596");
+        // entryListTime.Add("entry.1149332147");
+        // entryListTime.Add("entry.1832287611");
+        // entryListTime.Add("entry.61611077");
+        // entryListTime.Add("entry.880179314");
+        // entryListTime.Add("entry.1903063886");
+        entryListTime.Add("entry.1510320122"); 
+        entryListTime.Add("entry.1043481993");
+        entryListTime.Add("entry.1258024626");
+        entryListTime.Add("eentry.1136302750");
+        entryListTime.Add("entry.1328267169");
+        entryListTime.Add("entry.155225513");
+        entryListTime.Add("entry.1278632406");
 
-        entryListHealth.Add("entry.210257491");
-        entryListHealth.Add("entry.2081236379");
-        entryListHealth.Add("entry.1508888616");
-        entryListHealth.Add("entry.1961570879");
-        entryListHealth.Add("entry.2119062654");
-        entryListHealth.Add("entry.308061001");
-        entryListHealth.Add("entry.150889121");
+        // entryListHealth.Add("entry.210257491"); // entry.363407111
+        // entryListHealth.Add("entry.2081236379");
+        // entryListHealth.Add("entry.1508888616");
+        // entryListHealth.Add("entry.1961570879");
+        // entryListHealth.Add("entry.2119062654");
+        // entryListHealth.Add("entry.308061001");
+        // entryListHealth.Add("entry.150889121");
+        entryListHealth.Add("entry.363407111"); 
+        entryListHealth.Add("entry.1077862492");
+        entryListHealth.Add("entry.1215918979");
+        entryListHealth.Add("entry.11196490");
+        entryListHealth.Add("entry.1018968405");
+        entryListHealth.Add("entry.1397124904");
+        entryListHealth.Add("entry.1136446190");
 
 
-        entryListWeights.Add("entry.711737386");
-        entryListWeights.Add("entry.818728102");
-        entryListWeights.Add("entry.1785092299");
-        entryListWeights.Add("entry.987648654");
-        entryListWeights.Add("entry.1735320421");
-        entryListWeights.Add("entry.2063289579");
-        entryListWeights.Add("entry.709955127");
+        // entryListWeights.Add("entry.711737386"); // entry.1417587008
+        // entryListWeights.Add("entry.818728102");
+        // entryListWeights.Add("entry.1785092299");
+        // entryListWeights.Add("entry.987648654");
+        // entryListWeights.Add("entry.1735320421");
+        // entryListWeights.Add("entry.2063289579");
+        // entryListWeights.Add("entry.709955127");
+        entryListWeights.Add("entry.1417587008"); 
+        entryListWeights.Add("entry.27760501");
+        entryListWeights.Add("entry.957185104");
+        entryListWeights.Add("entry.642803933");
+        entryListWeights.Add("entry.942943561");
+        entryListWeights.Add("entry.1901821866");
+        entryListWeights.Add("entry.1377211215");
+
         // Create the form and enter responses
         WWWForm form = new WWWForm();
 
@@ -85,17 +108,21 @@ public class SentToGoogle
             form.AddField(entryListWeights[i], weightList[i].ToString());
         }
         Debug.Log("There.................");
-        form.AddField("entry.680257617", level);
-        form.AddField("entry.1661973971", completed);
+        // form.AddField("entry.680257617", level);
+        form.AddField("entry.370164813", level);
+        // form.AddField("entry.1661973971", completed);
+        form.AddField("entry.188070378", completed);
         Debug.Log("There1.................");
         if (time_remaining != null)
         {
-            form.AddField("entry.2038632042", time_remaining);
+            // form.AddField("entry.2038632042", time_remaining);
+            form.AddField("entry.390073540", time_remaining);
         }
         Debug.Log("There2.................");
         if (weights_remaining != null)
         {
-            form.AddField("entry.1978893941", weights_remaining);
+            // form.AddField("entry.1978893941", weights_remaining);
+            form.AddField("entry.1954548142", weights_remaining);
         }
         // form.AddField("entry.1043481993", level);
         // form.AddField("entry.1258024626", timeLost);
