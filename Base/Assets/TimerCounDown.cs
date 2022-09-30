@@ -9,7 +9,7 @@ public class TimerCounDown : MonoBehaviour
 {
     
     AnalyticsManager analyticsManager;
-    [SerializeField] public static float timeValue = 180;
+    [SerializeField] public static float timeValue;
     public TextMeshProUGUI timerText;
     private SentToGoogle sg;
     public bool isBlink = false;
@@ -22,6 +22,7 @@ public class TimerCounDown : MonoBehaviour
 
     void Start()
     {
+        timeValue = 180;
         Time.timeScale = 1;
         analyticsManager = new AnalyticsManager();
         analyticsManager.Reset(1);
