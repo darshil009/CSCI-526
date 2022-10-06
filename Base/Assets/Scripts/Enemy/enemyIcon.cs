@@ -12,7 +12,7 @@ public class enemyIcon : MonoBehaviour
     // private Image uiUseHealth;
 
     private Transform tr_head;
-    private Vector3 offset = new Vector3(0,1.5f,0);
+    private Vector3 offset = new Vector3(0,0.75f,0);
     // Start is called before the first frame update
     void Start()
     {
