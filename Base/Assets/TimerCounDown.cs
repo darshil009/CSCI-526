@@ -37,7 +37,7 @@ public class TimerCounDown : MonoBehaviour
     
     void Update()
     {
-        if(!GameDetails.tutorialEnded) return;
+        if(!GameDetails.tutorialEnded || GameDetails.isLavaRoomCameraActive) return;
         
         if (timeValue > 0)
         {

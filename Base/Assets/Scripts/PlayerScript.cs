@@ -26,6 +26,7 @@ public class PlayerScript : MonoBehaviour
     public event EventHandler<Item> firstLightEvent;
     public static float PlayerHealth;
     public static float playerSpeed;
+    public bool stopMovement;
 
     private Vector3 _playerVelocity;
     private SentToGoogle sg;
@@ -74,6 +75,7 @@ public class PlayerScript : MonoBehaviour
 
     private void Start()
     {
+        stopMovement = false;
         canMove = true;
         analyticsManager = new AnalyticsManager();
         analyticsManager.Reset(1);
@@ -154,6 +156,9 @@ public class PlayerScript : MonoBehaviour
 
     private void MovePlayer()
     {
+
+        if (stopMovement) return;
+        
         //Prevent double jumps
         _groundedPlayer = _controller.isGrounded;
         if (_groundedPlayer && _playerVelocity.y < 0)
@@ -254,6 +259,7 @@ public class PlayerScript : MonoBehaviour
             default:
                 break;
         }
+        navMeshSurface.BuildNavMesh();
     }
 
     private void OnItemDrop(object sender, Item item)
