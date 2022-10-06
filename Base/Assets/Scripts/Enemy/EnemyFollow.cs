@@ -16,7 +16,7 @@ namespace Enemy
         private Vector3 startPos;
         private Collider[] results;
         WaitForSeconds wait;
-        
+
         void Start()
         {
             wait = new WaitForSeconds(0.1f);
@@ -47,9 +47,12 @@ namespace Enemy
             {
                 Transform target = results[0].transform;
                 float distanceToTarget = Vector3.Distance(startPos, target.position);
-                canSeePlayer = distanceToTarget <= radius;
+                if (canSeePlayer==false)
+                {
+                  canSeePlayer = distanceToTarget <= radius;
+                }
             }
-            else canSeePlayer = false;
+            // else canSeePlayer = false;
         }
 
 
