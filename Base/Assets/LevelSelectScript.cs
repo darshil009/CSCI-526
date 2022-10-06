@@ -7,6 +7,6 @@ public class LevelSelectScript : MonoBehaviour
 {
     public void levelOne()
     {
-        SceneManager.LoadScene("Scenes/SampleScene");
+        SceneManager.LoadScene("Scenes/Level1Maze");
     }
 }
