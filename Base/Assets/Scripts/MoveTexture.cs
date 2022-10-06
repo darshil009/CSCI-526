@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MoveTexture : MonoBehaviour
 {
-    public float scrollSpeed = 0.05f;
+    public float scrollSpeed = 0.1f;
     Renderer rend;
     // Start is called before the first frame update
     void Start()
