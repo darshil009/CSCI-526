@@ -83,6 +83,8 @@ public class PlayerScript : MonoBehaviour
         PlayerHealth = 100;
         GameDetails.currentTotalWeight = 0;
         _controller = GetComponent<CharacterController>();
+
+        GameObject.Find("Block2LBfromEnemy").SetActive(false);
     }
 
     private void Update()
@@ -117,7 +119,7 @@ public class PlayerScript : MonoBehaviour
         canMove = false;
         StartCoroutine(UnFreezePlayer(seconds));
     }
-    
+
     private IEnumerator UnFreezePlayer(float seconds)
     {
         yield return new WaitForSeconds(seconds);
@@ -145,7 +147,7 @@ public class PlayerScript : MonoBehaviour
             Time.timeScale = 0;
             gameOverScript.gameOverDisplay();
             //SceneManager.LoadScene("Scenes/SampleScene");
-            
+
         }
     }
 
@@ -158,18 +160,18 @@ public class PlayerScript : MonoBehaviour
         {
             _playerVelocity.y = 0f;
         }
-    
+
         if (_groundedPlayer)
         {
             lastGroundedTime = Time.time;
         }
-    
+
         if (Input.GetButtonDown("Jump"))
         {
             jumpButtonPressedTime = Time.time;
         }
-    
-    
+
+
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
@@ -185,7 +187,7 @@ public class PlayerScript : MonoBehaviour
         // if (movementDirection != Vector3.zero)
         //{
         //    Quaternion desiredRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-        
+
         //    transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
         //}
 
@@ -194,18 +196,18 @@ public class PlayerScript : MonoBehaviour
 
         if (Time.time - lastGroundedTime <= jumpButtonGracePeriod)
         {
-    
+
             if (Time.time - jumpButtonPressedTime <= jumpButtonGracePeriod)
             {_playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
                 jumpButtonPressedTime = null;
                 lastGroundedTime = null;
             }
         }
-    
+
         _playerVelocity.y += gravityValue * Time.deltaTime;
         _controller.Move(_playerVelocity * Time.deltaTime);
     }
-    
+
 
     void OnTriggerEnter(Collider c)
     {
