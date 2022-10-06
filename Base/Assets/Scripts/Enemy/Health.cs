@@ -25,6 +25,10 @@ namespace Enemy
                 Destroy(gameObject);
             }
             
+            else if (other.CompareTag("Lava"))
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
