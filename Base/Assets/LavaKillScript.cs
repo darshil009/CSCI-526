@@ -5,27 +5,27 @@ using UnityEngine;
 public class LavaKillScript : MonoBehaviour
 {
     public GameObject PlayerSidePlank;
-    public Renderer WallSidePlank;
+    public GameObject WallSidePlank;
 
-    // Start is called before the first frame update
+    //// Start is called before the first frame update
     void Start()
-    {
-        //PlayerSidePlank = GetComponent<Renderer>();
-        WallSidePlank = GetComponent<Renderer>();
+    { 
+    
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void OnCollisionEnter(Collider c)
+    void OnTriggerEnter(Collider c)
     {
         //Check for a match with the specified name on any GameObject that collides with your GameObject
         if (c.CompareTag("2lb"))
         {
-            PlayerSidePlank.transform.position.y = 0.2;
+            PlayerSidePlank.transform.position = new Vector3(-57, -0.2f, 13);
+            WallSidePlank.transform.position = new Vector3(-57, -0.2f, 19);
         }
     }
 }

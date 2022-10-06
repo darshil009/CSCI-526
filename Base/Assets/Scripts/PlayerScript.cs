@@ -214,10 +214,10 @@ public class PlayerScript : MonoBehaviour
             decreaseHealth(10);
             Destroy(c.gameObject);
         }
-        else if (c.CompareTag("Lava"))
-        {
-            decreaseHealth(100);
-        }
+        //else if (c.CompareTag("Lava"))
+        //{
+        //    decreaseHealth(100);
+        //}
     }
 
     public InventoryManager getInventoryManager()
