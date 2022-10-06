@@ -17,7 +17,9 @@ public class ControlLavaCameras : MonoBehaviour
         yield return new WaitForSeconds(secondsToWait);
         mainCamera.SetActive(true);
         lavaRoomCamera.SetActive(false);
+        yield return new WaitForSeconds(2);
         ps.stopMovement = false;
+        GameDetails.isLavaRoomCameraActive = false;
         Destroy(transform.gameObject);
     }
     private void OnTriggerEnter(Collider other)
@@ -26,6 +28,7 @@ public class ControlLavaCameras : MonoBehaviour
         if (playerScript != null)
         {
             playerScript.stopMovement = true;
+            GameDetails.isLavaRoomCameraActive = true;
             mainCamera.SetActive(false);
             lavaRoomCamera.SetActive(true);
             StartCoroutine(SwitchCameras(playerScript));

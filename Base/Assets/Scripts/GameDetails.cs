@@ -19,7 +19,7 @@ public static class GameDetails {
     public static float pickItemDistance = 12.5f;
 
     public static float lightOnRadius = 3f;
-
+    public static bool isLavaRoomCameraActive;
 
     public static bool firstLight = true;
     public static bool pause = false;
