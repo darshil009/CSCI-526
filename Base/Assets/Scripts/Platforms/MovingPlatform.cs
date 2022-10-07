@@ -13,7 +13,6 @@ public class MovingPlatform : MonoBehaviour
     private int targetIndex;
 
     private Transform previous, target;
-    private Transform prevParent;
     
     // Start is called before the first frame update
     void Start()
@@ -22,7 +21,7 @@ public class MovingPlatform : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         timeElapsed += Time.deltaTime;
         float pct = timeElapsed / time;
@@ -44,12 +43,11 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        prevParent = other.transform.parent;
         other.transform.SetParent(transform);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        other.transform.SetParent(prevParent);
+        other.transform.SetParent(null);
     }
 }
