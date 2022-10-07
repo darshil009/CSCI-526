@@ -22,7 +22,7 @@ public class MovingPlatform : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         timeElapsed += Time.deltaTime;
         float pct = timeElapsed / time;
