@@ -24,7 +24,7 @@ public class LavaKillScript : MonoBehaviour
         //Check for a match with the specified name on any GameObject that collides with your GameObject
         if (c.CompareTag("Enemy_health"))
         {
-            PlayerSidePlank.transform.position = new Vector3(-58, 0, 15);
+            PlayerSidePlank.transform.position = new Vector3(-58, 0, 16);
             Destroy(c.gameObject);
         }
         else if (c.CompareTag("Enemy_health_to_block_demo"))
