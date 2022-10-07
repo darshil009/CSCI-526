@@ -9,8 +9,8 @@ public class LavaKillScript : MonoBehaviour
 
     //// Start is called before the first frame update
     void Start()
-    {
-
+    { 
+    
     }
 
     // Update is called once per frame
@@ -22,23 +22,15 @@ public class LavaKillScript : MonoBehaviour
     void OnTriggerEnter(Collider c)
     {
         //Check for a match with the specified name on any GameObject that collides with your GameObject
-        if (c.CompareTag("Enemy_health"))
+        if (c.CompareTag("2lb"))
         {
-            PlayerSidePlank.transform.position = new Vector3(-58, 0, 15);
+            PlayerSidePlank.transform.position = new Vector3(-58, 0, 13);
             Destroy(c.gameObject);
         }
-        else if (c.CompareTag("Enemy_health_to_block_demo"))
+        else if (c.CompareTag("3lb"))
         {
             WallSidePlank.transform.position = new Vector3(-58, 0.2f, 19);
             Destroy(c.gameObject);
-        }
-        else if (c.CompareTag("Player"))
-        {
-
-        }
-        else
-        {
-          Destroy(c.gameObject);
         }
     }
 }

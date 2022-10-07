@@ -12,7 +12,7 @@ namespace Enemy
         [SerializeField] public LayerMask playerMask;
 
         private float radius;
-        public static bool canSeePlayer;
+        private bool canSeePlayer;
         private Vector3 startPos;
         private Collider[] results;
         WaitForSeconds wait;
@@ -66,7 +66,7 @@ namespace Enemy
         void MoveToPlayer()
         {
             var position = player.position;
-            var newPos = new Vector3(position.x - 0.2f, 0 - 0.2f, position.z - 0.2f);
+            var newPos = new Vector3(position.x - 0.2f, position.y - 0.2f, position.z - 0.2f);
             navMesh.SetDestination(newPos);
         }
 

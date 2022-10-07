@@ -29,7 +29,6 @@ public class ControlLavaCameras : MonoBehaviour
         {
             playerScript.stopMovement = true;
             GameDetails.isLavaRoomCameraActive = true;
-            EnemyFollowtoPlankAuto.canSeePlayer = true;
             mainCamera.SetActive(false);
             lavaRoomCamera.SetActive(true);
             StartCoroutine(SwitchCameras(playerScript));
