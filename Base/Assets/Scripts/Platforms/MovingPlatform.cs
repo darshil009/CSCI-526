@@ -8,6 +8,7 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private Waypoints waypoint;
 
     [SerializeField] private float speed;
+    [SerializeField] private float rotationSpeed;
 
     private float time, timeElapsed;
     private int targetIndex;
@@ -28,6 +29,10 @@ public class MovingPlatform : MonoBehaviour
         pct = Mathf.SmoothStep(0, 1, pct);
         transform.position = Vector3.Lerp(previous.position, target.position, pct);
         if (pct >= 1) TargetNextWayPoint();
+        if(CompareTag("rotating_platform"))
+        {
+            transform.Rotate(new Vector3(0,1,0)*Time.deltaTime*rotationSpeed);
+        }
     }
 
     private void TargetNextWayPoint()
