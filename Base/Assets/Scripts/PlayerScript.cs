@@ -133,7 +133,7 @@ public class PlayerScript : MonoBehaviour
         float tw = Weights.total_weights;
         PlayerHealth -= health;
         displayPopUp(health);
-        if (PlayerHealth < 0)
+        if (PlayerHealth <= 0)
         {
             List<int> tl = TimerCounDown.timeList;
             List<int> hl = TimerCounDown.healthList;
