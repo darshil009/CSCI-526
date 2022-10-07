@@ -29,8 +29,6 @@ public class GameController : MonoBehaviour
             }
             else if (scene.name == "Level1Maze")
             {
-                GameDetails.reset();
-                GameDetails.tutorialEnded = true;
                 PlayerScript.maxSpeed = 8;
             }
 
