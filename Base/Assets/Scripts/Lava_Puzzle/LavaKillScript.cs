@@ -29,7 +29,7 @@ public class LavaKillScript : MonoBehaviour
         }
         else if (c.CompareTag("3lb"))
         {
-            WallSidePlank.transform.position = new Vector3(-58, 0, 19);
+            WallSidePlank.transform.position = new Vector3(-58, 0.2f, 19);
             Destroy(c.gameObject);
         }
     }
