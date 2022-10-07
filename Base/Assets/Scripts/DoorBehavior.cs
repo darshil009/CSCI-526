@@ -36,7 +36,7 @@ public class DoorBehavior : MonoBehaviour
             List<int> tl = TimerCounDown.timeList;
             List<int> hl = TimerCounDown.healthList;
             List<int> wl = TimerCounDown.weightList;
-            print("door: all clues collected");
+            print("door: all clues collected " +doorTransform);
             doorTransform.Rotate(0f, 0f, -90f, Space.Self);
             isDoorOpen = true;
             StartCoroutine(sg.Post("1", tl, hl, wl, "1", "2", null, tv.ToString(), 4, PlayerScript.sess_id));
