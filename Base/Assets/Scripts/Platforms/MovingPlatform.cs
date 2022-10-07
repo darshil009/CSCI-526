@@ -21,7 +21,7 @@ public class MovingPlatform : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         timeElapsed += Time.deltaTime;
         float pct = timeElapsed / time;
@@ -48,6 +48,7 @@ public class MovingPlatform : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        other.transform.SetParent(null);
+        GameObject parent = GameObject.Find("PlayerModel");
+        other.transform.SetParent(parent.transform);
     }
 }
