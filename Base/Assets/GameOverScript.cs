@@ -15,7 +15,7 @@ public class GameOverScript : MonoBehaviour
         Time.timeScale = 1;
         Debug.Log("Restart button pressed");
         Debug.Log(Time.timeScale);
-        SceneManager.LoadScene("Scenes/Level1Maze");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
     }
 
