@@ -25,8 +25,12 @@ public class TutorialManager : MonoBehaviour
         InventoryTutorial inventoryTutorial = children[3].transform.GetComponent<InventoryTutorial>();
         inventoryTutorial.done += incrementIndex;
         
-        TimerTutorial timerTutorial = children[4].transform.GetComponent<TimerTutorial>();
+        JumpTutorial jumpTutorial = children[4].transform.GetComponent<JumpTutorial>();
+        jumpTutorial.done += incrementIndex;
+
+        TimerTutorial timerTutorial = children[5].transform.GetComponent<TimerTutorial>();
         timerTutorial.done += incrementIndex;
+
 
         //EscapeTutorial escapeTutorial = children[5].transform.GetComponent<EscapeTutorial>();
         //escapeTutorial.done+=incrementIndex;
@@ -69,6 +73,11 @@ public class TutorialManager : MonoBehaviour
 
                 case 4:
                 children[index].SetActive(true);
+                break;
+
+                case 5:
+                children[index].SetActive(true);
+
                 break;
             }
             yield return null;
