@@ -22,7 +22,7 @@ public class SentToGoogle
         
     }
 
-    public IEnumerator Post(string level, List<int> timeList, List<int> healthList, List<int> weightList, string completed, string funct, string weights_remaining, string time_remaining, int died)
+    public IEnumerator Post(string level, List<int> timeList, List<int> healthList, List<int> weightList, string completed, string funct, string weights_remaining, string time_remaining, int died, string session)
     {
         // Create the form and enter responses
         WWWForm form = new WWWForm();
@@ -153,12 +153,12 @@ public class SentToGoogle
         
         
 
-        form1.AddField("entry.2075391151", level.ToString());
+        form.AddField("entry.1031659999", session);
         if (died != 4)
         {
             form1.AddField("entry.2023968175", died.ToString());
         }
-
+        form.AddField("entry.2075391151", level.ToString());
         using (UnityWebRequest www = UnityWebRequest.Post(URL, form))
         {
             yield return www.SendWebRequest();

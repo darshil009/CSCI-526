@@ -34,7 +34,7 @@ public class PlayerScript : MonoBehaviour
     private InventoryManager _inventoryManager;
     private bool isInCollision = false;
     private Collider collidedWith = null;
-
+    public static string sess_id;
     private bool _groundedPlayer;
     
     private float? lastGroundedTime;
@@ -47,6 +47,12 @@ public class PlayerScript : MonoBehaviour
 
     public GameOverScript gameOverScript = new GameOverScript();
 
+    private static DateTime JanFirst1970 = new DateTime(1970, 1, 1);
+    public static string getTime()
+    {
+        return ((long)((DateTime.Now.ToUniversalTime() - JanFirst1970).TotalMilliseconds + 0.5)).ToString();
+    }
+
     private void Awake()
     {
         _inventoryManager = new UnStackedInventoryManager();
@@ -55,6 +61,22 @@ public class PlayerScript : MonoBehaviour
         _inventoryManager.itemAddedEvent += OnItemPickUp;
         _inventoryUI.OnItemRemovedFromUIEvent += OnItemDrop;
         itemInHand = null;
+
+        if (PlayerPrefs.HasKey("session_id"))
+        {
+            sess_id = PlayerPrefs.GetString("session_id");
+            Debug.Log("inside if ..." + sess_id);
+
+        }
+        else
+        {
+            sess_id = getTime();
+
+            PlayerPrefs.SetString("session_id", sess_id);
+            PlayerPrefs.Save();
+            Debug.Log("Inside else..." + sess_id);
+        }
+
     }
 
 
@@ -141,7 +163,7 @@ public class PlayerScript : MonoBehaviour
             // Debug.Log("tl =" + tl);
             //analyticsManager.RegisterEvent(GameEvent.HEALTH_LOST, PlayerHealth);
             //IDictionary<string, string> analytics = analyticsManager.Publish();
-            StartCoroutine(sg.Post("1", tl, hl, wl, "0", "3", (10 - tw).ToString(), null, died));
+            StartCoroutine(sg.Post("1", tl, hl, wl, "0", "3", (10 - tw).ToString(), null, died, sess_id));
             // analyticsManager.RegisterEvent(GameEvent.HEALTH_LOST, PlayerHealth);
             // IDictionary<string, string> analytics = analyticsManager.Publish();
             // StartCoroutine(sg.Post(analytics["level"], analytics["time"], analytics["health"], tw.ToString()));

@@ -39,7 +39,7 @@ public class DoorBehavior : MonoBehaviour
             print("door: all clues collected");
             doorTransform.Rotate(0f, 0f, -90f, Space.Self);
             isDoorOpen = true;
-            StartCoroutine(sg.Post("1", tl, hl, wl, "1", "2", null, tv.ToString(), 4));
+            StartCoroutine(sg.Post("1", tl, hl, wl, "1", "2", null, tv.ToString(), 4, PlayerScript.sess_id));
         }
 
     }
