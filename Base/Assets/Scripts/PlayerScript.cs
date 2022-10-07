@@ -85,7 +85,7 @@ public class PlayerScript : MonoBehaviour
         GameDetails.currentTotalWeight = 0;
         _controller = GetComponent<CharacterController>();
 
-        GameObject.Find("Block2LBfromEnemy").SetActive(false);
+        //GameObject.Find("Block2LBfromEnemy").SetActive(false);
     }
 
     private void Update()
