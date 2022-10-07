@@ -22,7 +22,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private LayerMask itemMask;
     [SerializeField] private TextMeshProUGUI healthLoss;
     [SerializeField] private NavMeshSurface navMeshSurface;
-
+    [SerializeField] public static float maxSpeed;
     public event EventHandler<Item> firstLightEvent;
     public static float PlayerHealth;
     public static float playerSpeed;
@@ -36,7 +36,7 @@ public class PlayerScript : MonoBehaviour
     private Collider collidedWith = null;
 
     private bool _groundedPlayer;
-    private float maxSpeed;
+    
     private float? lastGroundedTime;
     private float? jumpButtonPressedTime;
     private Vector3 rotation;
@@ -80,8 +80,7 @@ public class PlayerScript : MonoBehaviour
         analyticsManager = new AnalyticsManager();
         analyticsManager.Reset(1);
         sg = new SentToGoogle();
-        maxSpeed = 5f;
-        playerSpeed = 5f;
+        playerSpeed = maxSpeed;
         PlayerHealth = 100;
         GameDetails.currentTotalWeight = 0;
         _controller = GetComponent<CharacterController>();
@@ -104,7 +103,7 @@ public class PlayerScript : MonoBehaviour
         {
             if (Physics.Raycast(ray.origin, ray.direction, out hit, GameDetails.pickItemDistance, itemMask))
             {
-                Debug.Log("Hit " + hit.transform.gameObject.name + " " + hit.point);
+                // Debug.Log("Hit " + hit.transform.gameObject.name + " " + hit.point);
                     if (hit.transform.GetComponent<Light>().enabled)
                     {
                         Item item = ItemFactory.fromTag(hit.transform.tag);
@@ -138,8 +137,8 @@ public class PlayerScript : MonoBehaviour
             List<int> tl = TimerCounDown.timeList;
             List<int> hl = TimerCounDown.healthList;
             List<int> wl = TimerCounDown.weightList;
-            Debug.Log("=====================>>>>>>>>>>>>>>>>>>>>>>>>>");
-            Debug.Log("tl =" + tl);
+            // Debug.Log("=====================>>>>>>>>>>>>>>>>>>>>>>>>>");
+            // Debug.Log("tl =" + tl);
             //analyticsManager.RegisterEvent(GameEvent.HEALTH_LOST, PlayerHealth);
             //IDictionary<string, string> analytics = analyticsManager.Publish();
             StartCoroutine(sg.Post("1", tl, hl, wl, "0", "3", (10 - tw).ToString(), null, died));
@@ -189,12 +188,6 @@ public class PlayerScript : MonoBehaviour
         Vector3 movementDirection = movementInput.normalized;
         _controller.Move(movementDirection * (playerSpeed * Time.deltaTime));
 
-        // if (movementDirection != Vector3.zero)
-        //{
-        //    Quaternion desiredRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-
-        //    transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
-        //}
 
         rotation = new Vector3(0, horizontalInput * rotationSpeed * Time.deltaTime, 0);
         transform.Rotate(rotation);
@@ -222,10 +215,6 @@ public class PlayerScript : MonoBehaviour
             died = 2;
             Destroy(c.gameObject);
         }
-        //else if (c.CompareTag("Lava"))
-        //{
-        //    decreaseHealth(100);
-        //}
         else if (c.CompareTag("Lava"))
         {
             decreaseHealth(100);

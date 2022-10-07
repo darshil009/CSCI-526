@@ -14,7 +14,6 @@ public class GameController : MonoBehaviour
      // called first
     void OnEnable()
     {
-        Debug.Log("GameController: OnEnable called");
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
@@ -22,8 +21,18 @@ public class GameController : MonoBehaviour
         {
 
             Debug.Log("GameController: OnSceneLoaded: " + scene.name);
-            GameDetails.reset();
-           // Debug.Log(mode);
+            
+            if (scene.name == "SampleScene")
+            {
+                PlayerScript.maxSpeed = 5;
+                GameDetails.reset();
+            }
+            else if (scene.name == "Level1Maze")
+            {
+                GameDetails.reset();
+                GameDetails.tutorialEnded = true;
+                PlayerScript.maxSpeed = 8;
+            }
 
         }
     // Update is called once per frame
@@ -34,7 +43,6 @@ public class GameController : MonoBehaviour
     // called when the game is terminated
     void OnDisable()
     {
-        Debug.Log("GameController: OnDisable");
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }

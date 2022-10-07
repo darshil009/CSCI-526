@@ -13,7 +13,6 @@ public class TutorialManager : MonoBehaviour
     private int index;
     
     private void Start() {
-        GameDetails.tutorialEnded = false;
         WASDTutorial wASDScript = children[0].transform.GetComponent<WASDTutorial>();
         wASDScript.done += incrementIndex;
         PickUpTutorial pickupScript = children[1].transform.GetComponent<PickUpTutorial>();
