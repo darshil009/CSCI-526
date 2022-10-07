@@ -1605,9 +1605,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LevelCompleteScript, Assembly-CSharp
-        m_MethodName: ReplayButton
+      - m_Target: {fileID: 1735130454}
+        m_TargetAssemblyTypeName: LevelSelectScript, Assembly-CSharp
+        m_MethodName: levelTwo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1630,7 +1630,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.39048594, g: 0.41197935, b: 0.4245283, a: 1}
+  m_Color: {r: 0, g: 0.6313726, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -17,7 +17,7 @@ public class ControlLavaCameras : MonoBehaviour
         yield return new WaitForSeconds(secondsToWait);
         mainCamera.SetActive(true);
         lavaRoomCamera.SetActive(false);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         ps.stopMovement = false;
         GameDetails.isLavaRoomCameraActive = false;
         Destroy(transform.gameObject);

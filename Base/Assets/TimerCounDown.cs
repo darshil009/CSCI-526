@@ -65,7 +65,7 @@ public class TimerCounDown : MonoBehaviour
             if (isRoutineCalled == false)
             {
                 isRoutineCalled = true;
-                StartCoroutine(sg.Post("1", timeList, healthList, weightList, "0", "1", (10 - tw).ToString(), null));
+                StartCoroutine(sg.Post("1", timeList, healthList, weightList, "0", "1", (10 - tw).ToString(), null, 1));
             }
             // analyticsManager.RegisterEvent(GameEvent.TIME_UP, timeValue);
             // IDictionary<string, string> analytics = analyticsManager.Publish();

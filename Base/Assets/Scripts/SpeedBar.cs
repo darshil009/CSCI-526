@@ -8,7 +8,7 @@ public class SpeedBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        slider.maxValue = PlayerScript.maxSpeed;
     }
 
     // Update is called once per frame

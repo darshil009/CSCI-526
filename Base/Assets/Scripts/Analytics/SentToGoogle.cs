@@ -7,6 +7,7 @@ using static UnityEngine.EventSystems.EventTrigger;
 public class SentToGoogle
 {
     [SerializeField] private string URL = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfTiFRIZN6NmPcWoNikLwz8o5-Hc4xAOIJNvbDT3VS1J2H3mA/formResponse";
+    [SerializeField] private string URL1 = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfvlEjFevN39EYAyKAxE7leS-AhjJ2b-mXFzNqzJD4exvJ2Uw/formResponse";
     public static List<string> entryListTime = new List<string>();
     public static List<string> entryListHealth = new List<string>();
     public static List<string> entryListWeights = new List<string>();
@@ -21,11 +22,12 @@ public class SentToGoogle
         
     }
 
-    public IEnumerator Post(string level, List<int> timeList, List<int> healthList, List<int> weightList, string completed, string funct, string weights_remaining, string time_remaining)
+    public IEnumerator Post(string level, List<int> timeList, List<int> healthList, List<int> weightList, string completed, string funct, string weights_remaining, string time_remaining, int died)
     {
         // Create the form and enter responses
         WWWForm form = new WWWForm();
-
+        WWWForm form1 = new WWWForm();
+        Debug.Log("How player died:" + died);
         entryListTime.Add("entry.1510320122");
         entryListTime.Add("entry.1043481993");
         entryListTime.Add("entry.1258024626");
@@ -148,8 +150,14 @@ public class SentToGoogle
             Debug.Log("weightList =" + weightList[i]);
         }
 
+        
+        
 
-
+        form1.AddField("entry.2075391151", level.ToString());
+        if (died != 4)
+        {
+            form1.AddField("entry.2023968175", died.ToString());
+        }
 
         using (UnityWebRequest www = UnityWebRequest.Post(URL, form))
         {
@@ -163,6 +171,21 @@ public class SentToGoogle
                 Debug.Log("Form upload complete!");
             }
         }
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post(URL1, form1))
+        {
+            yield return www.SendWebRequest();
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log("Form upload complete!");
+            }
+        }
+
     }
     // Start is called before the first frame update
     void Start()
