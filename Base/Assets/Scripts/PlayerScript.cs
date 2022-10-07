@@ -40,7 +40,7 @@ public class PlayerScript : MonoBehaviour
     private float? lastGroundedTime;
     private float? jumpButtonPressedTime;
     private Vector3 rotation;
-
+    public static int died;
     private bool canMove;
 
     private Item itemInHand;
@@ -142,7 +142,7 @@ public class PlayerScript : MonoBehaviour
             Debug.Log("tl =" + tl);
             //analyticsManager.RegisterEvent(GameEvent.HEALTH_LOST, PlayerHealth);
             //IDictionary<string, string> analytics = analyticsManager.Publish();
-            StartCoroutine(sg.Post("1", tl, hl, wl, "0", "3", (10 - tw).ToString(), null));
+            StartCoroutine(sg.Post("1", tl, hl, wl, "0", "3", (10 - tw).ToString(), null, died));
             // analyticsManager.RegisterEvent(GameEvent.HEALTH_LOST, PlayerHealth);
             // IDictionary<string, string> analytics = analyticsManager.Publish();
             // StartCoroutine(sg.Post(analytics["level"], analytics["time"], analytics["health"], tw.ToString()));
@@ -219,6 +219,7 @@ public class PlayerScript : MonoBehaviour
         if (c.CompareTag("Bullet"))
         {
             decreaseHealth(10);
+            died = 2;
             Destroy(c.gameObject);
         }
         //else if (c.CompareTag("Lava"))
@@ -228,6 +229,7 @@ public class PlayerScript : MonoBehaviour
         else if (c.CompareTag("Lava"))
         {
             decreaseHealth(100);
+            died = 3;
         }
     }
 
