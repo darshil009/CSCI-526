@@ -14,6 +14,8 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
     private Rigidbody rigidbody = null;
     private BoxCollider boxCollider = null;
     private Light lightComponent = null;
+    private Vector3 prevValidPosition;
+    private bool prevPositionValid = false;
     [SerializeField] private PlayerScript playerScript;
 
     [SerializeField] private LayerMask wallsPlaneMask;
@@ -29,6 +31,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
     {
         itemSlotTemplate = gameObject.transform.parent as RectTransform;
         itemSlotContainer = itemSlotTemplate.parent as RectTransform;
+        prevValidPosition = Vector3.zero;
     }
 
     public void SetItem(Item item)
@@ -54,7 +57,7 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
         spriteImage = GetComponent<Image>();
         rigidbody = itemObj.transform.GetComponent<Rigidbody>();
         spriteImage.enabled = false;
-        itemObj.transform.position = playerScript.transform.position;
+        itemObj.transform.position = transform.position;
         boxCollider =  itemObj.GetComponent<BoxCollider>();
         lightComponent = itemObj.GetComponent<Light>();
         rigidbody.useGravity = false;
@@ -84,8 +87,17 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
                 hitPosition = playerPosition +  dir*1;
             }
             itemObj.transform.position = hitPosition;
+            // rigidbody.MovePosition(hitPosition);
+            prevPositionValid = true;
+            prevValidPosition = hitPosition;
 
         }
+        // else
+        // {
+        //     if(prevPositionValid){
+        //       //  itemObj.transform.position = prevValidPosition;
+        //     }
+        // }
     }
     public void OnDrag(PointerEventData eventData)
     {      
@@ -101,11 +113,20 @@ public class InventoryItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragH
         RaycastHit hit;  
         Physics.Linecast(playerScript.transform.position, itemObj.transform.position,out hit,exceptBoxesMask);
 
+
+        RaycastHit hit2;  
+        Vector3 endCastPoint = itemObj.transform.position;
+        endCastPoint.y-=1000;
+        Physics.Linecast(itemObj.transform.position, endCastPoint,out hit2,wallsPlaneMask);
+        if(hit2.collider!=null){
+            
+            Debug.Log("Down collider hit "+hit2.collider.gameObject.name);
+        }
         if (itemSlotContainer != null)
         {
             Debug.Log("hit collider "+hit.collider);
             if (!RectTransformUtility.RectangleContainsScreenPoint(itemSlotContainer, Input.mousePosition) &&
-                     hit.collider == null)
+                     hit.collider == null && hit2.collider!=null)
             {
                 setNoPhysics();
                 TriggerItemDroppedFromUIEvent(item);
