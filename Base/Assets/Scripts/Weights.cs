@@ -17,7 +17,7 @@ public class Weights : MonoBehaviour
 
     private DoorBehavior doorAction;
     private bool isDoorOpen;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +27,7 @@ public class Weights : MonoBehaviour
         doorAction = door.AddComponent<DoorBehavior>();
         StartCoroutine(CheckForBoxes());
     }
-    
+
     private IEnumerator CheckForBoxes()
     {
 
@@ -58,16 +58,16 @@ public class Weights : MonoBehaviour
     void Update()
     {
         if (!isDoorOpen)
-            weightText.text = total_weights + "/10 lb";
-        if (total_weights == 10 || isDoorOpen)
+            weightText.text = total_weights + " lb";
+        if (total_weights >= 10 || isDoorOpen)
         {
             doorAction.changeDoor();
             weightText.text = "DOOR OPEN";
             doorText.text = "";
             isDoorOpen = true;
         }
-        
+
     }
-    
-    
+
+
 }

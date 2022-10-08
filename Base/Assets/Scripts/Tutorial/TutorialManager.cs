@@ -11,20 +11,20 @@ public class TutorialManager : MonoBehaviour
     public Transform lightItemTransform;
 
     private int index;
-    
+
     private void Start() {
-        GameDetails.tutorialEnded = false;
+        //GameDetails.tutorialEnded = false;
         WASDTutorial wASDScript = children[0].transform.GetComponent<WASDTutorial>();
         wASDScript.done += incrementIndex;
         PickUpTutorial pickupScript = children[1].transform.GetComponent<PickUpTutorial>();
         pickupScript.done += incrementIndex;
-        
+
         SpeedTutorial SpeedTutorialScript = children[2].transform.GetComponent<SpeedTutorial>();
         SpeedTutorialScript.done += incrementIndex;
 
         InventoryTutorial inventoryTutorial = children[3].transform.GetComponent<InventoryTutorial>();
         inventoryTutorial.done += incrementIndex;
-        
+
         JumpTutorial jumpTutorial = children[4].transform.GetComponent<JumpTutorial>();
         jumpTutorial.done += incrementIndex;
 
@@ -37,9 +37,9 @@ public class TutorialManager : MonoBehaviour
         //Uncommenting this causes a block dont know why
         // for(int i=0;i<children.Length;i++)
         // children[i].SetActive(false);
-        
+
        // Debug.Log("tutorial manager: start: " + GameDetails.tutorialEnded);
-        
+
         StartCoroutine(DisplayTutorial());
     }
     IEnumerator DisplayTutorial()
@@ -47,7 +47,7 @@ public class TutorialManager : MonoBehaviour
         while(index<children.Length && !GameDetails.tutorialEnded){
             while(index<children.Length && children[index].activeSelf==true)
                 yield return null;
-        
+
             if(index-1>=0)
             children[index-1].SetActive(false);
             switch(index)
@@ -56,7 +56,7 @@ public class TutorialManager : MonoBehaviour
                     children[index].SetActive(true);
                     break;
                 case 1:
-                
+
                 if(lightItemTransform!=null && firstLightOn)
                 {
                     firstLightOn = false;
@@ -66,7 +66,7 @@ public class TutorialManager : MonoBehaviour
                 case 2:
                     children[index].SetActive(true);
                 break;
-                
+
                 case 3:
                 children[index].SetActive(true);
                 break;
@@ -103,5 +103,5 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    
+
 }

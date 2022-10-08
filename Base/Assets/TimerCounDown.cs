@@ -7,7 +7,7 @@ using TMPro;
 
 public class TimerCounDown : MonoBehaviour
 {
-    
+
     AnalyticsManager analyticsManager;
     [SerializeField] public static float timeValue;
     public TextMeshProUGUI timerText;
@@ -22,7 +22,7 @@ public class TimerCounDown : MonoBehaviour
 
     void Start()
     {
-        timeValue = 180;
+        timeValue = 300;
         Time.timeScale = 1;
         analyticsManager = new AnalyticsManager();
         analyticsManager.Reset(1);
@@ -34,11 +34,11 @@ public class TimerCounDown : MonoBehaviour
         //timer = Random.Range(minTime, maxTime);
     }
 
-    
+
     void Update()
     {
         if(!GameDetails.tutorialEnded || GameDetails.isLavaRoomCameraActive) return;
-        
+
         if (timeValue > 0)
         {
             if ((int)timeValue % 30 == 0 && !timeDict.ContainsKey(180 - (int)timeValue))
