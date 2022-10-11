@@ -21,8 +21,8 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] private float itemsRadius = 3f;
     [SerializeField] private LayerMask itemMask;
     [SerializeField] private TextMeshProUGUI healthLoss;
-    [SerializeField] private NavMeshSurface navMeshSurface;
     [SerializeField] public static float maxSpeed;
+    [SerializeField] private Camera mirrorCamera;
     public event EventHandler<Item> firstLightEvent;
     public static float PlayerHealth;
     public static float playerSpeed;
@@ -116,9 +116,15 @@ public class PlayerScript : MonoBehaviour
         if (canMove)
             playerSpeed = Mathf.Max(0.2f, (maxSpeed - (0.4f * GameDetails.currentTotalWeight)));
         MovePlayer();
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        PickUp(Camera.main);
+        PickUp(mirrorCamera);
+    }
+
+    private void PickUp(Camera curCamera)
+    {
+        Ray ray = curCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit = new RaycastHit();
-        ray.origin = Camera.main.transform.position;
+        ray.origin = curCamera.transform.position;
         //  Debug.DrawRay(ray.origin,ray.direction*100,Color.green);
 
         if (Input.GetMouseButtonDown(0))
@@ -126,12 +132,12 @@ public class PlayerScript : MonoBehaviour
             if (Physics.Raycast(ray.origin, ray.direction, out hit, GameDetails.pickItemDistance, itemMask))
             {
                 // Debug.Log("Hit " + hit.transform.gameObject.name + " " + hit.point);
-                    if (hit.transform.GetComponent<Light>().enabled)
-                    {
-                        Item item = ItemFactory.fromTag(hit.transform.tag);
-                        _inventoryManager.AddItem(item);
-                        Destroy(hit.transform.gameObject);
-                    }
+                if (hit.transform.GetComponent<Light>().enabled)
+                {
+                    Item item = ItemFactory.fromTag(hit.transform.tag);
+                    _inventoryManager.AddItem(item);
+                    Destroy(hit.transform.gameObject);
+                }
             }
         }
     }
@@ -272,7 +278,6 @@ public class PlayerScript : MonoBehaviour
             default:
                 break;
         }
-        navMeshSurface.BuildNavMesh();
     }
 
     private void OnItemDrop(object sender, Item item)
@@ -298,7 +303,6 @@ public class PlayerScript : MonoBehaviour
                 default:
                     break;
             }
-            navMeshSurface.BuildNavMesh();
 
     }
 

@@ -22,7 +22,7 @@ public class Weights : MonoBehaviour
     void Start()
     {
         isDoorOpen = false;
-        doorText.text = "10 lbs";
+        doorText.text = "";
         total_weights = 0;
         doorAction = door.AddComponent<DoorBehavior>();
         StartCoroutine(CheckForBoxes());
@@ -57,14 +57,9 @@ public class Weights : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isDoorOpen)
-            weightText.text = total_weights + " lb";
-        if (total_weights >= 10 || isDoorOpen)
+        if (total_weights > 0)
         {
             doorAction.changeDoor();
-            weightText.text = "DOOR OPEN";
-            doorText.text = "";
-            isDoorOpen = true;
         }
 
     }

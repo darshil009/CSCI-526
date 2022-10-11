@@ -16,7 +16,7 @@ public static class GameDetails {
     public static float currentTotalWeight = 0;
     public static GemsCount NumGems;
     public static float dropItemDistance = 125f;
-    public static float pickItemDistance = 12.5f;
+    public static float pickItemDistance = 100f;
 
     public static float lightOnRadius = 3f;
     public static bool isLavaRoomCameraActive;

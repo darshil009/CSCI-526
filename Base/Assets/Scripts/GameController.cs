@@ -32,6 +32,17 @@ public class GameController : MonoBehaviour
                 PlayerScript.maxSpeed = 8;
                 GameDetails.reset();
             }
+            else
+            {
+                GameDetails.reset();
+                PlayerScript.maxSpeed = 8;
+                GameDetails.firstLight = true;
+                GameDetails.pause = false;
+                GameDetails.firstItemPickedUp = true;
+                GameDetails.firstItemDropped = true;
+                //tutorialEnded = false;
+                GameDetails.canDragFirstItem = true;
+            }
 
         }
     // Update is called once per frame

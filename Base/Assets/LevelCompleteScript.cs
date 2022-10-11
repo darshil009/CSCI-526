@@ -12,7 +12,8 @@ public class LevelCompleteScript : MonoBehaviour
 
     public void ReplayButton()
     {
-        SceneManager.LoadScene("Scenes/Level1Maze");
+            
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
     }
 
