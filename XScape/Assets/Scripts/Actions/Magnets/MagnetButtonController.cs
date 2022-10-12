@@ -16,8 +16,6 @@ public class MagnetButtonController : MonoBehaviour
     MeshRenderer meshRenderer;
     private void Awake()
     {
-        // activeMaterial =  Resources.Load<Material>("Magnet_Active");
-        // deactiveMaterial =  Resources.Load<Material>("Magnet_Deactive");
         meshRenderer = GetComponent<MeshRenderer>();
         meshRenderer.material = inactiveMaterial;
         isActive = false;
@@ -25,7 +23,7 @@ public class MagnetButtonController : MonoBehaviour
 
     public void Activate()
     {
-        Debug.Log("Deactivating all");
+        // Debug.Log("Deactivating all");
         magnetButtonManager.DeactivateAll();
         this.isActive = true;
         meshRenderer.material = activeMaterial;
@@ -89,7 +87,7 @@ public class MagnetButtonController : MonoBehaviour
             foreach (Rigidbody rigidbody in rigidbodies)
             {
                 Debug.DrawRay(blocks[0].transform.position, blocks[0].transform.position * 10, Color.blue, 20);
-                Debug.Log("Adding force " + transform.forward);
+                // Debug.Log("Adding force " + transform.forward);
                 rigidbody.useGravity = false;
                 rigidbody.AddForce(transform.forward * forceStrength * Time.deltaTime, ForceMode.VelocityChange);
             }
