@@ -10,6 +10,7 @@ public class mouseLook : MonoBehaviour
     public bool lockCursor;
    
     public Vector2 sensitivity = new Vector2(2, 2);
+    public Vector2 webglSensitivity = new Vector2(0.1f, 0.1f);
     public Vector2 smoothing = new Vector2(3, 3);
     public Vector2 targetDirection;
     public Vector2 targetCharacterDirection;
@@ -45,6 +46,11 @@ public class mouseLook : MonoBehaviour
         // Get raw mouse input for a cleaner reading on more sensitive mice.
         var mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
 
+        if (Application.platform == RuntimePlatform.WebGLPlayer)
+        {
+            sensitivity = webglSensitivity;
+        }
+
         // Scale input against the sensitivity setting and multiply that against the smoothing value.
         mouseDelta = Vector2.Scale(mouseDelta, new Vector2(sensitivity.x * smoothing.x, sensitivity.y * smoothing.y));
 
@@ -63,7 +69,8 @@ public class mouseLook : MonoBehaviour
         if (clampInDegrees.y < 360)
             _mouseAbsolute.y = Mathf.Clamp(_mouseAbsolute.y, -clampInDegrees.y * 0.5f, clampInDegrees.y * 0.5f);
 
-        transform.localRotation = Quaternion.AngleAxis(-_mouseAbsolute.y, targetOrientation * Vector3.right) * targetOrientation;
+        transform.localRotation = Quaternion.AngleAxis(-_mouseAbsolute.y, targetOrientation * Vector3.right) *
+                                  targetOrientation;
 
         // If there's a character body that acts as a parent to the camera
         if (characterBody)
@@ -73,7 +80,7 @@ public class mouseLook : MonoBehaviour
         }
         else
         {
-            var yRotation = Quaternion.AngleAxis(_mouseAbsolute.x, transform.InverseTransformDirection(Vector3.up));          
+            var yRotation = Quaternion.AngleAxis(_mouseAbsolute.x, transform.InverseTransformDirection(Vector3.up));
             transform.localRotation *= yRotation;
         }
     }
