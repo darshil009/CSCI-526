@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4464615591370921001}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -34.97, y: 0.01, z: 19.77}
-  m_LocalScale: {x: 6, y: 0.2, z: 6}
+  m_LocalScale: {x: 6, y: 0.1, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,7 +96,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.5, y: 1, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &232313792416118132
 MonoBehaviour:
@@ -112,9 +112,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerActiveMat: {fileID: 2100000, guid: 37d6e8a02b9d4488bb3f321482c26e15, type: 2}
   triggerInActiveMat: {fileID: 2100000, guid: b9b0f0def41634cb9a2a48e7e6288c53, type: 2}
-  triggerActiveEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  triggerInActiveEvent:
-    m_PersistentCalls:
-      m_Calls: []

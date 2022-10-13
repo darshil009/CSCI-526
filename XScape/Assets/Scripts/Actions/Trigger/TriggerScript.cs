@@ -1,31 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class TriggerScript : MonoBehaviour
 {
     [SerializeField] private Material triggerActiveMat;
     [SerializeField] private Material triggerInActiveMat;
 
-    [SerializeField] private UnityEvent triggerActiveEvent;
-    [SerializeField] private UnityEvent triggerInActiveEvent;
+    public delegate void TriggerActive();
+    public delegate void TriggerInActive();
+    public static event TriggerActive triggerActiveSub;
+    public static event TriggerInActive triggerInActiveSub;
 
     private bool isActive = false;
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Renderer>().material = triggerInActiveMat;
+        GetComponent<Renderer>().material = triggerInActiveMat;        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isActive)
-            GetComponent<Renderer>().material = triggerActiveMat;
-        else
-            GetComponent<Renderer>().material = triggerInActiveMat;
-
         
     }
 
@@ -44,13 +40,13 @@ public class TriggerScript : MonoBehaviour
     }
 
     private void activateTrigger(){
-        triggerActiveEvent.Invoke();
+        triggerActiveSub();
         isActive = true;
         GetComponent<Renderer>().material = triggerActiveMat;
     }
 
     private void deActivateTrigger(){
-        triggerInActiveEvent.Invoke();
+        triggerInActiveSub();
         isActive = false;
         GetComponent<Renderer>().material = triggerInActiveMat;
     }
