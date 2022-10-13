@@ -10,14 +10,21 @@ public class MagnetButtonController : MonoBehaviour
 
     [SerializeField] LayerMask magnetButtonMask;
 
-    [SerializeField] float forceStrength = 0.5f;
+    [SerializeField] private List<GameObject> magnetBlocks;
 
+    private List<Rigidbody> blocksRigidBodies;
+    [SerializeField] float forceStrength = 0.5f;
     [SerializeField] MagnetButtonManager magnetButtonManager;
     MeshRenderer meshRenderer;
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
         meshRenderer.material = inactiveMaterial;
+        blocksRigidBodies = new List<Rigidbody>();
+        foreach(GameObject gameObject in magnetBlocks)
+        {
+            blocksRigidBodies.Add(gameObject.GetComponent<Rigidbody>());
+        }
         isActive = false;
     }
 
@@ -35,13 +42,7 @@ public class MagnetButtonController : MonoBehaviour
     {
         this.isActive = false;
         meshRenderer.material = inactiveMaterial;
-        GameObject[] blocks = GameObject.FindGameObjectsWithTag("MagnetBlock");
-        Rigidbody[] rigidbodies = new Rigidbody[blocks.Length];
-        for (int i = 0; i < blocks.Length; i++)
-        {
-            rigidbodies[i] = blocks[i].GetComponent<Rigidbody>();
-        }
-        foreach (Rigidbody rigidbody in rigidbodies)
+        foreach (Rigidbody rigidbody in blocksRigidBodies)
         {
             rigidbody.useGravity = true;
             rigidbody.velocity = Vector3.zero;
@@ -77,17 +78,8 @@ public class MagnetButtonController : MonoBehaviour
 
         if (this.isActive)
         {
-
-            GameObject[] blocks = GameObject.FindGameObjectsWithTag("MagnetBlock");
-            Rigidbody[] rigidbodies = new Rigidbody[blocks.Length];
-            for (int i = 0; i < blocks.Length; i++)
+            foreach (Rigidbody rigidbody in blocksRigidBodies)
             {
-                rigidbodies[i] = blocks[i].GetComponent<Rigidbody>();
-            }
-            foreach (Rigidbody rigidbody in rigidbodies)
-            {
-                Debug.DrawRay(blocks[0].transform.position, blocks[0].transform.position * 10, Color.blue, 20);
-                // Debug.Log("Adding force " + transform.forward);
                 rigidbody.useGravity = false;
                 rigidbody.AddForce(transform.forward * forceStrength * Time.deltaTime, ForceMode.VelocityChange);
             }

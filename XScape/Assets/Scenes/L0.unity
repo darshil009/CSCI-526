@@ -6365,6 +6365,14 @@ PrefabInstance:
       propertyPath: magnetButtonManager
       value: 
       objectReference: {fileID: 1217164968}
+    - target: {fileID: 8407635365759336168, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: magnetBlocks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407635365759336168, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: magnetBlocks.Array.data[0]
+      value: 
+      objectReference: {fileID: 1608705533}
     - target: {fileID: 8407635365759336180, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -6515,7 +6523,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh23970
+  m_Name: pb_Mesh23972
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7048,6 +7056,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a91f5c8b31704d588ff3ee271554a59, type: 3}
+--- !u!1 &1608705533 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7993448355615031863, guid: 35d5c5867f48d48f2b0a5431c34b6b7c, type: 3}
+  m_PrefabInstance: {fileID: 214363595}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1820065809
 GameObject:
   m_ObjectHideFlags: 0
@@ -7171,21 +7184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 808a64af1301541dcb36c017f171158e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameWonEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DoorScript, Assembly-CSharp
-        m_MethodName: openDoor
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!4 &2000761520
 Transform:
   m_ObjectHideFlags: 0
@@ -7530,7 +7528,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh23896
+  m_Name: pb_Mesh25580
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
