@@ -12,7 +12,7 @@ public class TriggerScript : MonoBehaviour
     public static event TriggerActive triggerActiveSub;
     public static event TriggerInActive triggerInActiveSub;
 
-    private bool isActive = false;
+    public bool isActive = false; //private
     // Start is called before the first frame update
     void Start()
     {
