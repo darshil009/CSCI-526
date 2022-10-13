@@ -8,7 +8,17 @@ public class DoorScript : MonoBehaviour
     private int totalTriggersCount;
     private int activeTriggersCount = 0;
     private bool isDoorOpen = false;
+   [SerializeField] private static float openCloseHeight = 12f;
 
+    private void OnEnable(){
+        TriggerScript.triggerActiveSub += addActiveTriggers;
+        TriggerScript.triggerInActiveSub += subtractActiveTriggers;
+    }
+
+    private void OnDisable() {
+        TriggerScript.triggerActiveSub -= addActiveTriggers;
+        TriggerScript.triggerInActiveSub -= subtractActiveTriggers;    
+    }
      
     // Start is called before the first frame update
     void Start()
@@ -23,23 +33,28 @@ public class DoorScript : MonoBehaviour
         
     }
 
-    public void countActiveTriggers(int add){
-        activeTriggersCount += add;
-        if(add == +1 && activeTriggersCount == totalTriggersCount){
+     public void addActiveTriggers(){
+        activeTriggersCount += 1;
+        if(activeTriggersCount == totalTriggersCount){
             openDoor();
-        }else if(add == -1 && activeTriggersCount == totalTriggersCount-1){
+        }
+
+    }
+     public void subtractActiveTriggers(){
+        activeTriggersCount += -1;
+        if(activeTriggersCount == totalTriggersCount-1){
             closeDoor();
         }
 
     }
     public void openDoor(){
         isDoorOpen = true;
-        transform.position += new Vector3(0f, 8f, 0f);
+        transform.position += new Vector3(0f, openCloseHeight, 0f);
     }
 
     public void closeDoor(){
         isDoorOpen = false;
-        transform.position -= new Vector3(0f, 8f, 0f);
+        transform.position -= new Vector3(0f, openCloseHeight, 0f);
 
     }
 }
