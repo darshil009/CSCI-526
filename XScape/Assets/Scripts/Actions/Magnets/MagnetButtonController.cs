@@ -10,7 +10,7 @@ public class MagnetButtonController : MonoBehaviour
 
     [SerializeField] LayerMask magnetButtonMask;
 
-    [SerializeField] float forceStrength = 1f;
+    [SerializeField] float forceStrength = 0.5f;
 
     [SerializeField] MagnetButtonManager magnetButtonManager;
     MeshRenderer meshRenderer;
