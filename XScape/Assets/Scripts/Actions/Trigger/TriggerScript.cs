@@ -28,14 +28,16 @@ public class TriggerScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("trigger enter");
-        activateTrigger();
+        if(!isActive)
+            activateTrigger();
         
     }
 
     private void OnTriggerExit(Collider other)
     {
         Debug.Log("trigger exit");
-        deActivateTrigger();
+        if(isActive)
+            deActivateTrigger();
         
     }
 
