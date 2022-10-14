@@ -245,11 +245,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2433750706422067005, guid: 002dfb857d95a4c5c8cc6353c579cb42, type: 3}
   m_PrefabInstance: {fileID: 235911703}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &235911705 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3045614188732752942, guid: 002dfb857d95a4c5c8cc6353c579cb42, type: 3}
-  m_PrefabInstance: {fileID: 235911703}
-  m_PrefabAsset: {fileID: 0}
 --- !u!43 &240837278
 Mesh:
   m_ObjectHideFlags: 0
@@ -1114,7 +1109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990922884699308809, guid: 35d5c5867f48d48f2b0a5431c34b6b7c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 41.33
+      value: 40.9
       objectReference: {fileID: 0}
     - target: {fileID: 7990922884699308809, guid: 35d5c5867f48d48f2b0a5431c34b6b7c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1225,7 +1220,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3818521956468605245, guid: 0df0af68ca6a54867b9f0e6c936f45ca, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0df0af68ca6a54867b9f0e6c936f45ca, type: 3}
 --- !u!1 &4986556172519951913 stripped
 GameObject:
@@ -1245,5 +1241,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Triggeractivation: {fileID: 1526184015}
-  moveToPoint: {fileID: 235911705}
   speed: 5

@@ -5,7 +5,7 @@ using UnityEngine;
 public class MovementTriggered : MonoBehaviour
 {
     public TriggerScript Triggeractivation;
-    public Transform moveToPoint;
+    // public Transform moveToPoint;
     public float speed;
 
     private int totalTriggersCount;

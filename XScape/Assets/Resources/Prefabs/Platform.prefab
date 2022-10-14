@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4986556171617482096}
   - component: {fileID: 4986556171617482111}
   - component: {fileID: 4986556171617482098}
+  - component: {fileID: 3818521956468605245}
   - component: {fileID: 4986556171617482099}
   m_Layer: 0
   m_Name: Platform
@@ -106,7 +107,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4986556171617482109}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9aa0c3ed09c134426b9683dd605a50d5, type: 3}
   m_Name: 
@@ -119,6 +120,20 @@ MonoBehaviour:
   speed: 4
   delay_time: 2
   automatic: 0
+--- !u!114 &3818521956468605245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4986556171617482109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4c3f9d0098714097bbb9229b8432efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Triggeractivation: {fileID: 0}
+  speed: 0
 --- !u!64 &4986556171617482099
 MeshCollider:
   m_ObjectHideFlags: 0
