@@ -148,7 +148,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2433750706422067005, guid: 002dfb857d95a4c5c8cc6353c579cb42, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2433750706422067005, guid: 002dfb857d95a4c5c8cc6353c579cb42, type: 3}
       propertyPath: m_LocalPosition.x
@@ -730,13 +730,89 @@ RectTransform:
   m_Children:
   - {fileID: 482995878}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &1123817245
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3414524782540156100, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_Name
+      value: MagnetButtonManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -29.329779
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.2783985
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.55267
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156103, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: magnetButtonControllers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156103, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: magnetButtonControllers.Array.data[0]
+      value: 
+      objectReference: {fileID: 1909548161}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 762b607661c234764afd520e22778013, type: 3}
+--- !u!114 &1123817246 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3414524782540156103, guid: 762b607661c234764afd520e22778013, type: 3}
+  m_PrefabInstance: {fileID: 1123817245}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eda4080d256094c6da564453737f8d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1526184014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -913,6 +989,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8407635365759336168, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: magnetButtonManager
+      value: 
+      objectReference: {fileID: 1123817246}
+    - target: {fileID: 8407635365759336168, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: magnetBlocks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407635365759336168, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: magnetBlocks.Array.data[0]
+      value: 
+      objectReference: {fileID: 2125345606}
+    - target: {fileID: 8407635365759336168, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: magnetBlocks.Array.data[1]
+      value: 
+      objectReference: {fileID: 2125345606}
     - target: {fileID: 8407635365759336180, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -963,6 +1055,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+--- !u!114 &1909548161 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8407635365759336168, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+  m_PrefabInstance: {fileID: 1909548160}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e675a8c701f4f27ac37e574752ed06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2007183778
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,7 +1132,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2008743471
 PrefabInstance:
@@ -1097,7 +1200,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7990922884699308809, guid: 35d5c5867f48d48f2b0a5431c34b6b7c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7990922884699308809, guid: 35d5c5867f48d48f2b0a5431c34b6b7c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1109,7 +1212,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7990922884699308809, guid: 35d5c5867f48d48f2b0a5431c34b6b7c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 40.9
+      value: 17.45
       objectReference: {fileID: 0}
     - target: {fileID: 7990922884699308809, guid: 35d5c5867f48d48f2b0a5431c34b6b7c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1145,6 +1248,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35d5c5867f48d48f2b0a5431c34b6b7c, type: 3}
+--- !u!1 &2125345606 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7993448355615031863, guid: 35d5c5867f48d48f2b0a5431c34b6b7c, type: 3}
+  m_PrefabInstance: {fileID: 2125345605}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4986556172519951912
 PrefabInstance:
   m_ObjectHideFlags: 0
