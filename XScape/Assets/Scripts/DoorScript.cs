@@ -5,10 +5,11 @@ using UnityEngine;
 public class DoorScript : MonoBehaviour
 {
 
-    private int totalTriggersCount;
+    [SerializeField] private List<TriggerScript> triggerList;
+    [SerializeField] private static float openCloseHeight = 12f;
+
     private int activeTriggersCount = 0;
     private bool isDoorOpen = false;
-   [SerializeField] private static float openCloseHeight = 12f;
 
     private void OnEnable(){
         TriggerScript.triggerActiveSub += addActiveTriggers;
@@ -23,7 +24,6 @@ public class DoorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        totalTriggersCount = GameObject.FindGameObjectsWithTag("Trigger").Length;
         activeTriggersCount = 0;
     }
 
@@ -35,14 +35,14 @@ public class DoorScript : MonoBehaviour
 
      public void addActiveTriggers(){
         activeTriggersCount += 1;
-        if(activeTriggersCount == totalTriggersCount){
+        if(activeTriggersCount == triggerList.Count){
             openDoor();
         }
 
     }
      public void subtractActiveTriggers(){
         activeTriggersCount += -1;
-        if(activeTriggersCount == totalTriggersCount-1){
+        if(activeTriggersCount == triggerList.Count-1){
             closeDoor();
         }
 

@@ -39,13 +39,13 @@ public class TriggerScript : MonoBehaviour
         
     }
 
-    private void activateTrigger(){
+    public void activateTrigger(){
         triggerActiveSub();
         isActive = true;
         GetComponent<Renderer>().material = triggerActiveMat;
     }
 
-    private void deActivateTrigger(){
+    public void deActivateTrigger(){
         triggerInActiveSub();
         isActive = false;
         GetComponent<Renderer>().material = triggerInActiveMat;
