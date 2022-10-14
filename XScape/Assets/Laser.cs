@@ -25,9 +25,12 @@ void Start()
             {
                 lr.SetPosition(1, hit.point);
             }
-            if (hit.transform.tag == "Player")
+            if (hit.transform.tag == "CollideCube")
         {
-            Debug.Log("do something");
+            //Object.Destroy(gameObject, 2.0f);
+            Destroy(GameObject.FindWithTag("CollideCube"), 2.0f);
+            Debug.Log("here");
+
         }
 
         else
