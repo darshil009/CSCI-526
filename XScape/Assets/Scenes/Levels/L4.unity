@@ -1185,6 +1185,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5513701424793321603, guid: ec37c3e2b424a44f8a9c63edad05834e, type: 3}
+      propertyPath: triggerList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5513701424793321603, guid: ec37c3e2b424a44f8a9c63edad05834e, type: 3}
+      propertyPath: triggerList.Array.data[0]
+      value: 
+      objectReference: {fileID: 1526184015}
     - target: {fileID: 7797285987069010501, guid: ec37c3e2b424a44f8a9c63edad05834e, type: 3}
       propertyPath: m_Name
       value: Door
@@ -1348,5 +1356,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4c3f9d0098714097bbb9229b8432efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Triggeractivation: {fileID: 1526184015}
+  triggerList:
+  - {fileID: 1526184015}
   speed: 5

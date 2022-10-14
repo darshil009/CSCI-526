@@ -12,13 +12,19 @@ public class DoorScript : MonoBehaviour
     private bool isDoorOpen = false;
 
     private void OnEnable(){
-        TriggerScript.triggerActiveSub += addActiveTriggers;
-        TriggerScript.triggerInActiveSub += subtractActiveTriggers;
+        foreach(TriggerScript triggerScript in triggerList){
+            triggerScript.triggerActiveSub += addActiveTriggers;
+            triggerScript.triggerInActiveSub += subtractActiveTriggers;
+        }
+        
     }
 
     private void OnDisable() {
-        TriggerScript.triggerActiveSub -= addActiveTriggers;
-        TriggerScript.triggerInActiveSub -= subtractActiveTriggers;    
+
+        foreach(TriggerScript triggerScript in triggerList){
+            triggerScript.triggerActiveSub -= addActiveTriggers;
+            triggerScript.triggerInActiveSub -= subtractActiveTriggers;
+        }
     }
      
     // Start is called before the first frame update

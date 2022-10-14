@@ -4,29 +4,31 @@ using UnityEngine;
 
 public class MovementTriggered : MonoBehaviour
 {
-    public TriggerScript Triggeractivation;
+    [SerializeField] private List<TriggerScript> triggerList;
     // public Transform moveToPoint;
     public float speed;
 
-    private int totalTriggersCount;
     private int activeTriggersCount = 0;
     private bool isPlatform = false;
     [SerializeField] private static float movingHeight = 5f;
 
     private void OnEnable(){
-        TriggerScript.triggerActiveSub += addActiveTriggers;
-        TriggerScript.triggerInActiveSub += subtractActiveTriggers;
+        foreach(TriggerScript triggerScript in triggerList){
+            triggerScript.triggerActiveSub += addActiveTriggers;
+            triggerScript.triggerInActiveSub += subtractActiveTriggers;
+        }
     }
 
     private void OnDisable() {
-        TriggerScript.triggerActiveSub -= addActiveTriggers;
-        TriggerScript.triggerInActiveSub -= subtractActiveTriggers;    
+         foreach(TriggerScript triggerScript in triggerList){
+            triggerScript.triggerActiveSub -= addActiveTriggers;
+            triggerScript.triggerInActiveSub -= subtractActiveTriggers;
+        }    
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        totalTriggersCount = GameObject.FindGameObjectsWithTag("Trigger").Length;
         activeTriggersCount = 0;
     }
 
@@ -39,7 +41,7 @@ public class MovementTriggered : MonoBehaviour
     public void addActiveTriggers()
     {
         activeTriggersCount += 1;
-        if(activeTriggersCount == totalTriggersCount)
+        if(activeTriggersCount == triggerList.Count)
         {
             movePlatformUp();
         }
@@ -49,7 +51,7 @@ public class MovementTriggered : MonoBehaviour
     public void subtractActiveTriggers()
     {
         activeTriggersCount += -1;
-        if(activeTriggersCount == totalTriggersCount-1){
+        if(activeTriggersCount == triggerList.Count-1){
             movePlatformDown();
         }
     }
