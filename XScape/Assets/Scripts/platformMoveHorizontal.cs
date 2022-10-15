@@ -6,13 +6,15 @@ public class platformMoveHorizontal : MonoBehaviour
 {
     private Vector3 target;
     private Vector3 startPos;
+    [SerializeField] private bool positiveDirection;
+    [SerializeField] private float distance = 5;
 
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Vertical");
         startPos = transform.position;
-        target = new Vector3(transform.position.x, transform.position.y, transform.position.z - 5.0f);
+        target = new Vector3(transform.position.x, transform.position.y, transform.position.z + (positiveDirection ? 1 : -1) * distance);
     }
 
     // Update is called once per frame
