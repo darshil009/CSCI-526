@@ -22,7 +22,7 @@ public class MovingPlatformBlock : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (target == first) transform.DetachChildren();
         timeElapsed += Time.deltaTime;
