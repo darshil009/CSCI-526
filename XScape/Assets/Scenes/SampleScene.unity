@@ -365,6 +365,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6193432877908353974, guid: 295a1377755d742c394d86beefd17b06, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.3199997
+      objectReference: {fileID: 0}
     - target: {fileID: 8514151589996926676, guid: 295a1377755d742c394d86beefd17b06, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -412,6 +416,34 @@ PrefabInstance:
     - target: {fileID: 8514151589996926679, guid: 295a1377755d742c394d86beefd17b06, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670510266704068528, guid: 295a1377755d742c394d86beefd17b06, type: 3}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670510266704068535, guid: 295a1377755d742c394d86beefd17b06, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670510266704068535, guid: 295a1377755d742c394d86beefd17b06, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.3199997
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670510266704068535, guid: 295a1377755d742c394d86beefd17b06, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670510266704068535, guid: 295a1377755d742c394d86beefd17b06, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670510266704068535, guid: 295a1377755d742c394d86beefd17b06, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8670510266704068535, guid: 295a1377755d742c394d86beefd17b06, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 295a1377755d742c394d86beefd17b06, type: 3}
@@ -515,7 +547,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-27358
+  m_Name: pb_Mesh-30682
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
