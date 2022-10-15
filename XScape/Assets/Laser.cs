@@ -16,20 +16,20 @@ public class Laser : MonoBehaviour
 
     public void decreaseHealth(int health, string cubeName)
     {
-        if (cubeName == "CollideCube1")
+        if (cubeName == "MagnetBlock1")
         {
             object2health -= health;
             if (object2health == 0)
             {
-                Destroy(GameObject.FindWithTag("CollideCube1"), 1.0f);
+                Destroy(GameObject.FindWithTag("MagnetBlock1"), 1.0f);
             }
         }
-        else if (cubeName == "CollideCube")
+        else if (cubeName == "MagnetBlock")
         {
             object1health -= health;
             if (object1health == 0)
             {
-                Destroy(GameObject.FindWithTag("CollideCube"), 1.0f);
+                Destroy(GameObject.FindWithTag("MagnetBlock"), 1.0f);
             }
         }
         
@@ -62,24 +62,22 @@ public class Laser : MonoBehaviour
 
             //}
 
-            if (hit.transform.tag == "CollideCube")
+            if (hit.transform.tag == "MagnetBlock")
             {
             //Object.Destroy(gameObject, 2.0f);
-                decreaseHealth(1, "CollideCube");
+                decreaseHealth(1, "MagnetBlock");
 
             }
-            else if (hit.transform.tag == "CollideCube1")
+            else if (hit.transform.tag == "MagnetBlock1")
             {
                 //Object.Destroy(gameObject, 2.0f);
-                decreaseHealth(1, "CollideCube1");
+                decreaseHealth(1, "MagnetBlock1");
             }
 
-        else if (hit.transform.tag == "Trigger")
+        else if (hit.transform.tag == "Trigger1")
         {
             if (isActive == false)
             {
-                Debug.Log("here");
-                ds.countActiveTriggers(1);
 
                 isActive = true;
             }

@@ -23,9 +23,8 @@ public class DoorScript : MonoBehaviour
     }
 
     public void countActiveTriggers(int add){
-        Debug.Log("Active Trigger Count ===>>>>>>>" + activeTriggersCount);
         activeTriggersCount += add;
-        Debug.Log("Active Trigger Count after===>>>>>>>" + activeTriggersCount);
+        Debug.Log("activeTriggersCount =" + activeTriggersCount);
         if (add == +1 && activeTriggersCount == totalTriggersCount)
         {
             openDoor();
