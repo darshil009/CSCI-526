@@ -7,12 +7,15 @@ public class platformMoveVertical : MonoBehaviour
     private Vector3 target;
     private Vector3 startPos;
 
+    [SerializeField] private bool posDirection = true;
+    [SerializeField] private float distance = 7.97f;
+
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Vertical");
         startPos = transform.position;
-        target = new Vector3(transform.position.x, transform.position.y + 7.97f, transform.position.z);
+        target = new Vector3(transform.position.x, transform.position.y + (posDirection ? 1 : -1) * distance, transform.position.z);
     }
 
     // Update is called once per frame
