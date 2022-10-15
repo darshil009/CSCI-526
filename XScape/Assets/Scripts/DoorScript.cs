@@ -5,8 +5,8 @@ using UnityEngine;
 public class DoorScript : MonoBehaviour
 {
 
-    private int totalTriggersCount;
-    private int activeTriggersCount = 0;
+    private static int totalTriggersCount;
+    public static int activeTriggersCount = 0;
     private bool isDoorOpen = false;
 
      
@@ -14,7 +14,6 @@ public class DoorScript : MonoBehaviour
     void Start()
     {
         totalTriggersCount = GameObject.FindGameObjectsWithTag("Trigger").Length;
-        activeTriggersCount = 0;
     }
 
     // Update is called once per frame
@@ -24,8 +23,11 @@ public class DoorScript : MonoBehaviour
     }
 
     public void countActiveTriggers(int add){
+        Debug.Log("Active Trigger Count ===>>>>>>>" + activeTriggersCount);
         activeTriggersCount += add;
-        if(add == +1 && activeTriggersCount == totalTriggersCount){
+        Debug.Log("Active Trigger Count after===>>>>>>>" + activeTriggersCount);
+        if (add == +1 && activeTriggersCount == totalTriggersCount)
+        {
             openDoor();
         }else if(add == -1 && activeTriggersCount == totalTriggersCount-1){
             closeDoor();

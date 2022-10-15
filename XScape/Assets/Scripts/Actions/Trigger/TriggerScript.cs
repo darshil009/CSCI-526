@@ -43,11 +43,12 @@ public class TriggerScript : MonoBehaviour
         
     }
 
-    private void activateTrigger(){
+    public void activateTrigger(){
         triggerActiveEvent.Invoke();
         isActive = true;
         GetComponent<Renderer>().material = triggerActiveMat;
     }
+
 
     private void deActivateTrigger(){
         triggerInActiveEvent.Invoke();
