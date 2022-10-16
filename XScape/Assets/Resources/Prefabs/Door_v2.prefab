@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4062117044609957096}
   - component: {fileID: 7945217919086704820}
+  - component: {fileID: 3973158500779845541}
   m_Layer: 0
   m_Name: Door_v2
   m_TagString: Untagged
@@ -47,6 +48,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerList: []
   DURATION: 1
+--- !u!65 &3973158500779845541
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833386311126121872}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.1656096, z: 1.2367893}
+  m_Center: {x: 0, y: -0.10108709, z: 0.014697457}
 --- !u!1001 &3824497336270599896
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DoorScript_v2 : MonoBehaviour
 {
@@ -51,14 +52,23 @@ public class DoorScript_v2 : MonoBehaviour
         
     }
 
-     public void addActiveTriggers(){
+    public void OnTriggerEnter(Collider other){
+        if(other.CompareTag("Player")){
+            Debug.Log("DOOR V2: Level Complete");
+            SceneManager.LoadScene("LevelComplete", LoadSceneMode.Additive);
+        }
+    }
+
+    
+    public void addActiveTriggers(){
         activeTriggersCount += 1;
         if(activeTriggersCount == triggerList.Count){
             OperateDoor();
         }
 
     }
-     public void subtractActiveTriggers(){
+    
+    public void subtractActiveTriggers(){
         activeTriggersCount += -1;
         if(activeTriggersCount == triggerList.Count-1){
             OperateDoor();
