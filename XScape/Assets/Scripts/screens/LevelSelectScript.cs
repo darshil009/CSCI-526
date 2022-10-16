@@ -22,5 +22,6 @@ public class LevelSelectScript : MonoBehaviour
             levelString+="0";
         levelString+=level.ToString();
         SceneManager.LoadScene(levelString);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
