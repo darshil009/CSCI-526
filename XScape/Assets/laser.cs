@@ -28,6 +28,7 @@ public class laser : MonoBehaviour
 
         if (hit.transform.tag == "MagnetBlock1")
         {
+            Debug.Log("here");
             if (isActive == false)
             {
                 var mb1 = GameObject.FindWithTag("MagnetBlock1");
@@ -35,6 +36,12 @@ public class laser : MonoBehaviour
                 isActive = true;
             }
 
+
+        }
+
+        else if (hit.transform.tag == "cap1")
+        {
+            
 
         }
 
