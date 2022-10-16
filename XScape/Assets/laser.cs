@@ -27,16 +27,9 @@ public class laser : MonoBehaviour
 
 
         if (hit.transform.tag == "MagnetBlock1")
-        {
-            Debug.Log("here");
-            if (isActive == false)
-            {
-                var mb1 = GameObject.FindWithTag("MagnetBlock1");
-                Destroy(mb1);
-                isActive = true;
-            }
-
-
+        {   
+            var mb1 = GameObject.FindWithTag("MagnetBlock1");
+            Destroy(mb1);
         }
 
         else if (hit.transform.tag == "cap1"  || hit.transform.tag == "vp")
