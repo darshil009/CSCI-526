@@ -9,6 +9,7 @@ public class LevelSelectScript : MonoBehaviour
     public int level;
     public Text levelText;
 
+    private string path="Final_Levels/";
     void Start()
     {
         levelText.text = level.ToString();
@@ -16,6 +17,10 @@ public class LevelSelectScript : MonoBehaviour
 
     public void OpenScene()
     {
-        SceneManager.LoadScene("L"+level.ToString());
+        string levelString="L";
+        if(level<10)
+            levelString+="0";
+        levelString+=level.ToString();
+        SceneManager.LoadScene(levelString);
     }
 }
