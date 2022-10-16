@@ -11,11 +11,15 @@ public class LevelComplete : MonoBehaviour
     public void playNextLevel(){
         Debug.Log(SceneManager.sceneCountInBuildSettings + ". " + SceneManager.GetActiveScene().buildIndex);
         if(SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings-1)
+        {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 
     public void replayLevel(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void openLevelSelect(){
