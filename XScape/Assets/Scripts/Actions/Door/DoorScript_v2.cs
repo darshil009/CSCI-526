@@ -53,8 +53,13 @@ public class DoorScript_v2 : MonoBehaviour
     }
 
     public void OnTriggerEnter(Collider other){
+        //Player completed level
         if(other.CompareTag("Player")){
             Debug.Log("DOOR V2: Level Complete");
+
+            //TODO : cursor control shouldnt be in door, change this later
+            Cursor.lockState = CursorLockMode.None;
+
             SceneManager.LoadScene("LevelComplete", LoadSceneMode.Additive);
         }
     }
