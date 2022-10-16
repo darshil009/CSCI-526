@@ -44,9 +44,13 @@ public class MagnetButtonController : MonoBehaviour
         meshRenderer.material = inactiveMaterial;
         foreach (Rigidbody rigidbody in blocksRigidBodies)
         {
-            rigidbody.useGravity = true;
-            rigidbody.velocity = Vector3.zero;
-            rigidbody.angularVelocity = Vector3.zero;
+            if (rigidbody != null)
+            {
+                rigidbody.useGravity = true;
+                rigidbody.velocity = Vector3.zero;
+                rigidbody.angularVelocity = Vector3.zero;
+            }
+                
         }
     }
     void Update()
@@ -80,8 +84,12 @@ public class MagnetButtonController : MonoBehaviour
         {
             foreach (Rigidbody rigidbody in blocksRigidBodies)
             {
-                rigidbody.useGravity = false;
-                rigidbody.AddForce(transform.forward * forceStrength * Time.deltaTime, ForceMode.VelocityChange);
+                if (rigidbody != null)
+                {
+                    rigidbody.useGravity = false;
+                    rigidbody.AddForce(transform.forward * forceStrength * Time.deltaTime, ForceMode.VelocityChange);
+                }
+                    
             }
 
         }
