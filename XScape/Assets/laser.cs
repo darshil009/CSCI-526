@@ -6,6 +6,7 @@ public class laser : MonoBehaviour
 {
     private LineRenderer lr;
     [SerializeField] private Transform startPoint;
+    [SerializeField] private Transform endPoint;
     [SerializeField] private GameObject explosionPrefab;
 
     public static bool isActive;
@@ -31,7 +32,12 @@ public class laser : MonoBehaviour
             }
             else if (hit.transform.CompareTag("cap1") || hit.transform.CompareTag("vp")) 
                 return;
-            lr.SetPosition(1, transform.forward * 5000);
+
+            else
+            {
+                lr.SetPosition(1, transform.forward * 5000);
+            }
+            
         }
     }
 }
