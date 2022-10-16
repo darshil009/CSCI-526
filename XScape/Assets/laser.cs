@@ -6,6 +6,8 @@ public class laser : MonoBehaviour
 {
     private LineRenderer lr;
     [SerializeField] private Transform startPoint;
+    [SerializeField] private GameObject explosionPrefab;
+
     public static bool isActive;
     // Start is called before the first frame update
     void Start()
@@ -20,33 +22,15 @@ public class laser : MonoBehaviour
         lr.SetPosition(0, startPoint.position);
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.forward, out hit))
-            if (hit.collider)
+        {
+            if (hit.collider) lr.SetPosition(1, hit.point);
+            if (hit.transform.CompareTag("MagnetBlock1"))
             {
-                lr.SetPosition(1, hit.point);
+                Instantiate(explosionPrefab, hit.transform.position, Quaternion.identity);
+                Destroy(hit.transform.gameObject);
             }
-
-
-        if (hit.transform.tag == "MagnetBlock1")
-        {   
-            var mb1 = GameObject.FindWithTag("MagnetBlock1");
-            Destroy(mb1);
-        }
-
-        else if (hit.transform.tag == "MagnetBlock2")
-        {
-            var mb1 = GameObject.FindWithTag("MagnetBlock2");
-            Destroy(mb1);
-        }
-
-        else if (hit.transform.tag == "cap1"  || hit.transform.tag == "vp")
-        {
-            
-
-        }
-
-
-        else
-        {
+            else if (hit.transform.CompareTag("cap1") || hit.transform.CompareTag("vp")) 
+                return;
             lr.SetPosition(1, transform.forward * 5000);
         }
     }
