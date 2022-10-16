@@ -39,7 +39,7 @@ public class laser : MonoBehaviour
 
         }
 
-        else if (hit.transform.tag == "cap1")
+        else if (hit.transform.tag == "cap1"  || hit.transform.tag == "vp")
         {
             
 
