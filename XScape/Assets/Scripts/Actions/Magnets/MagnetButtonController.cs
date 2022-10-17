@@ -87,7 +87,7 @@ public class MagnetButtonController : MonoBehaviour
                 if (rigidbody != null)
                 {
                     rigidbody.useGravity = false;
-                    rigidbody.AddForce(transform.forward * forceStrength * Time.deltaTime, ForceMode.VelocityChange);
+                    rigidbody.AddForce(transform.forward * forceStrength * Time.deltaTime*50-rigidbody.velocity, ForceMode.VelocityChange);
                 }
                     
             }
