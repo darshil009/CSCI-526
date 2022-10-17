@@ -25,7 +25,7 @@ public class laser : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
             if (hit.collider) lr.SetPosition(1, hit.point);
-            if (hit.transform.CompareTag("MagnetBlock1"))
+            if (hit.transform.CompareTag("MagnetBlock") || hit.transform.CompareTag("MagnetBlock1"))
             {
                 Instantiate(explosionPrefab, hit.transform.position, Quaternion.identity);
                 Destroy(hit.transform.gameObject);
@@ -35,7 +35,7 @@ public class laser : MonoBehaviour
 
             else
             {
-                lr.SetPosition(1, transform.forward * 5000);
+                lr.SetPosition(1, endPoint.position);
             }
             
         }
