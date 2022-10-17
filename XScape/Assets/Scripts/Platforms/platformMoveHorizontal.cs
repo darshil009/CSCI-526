@@ -21,19 +21,7 @@ public class platformMoveHorizontal : MonoBehaviour
 
     private void OnMouseDown()
     {
-
-
-        Vector3 a = transform.position;
-        Vector3 b = target;
-        //Vector3 b = target.position;
-        if (b == startPos)
-        {
-            transform.DetachChildren();
-        }
-        transform.position = b;
-        //target.position = a;
-        target = a;
-
+        
     }
     private void OnCollisionEnter(Collision collision)
     {
