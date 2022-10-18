@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
+    private bool GameIsPaused = false;
+    public List<GameObject> disableItems; 
 
     public GameObject pauseMenuUI;
 
@@ -28,29 +29,37 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
+        //Time.timeScale = 1f;
         GameIsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
+        foreach (var obj in disableItems)
+        {
+            obj.SetActive(true);
+        }
     }
 
     void Pause()
     {
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         GameIsPaused = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        //Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
+        foreach (var obj in disableItems)
+        {
+            obj.SetActive(false);
+        }
     }
 
     public void replayLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Cursor.lockState = CursorLockMode.Locked;
-        Time.timeScale = 1f;
     }
 
     public void openLevelSelect()
     {
         SceneManager.LoadScene("LevelSelect");
-        Time.timeScale = 1f;
     }
 }
