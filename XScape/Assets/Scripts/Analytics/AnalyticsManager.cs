@@ -5,8 +5,9 @@ using UnityEngine.Analytics;
 
 public class AnalyticsManager
 {
-
+    int level;
     private static AnalyticsManager instance;
+    // Restart res;
 
     // public void Reset(int curLevel)
     // {
@@ -26,7 +27,7 @@ public class AnalyticsManager
             //         break;
             //     }
             
-            // default: break;
+            default: break;
         }
 
     }
@@ -35,6 +36,8 @@ public class AnalyticsManager
     {
         Debug.Log("Publishing");
         IDictionary<string, string> analytics = new Dictionary<string, string>();
+        // analytics.Add("restarts", restart_count.ToString());
+        // analytics.Add("level", level.ToString());
         // analytics.Add("level", level.ToString());
         
         
