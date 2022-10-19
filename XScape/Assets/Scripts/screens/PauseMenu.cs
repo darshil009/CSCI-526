@@ -13,6 +13,12 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             if (GameIsPaused)
