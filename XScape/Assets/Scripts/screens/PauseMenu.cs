@@ -36,7 +36,7 @@ public class PauseMenu : MonoBehaviour
     {
         print("Hi");
         pauseMenuUI.SetActive(false);
-        //Time.timeScale = 1f;
+        Time.timeScale = 1f;
         GameIsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
         foreach (var obj in disableItems)
@@ -49,9 +49,9 @@ public class PauseMenu : MonoBehaviour
     {
         print("Hello");
         pauseMenuUI.SetActive(true);
-        //Time.timeScale = 0f;
+        Time.timeScale = 0f;
         GameIsPaused = true;
-        //Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.Confined;
         Cursor.lockState = CursorLockMode.None;
         foreach (var obj in disableItems)
         {
