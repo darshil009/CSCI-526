@@ -62,12 +62,14 @@ public class PauseMenu : MonoBehaviour
     public void replayLevel()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void openLevelSelect()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("LevelSelect");
     }
 }
