@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -287,6 +287,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &153791096 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 46195018616728522, guid: 0a91f5c8b31704d588ff3ee271554a59, type: 3}
+  m_PrefabInstance: {fileID: 6853142477090702605}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &278246547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,7 +1096,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7cb4edc465e47f397adf7f051ac948, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  disableItems: []
+  disableItems:
+  - {fileID: 153791096}
+  - {fileID: 1648443506}
+  - {fileID: 1609171098}
   pauseMenuUI: {fileID: 2067236133}
 --- !u!114 &707583341
 MonoBehaviour:
@@ -1939,6 +1947,16 @@ CanvasRenderer:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7993448355615031863, guid: 35d5c5867f48d48f2b0a5431c34b6b7c, type: 3}
   m_PrefabInstance: {fileID: 6853142475519677629}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1609171098 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5753539481276443559, guid: 0a91f5c8b31704d588ff3ee271554a59, type: 3}
+  m_PrefabInstance: {fileID: 6853142477090702605}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1648443506 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2701783703733515782, guid: 0a91f5c8b31704d588ff3ee271554a59, type: 3}
+  m_PrefabInstance: {fileID: 6853142477090702605}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1732063952
 GameObject:
