@@ -29,6 +29,8 @@ public class PauseMenu : MonoBehaviour
             int platformClick1 = platformMove.movingPlatformClick;
             string levelName1 = StarterAssets.FirstPersonController.sceneName;
             StartCoroutine(sg.Post1(levelName1, magnetClick1, platformClick1));
+            string sessionid = StarterAssets.FirstPersonController.sess_id;
+            StartCoroutine(sg.Post3(sessionid, levelName));
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -86,6 +88,8 @@ public class PauseMenu : MonoBehaviour
         string levelName = StarterAssets.FirstPersonController.sceneName;
         Debug.Log("here------>>>" + levelName);
         StartCoroutine(sg.Post2(levelName, "quit"));
+        string sessionid = StarterAssets.FirstPersonController.sess_id;
+        StartCoroutine(sg.Post3(sessionid, levelName));
         Time.timeScale = 1f;
         SceneManager.LoadScene("LevelSelect");
     }

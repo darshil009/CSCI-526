@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
+using System;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 
 #endif
@@ -85,6 +86,12 @@ namespace StarterAssets
 
         Scene m_Scene;
         public static string sceneName;
+        public static string sess_id;
+        private static DateTime JanFirst1970 = new DateTime(1970, 1, 1);
+        public static string getTime()
+        {
+            return ((long)((DateTime.Now.ToUniversalTime() - JanFirst1970).TotalMilliseconds + 0.5)).ToString();
+        }
 
         private bool IsCurrentDeviceMouse
 		{
@@ -105,9 +112,24 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
-		}
+            if (PlayerPrefs.HasKey("sessionId"))
+            {
+                sess_id = PlayerPrefs.GetString("sessionId");
+                Debug.Log("inside if ..." + sess_id);
 
-		private void Start()
+            }
+            else
+            {
+                sess_id = getTime();
+
+                PlayerPrefs.SetString("sessionId", sess_id);
+                PlayerPrefs.Save();
+                Debug.Log("Inside else..." + sess_id);
+            }
+
+        }
+
+        private void Start()
 		{
 
 			SensitivityText = GameObject.Find("Crosshair").transform.Find("SensitivityText").GetComponent<TextMeshProUGUI>();
