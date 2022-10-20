@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -630,7 +630,7 @@ PrefabInstance:
       objectReference: {fileID: 1781252906}
     - target: {fileID: 482266850509595714, guid: 7e363f6d46d664a20affcb5d3e35753c, type: 3}
       propertyPath: m_VersionIndex
-      value: 79
+      value: 82
       objectReference: {fileID: 0}
     - target: {fileID: 960342478822396103, guid: 7e363f6d46d664a20affcb5d3e35753c, type: 3}
       propertyPath: m_Mesh
@@ -645,6 +645,10 @@ PrefabInstance:
       value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1901752714530902426, guid: 7e363f6d46d664a20affcb5d3e35753c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901752714530902426, guid: 7e363f6d46d664a20affcb5d3e35753c, type: 3}
       propertyPath: stepDistance
       value: 10
       objectReference: {fileID: 0}
@@ -652,7 +656,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1901752714530902426, guid: 7e363f6d46d664a20affcb5d3e35753c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7e363f6d46d664a20affcb5d3e35753c, type: 3}
 --- !u!43 &456091363
 Mesh:
@@ -4174,6 +4179,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &638388475 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3841614570173759928, guid: 7e363f6d46d664a20affcb5d3e35753c, type: 3}
+  m_PrefabInstance: {fileID: 451839665}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &638388476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638388475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a06f635447dcf460f9654e60d3603c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XAxis: 0
+  YAxis: 0
+  ZAxis: -1
+  stepDistance: 10
+  steps: 2
+  speed: 5
+  checkhorizontalplatform7: 0
 --- !u!1 &664484390
 GameObject:
   m_ObjectHideFlags: 0
@@ -4378,7 +4407,7 @@ PrefabInstance:
       objectReference: {fileID: 1576623050}
     - target: {fileID: 482266850509595714, guid: 7e363f6d46d664a20affcb5d3e35753c, type: 3}
       propertyPath: m_VersionIndex
-      value: 265
+      value: 268
       objectReference: {fileID: 0}
     - target: {fileID: 960342478822396103, guid: 7e363f6d46d664a20affcb5d3e35753c, type: 3}
       propertyPath: m_Mesh
@@ -4391,6 +4420,10 @@ PrefabInstance:
     - target: {fileID: 1901752714530902426, guid: 7e363f6d46d664a20affcb5d3e35753c, type: 3}
       propertyPath: YAxis
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1901752714530902426, guid: 7e363f6d46d664a20affcb5d3e35753c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1901752714530902426, guid: 7e363f6d46d664a20affcb5d3e35753c, type: 3}
       propertyPath: stepDistance
@@ -4444,7 +4477,8 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: -0.03366447
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1901752714530902426, guid: 7e363f6d46d664a20affcb5d3e35753c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7e363f6d46d664a20affcb5d3e35753c, type: 3}
 --- !u!114 &706000733 stripped
 MonoBehaviour:
@@ -4811,7 +4845,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh101074
+  m_Name: pb_Mesh26654
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5104,6 +5138,30 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292700042}
   m_CullTransparentMesh: 1
+--- !u!1 &1375622651 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3841614570173759928, guid: 7e363f6d46d664a20affcb5d3e35753c, type: 3}
+  m_PrefabInstance: {fileID: 669483601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1375622652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375622651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3b87469c56249f7afa09df6359edbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  XAxis: 0
+  YAxis: 1
+  ZAxis: 0
+  stepDistance: 16
+  steps: 2
+  speed: 5
+  checkverticalplatform7: 0
 --- !u!1001 &1399782531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5309,7 +5367,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-132738
+  m_Name: pb_Mesh34648
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10685,7 +10743,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-132678
+  m_Name: pb_Mesh34596
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
