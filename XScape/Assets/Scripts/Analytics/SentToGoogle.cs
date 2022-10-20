@@ -12,6 +12,8 @@ public class SentToGoogle
     [SerializeField] private string URL3 = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfLi1RAnN2vBx2Mytxr3-fujXBxk4WwX84F5UlBWxNTvSI8Fg/formResponse";
     [SerializeField] private string URL4 = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScC-ItNJBIiz8qOD-bbL0dWcqIGQa_6YW0Fnz84anX2L1xNMg/formResponse";
 
+    [SerializeField] private string URL5 = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSeNoPfA6mWLprE7U-xuUCevBubR5ilD00b9sAiNoEM9wt0x2w/formResponse";
+
     // public void Send(string level, float timeLost, float healthLost)
     // {
     //     // Debug.Log("checking........." + " level: " + level + " timeLost: " + timeLost + " health: " + healthLost);
@@ -123,7 +125,7 @@ public class SentToGoogle
     }
 
 
-    public IEnumerator Post4(string level, string totalTimeTaken) // string level, string session
+    public IEnumerator Post4(string level, string totalTimeTaken) // string level, string total time taken
     {
         WWWForm form = new WWWForm();
         form.AddField("entry.897732532", level);
@@ -144,6 +146,30 @@ public class SentToGoogle
         }
 
     }
+
+
+        public IEnumerator Post5(string levelName, string numActivatedTriggers,string data) // string level, string total time taken
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("entry.897732532", levelName);
+        form.AddField("entry.1380655407",numActivatedTriggers);
+        form.AddField("entry.1526511764",data);
+
+        using (UnityWebRequest www = UnityWebRequest.Post(URL5, form))
+        {
+            yield return www.SendWebRequest();
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log("Form upload complete!");
+            }
+        }
+
+    }
+
 
 
     // Start is called before the first frame update

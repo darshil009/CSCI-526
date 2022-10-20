@@ -10,7 +10,7 @@ public class DoorScript_v2 : MonoBehaviour
 
     private Transform slidingDoor;
     private Transform frame;
-    private SentToGoogle sg;
+    private SentToGoogle sg = new SentToGoogle();
     private int activeTriggersCount = 0;
     private bool isDoorOpen = false;
 
@@ -23,7 +23,16 @@ public class DoorScript_v2 : MonoBehaviour
 
     private float startTime;
 
+    // private string levelSessionId = System.Guid.NewGuid().ToString();
+    private int numActivatedTriggers=0;
     private void OnEnable(){
+        if(!TriggerActivations.levelName.Equals("DUMMY"))
+        {
+            StartCoroutine(sg.Post5(TriggerActivations.levelName,TriggerActivations.triggerActiveCount.ToString(),"INCOMPLETE"));
+        }
+        TriggerActivations.reset();
+        TriggerActivations.levelName =  SceneManager.GetActiveScene().name;
+
         foreach(TriggerScript triggerScript in triggerList){
             triggerScript.triggerActiveSub += addActiveTriggers;
             triggerScript.triggerInActiveSub += subtractActiveTriggers;
@@ -31,8 +40,9 @@ public class DoorScript_v2 : MonoBehaviour
         
     }
 
-    private void OnDisable() {
 
+    private void OnDisable() {
+        Debug.Log("Disable "+triggerList.Count+ " "+activeTriggersCount);
         foreach(TriggerScript triggerScript in triggerList){
             triggerScript.triggerActiveSub -= addActiveTriggers;
             triggerScript.triggerInActiveSub -= subtractActiveTriggers;
@@ -42,7 +52,6 @@ public class DoorScript_v2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sg = new SentToGoogle();
         activeTriggersCount = 0;
         slidingDoor = this.transform.Find(SLIDING_DOOR);
         frame = this.transform.Find(FRAME);
@@ -68,16 +77,19 @@ public class DoorScript_v2 : MonoBehaviour
             StartCoroutine(sg.Post3(sessionid, levelName));
             StartCoroutine(sg.Post4(levelName,(Time.time-startTime).ToString()));
             Debug.Log("DOOR V2: Level Complete");
-
             //TODO : cursor control shouldnt be in door, change this later
-            Cursor.lockState = CursorLockMode.None;
 
+             StartCoroutine(sg.Post5(TriggerActivations.levelName,TriggerActivations.triggerActiveCount.ToString(),"COMPLETE"));
+            TriggerActivations.reset();
+
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene("LevelComplete", LoadSceneMode.Additive);
         }
     }
 
     
     public void addActiveTriggers(){
+        TriggerActivations.triggerActiveCount++;
         activeTriggersCount += 1;
         if(activeTriggersCount == triggerList.Count){
             OperateDoor();
