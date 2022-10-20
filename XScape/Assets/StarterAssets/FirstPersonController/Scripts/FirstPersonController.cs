@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.UI;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 
 #endif
@@ -23,11 +24,11 @@ namespace StarterAssets
 		[Tooltip("Rotation speed of the character")]
 		public float RotationSpeed = 1.0f;
 		[Tooltip("Rotation speed of the character for WebGL Builds")]
-		public float webglRotationSpeed = 0.2f;
+		public int webglRotationSpeed = 2;
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
 
-		private TextMeshPro SensitivityText;
+		private TextMeshProUGUI SensitivityText;
 
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
@@ -108,7 +109,8 @@ namespace StarterAssets
 
 		private void Start()
 		{
-			SensitivityText = GameObject.Find("SensitivityText");
+
+			SensitivityText = GameObject.Find("Crosshair").transform.Find("SensitivityText").GetComponent<TextMeshProUGUI>();
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -120,13 +122,8 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
-			
-			if (Application.platform == RuntimePlatform.WebGLPlayer)
-			{
-				RotationSpeed = webglRotationSpeed;
-			}
 
-            m_Scene = SceneManager.GetActiveScene();
+			m_Scene = SceneManager.GetActiveScene();
             sceneName = m_Scene.name;
             Debug.Log(sceneName);
         }
@@ -141,33 +138,42 @@ namespace StarterAssets
 		}
 
 		private void ChangeSensitivity()
-        {
-			if (Input.GetKeyDown(KeyCode.Plus))
-            {
-				webglRotationSpeed += 0.1f;
+		{
 
+			float before = webglRotationSpeed;
+			if (Input.GetKeyDown(KeyCode.Equals))
+            {
+				webglRotationSpeed += 1;
+				FixRotationSpeed();
+				if (before == webglRotationSpeed) return;
 				StartCoroutine(displaySensitivity());
             }
 			else if (Input.GetKeyDown(KeyCode.Minus))
             {
-				webglRotationSpeed -= 0.1f;
+				webglRotationSpeed -= 1;
+				Debug.Log("Decrease");
+				FixRotationSpeed();
+				if (before == webglRotationSpeed) return;
 				StartCoroutine(displaySensitivity());
 			}
-
-			if (webglRotationSpeed < 0.2f)
-            {
-				webglRotationSpeed = 0.2f;
-            }
-
-			if (webglRotationSpeed > 1.5f)
+			
+			if (Application.platform == RuntimePlatform.WebGLPlayer)
 			{
-				webglRotationSpeed = 1.5f;
+				RotationSpeed = webglRotationSpeed/10.0f;
 			}
+
+			
+        }
+
+		private void FixRotationSpeed()
+		{
+			if (webglRotationSpeed < 2) webglRotationSpeed = 2;
+			if (webglRotationSpeed > 15) webglRotationSpeed = 15;
 		}
 
 		private IEnumerator displaySensitivity()
         {
-			SensitivityText.text = "Current sensitivity: " + webglRotationSpeed.ToString();
+			SensitivityText.text = "Current sensitivity: " + webglRotationSpeed;
 			yield return new WaitForSeconds(1);
 			SensitivityText.text = "";
 		}
