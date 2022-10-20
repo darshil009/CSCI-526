@@ -61,6 +61,8 @@ public class DoorScript_v2 : MonoBehaviour
             string levelName = StarterAssets.FirstPersonController.sceneName;
             StartCoroutine(sg.Post1(levelName, magnetClick1, platformClick1));
             StartCoroutine(sg.Post2(levelName, "Completed"));
+            string sessionid = StarterAssets.FirstPersonController.sess_id;
+            StartCoroutine(sg.Post3(sessionid, levelName));
             Debug.Log("DOOR V2: Level Complete");
 
             //TODO : cursor control shouldnt be in door, change this later
