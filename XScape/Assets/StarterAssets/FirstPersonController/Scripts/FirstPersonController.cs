@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
-#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System.Collections;
+#if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
+
 #endif
 
 namespace StarterAssets
@@ -23,6 +26,8 @@ namespace StarterAssets
 		public float webglRotationSpeed = 0.2f;
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
+
+		private TextMeshPro SensitivityText;
 
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
@@ -103,6 +108,7 @@ namespace StarterAssets
 
 		private void Start()
 		{
+			SensitivityText = GameObject.Find("SensitivityText");
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -130,6 +136,40 @@ namespace StarterAssets
 			JumpAndGravity();
 			GroundedCheck();
 			Move();
+			ChangeSensitivity();
+			
+		}
+
+		private void ChangeSensitivity()
+        {
+			if (Input.GetKeyDown(KeyCode.Plus))
+            {
+				webglRotationSpeed += 0.1f;
+
+				StartCoroutine(displaySensitivity());
+            }
+			else if (Input.GetKeyDown(KeyCode.Minus))
+            {
+				webglRotationSpeed -= 0.1f;
+				StartCoroutine(displaySensitivity());
+			}
+
+			if (webglRotationSpeed < 0.2f)
+            {
+				webglRotationSpeed = 0.2f;
+            }
+
+			if (webglRotationSpeed > 1.5f)
+			{
+				webglRotationSpeed = 1.5f;
+			}
+		}
+
+		private IEnumerator displaySensitivity()
+        {
+			SensitivityText.text = "Current sensitivity: " + webglRotationSpeed.ToString();
+			yield return new WaitForSeconds(1);
+			SensitivityText.text = "";
 		}
 
 		private void LateUpdate()
