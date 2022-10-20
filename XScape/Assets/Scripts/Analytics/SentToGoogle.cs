@@ -132,7 +132,7 @@ public class SentToGoogle
         form.AddField("entry.1380655407",totalTimeTaken);
 
 
-        using (UnityWebRequest www = UnityWebRequest.Post(URL3, form))
+        using (UnityWebRequest www = UnityWebRequest.Post(URL4, form))
         {
             yield return www.SendWebRequest();
             if (www.result != UnityWebRequest.Result.Success)
