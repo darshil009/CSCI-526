@@ -12,7 +12,7 @@ public class CameraManager : MonoBehaviour
     private int activeCamera = 1;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         
     }
@@ -24,20 +24,19 @@ public class CameraManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             activeCamera = 1 - activeCamera;
-            if (activeCamera == 0)
-            {
-                firstPersonCamera.gameObject.SetActive(false);
-                thirdPersonCamera.gameObject.SetActive(true);
-                mainCamera.cullingMask |= (1 << LayerMask.NameToLayer("Player"));
-            }
-            else
-            {
-                thirdPersonCamera.gameObject.SetActive(false);
-                firstPersonCamera.gameObject.SetActive(true);
-                mainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("Player"));
+        }
+        if (activeCamera == 0)
+        {
+            firstPersonCamera.gameObject.SetActive(false);
+            thirdPersonCamera.gameObject.SetActive(true);
+            mainCamera.cullingMask |= (1 << LayerMask.NameToLayer("Player"));
+        }
+        else
+        {
+            thirdPersonCamera.gameObject.SetActive(false);
+            firstPersonCamera.gameObject.SetActive(true);
+            mainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("Player"));
                 
-            }
-            
         }
         
     }
