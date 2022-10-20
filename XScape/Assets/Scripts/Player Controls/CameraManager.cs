@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
 
+    [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject firstPersonCamera;
     [SerializeField] private GameObject thirdPersonCamera;
 
@@ -27,11 +28,14 @@ public class CameraManager : MonoBehaviour
             {
                 firstPersonCamera.gameObject.SetActive(false);
                 thirdPersonCamera.gameObject.SetActive(true);
+                mainCamera.cullingMask |= (1 << LayerMask.NameToLayer("Player"));
             }
             else
             {
                 thirdPersonCamera.gameObject.SetActive(false);
                 firstPersonCamera.gameObject.SetActive(true);
+                mainCamera.cullingMask &= ~(1 << LayerMask.NameToLayer("Player"));
+                
             }
             
         }
