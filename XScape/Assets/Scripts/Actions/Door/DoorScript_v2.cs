@@ -21,6 +21,8 @@ public class DoorScript_v2 : MonoBehaviour
     private float SLIDE_DISTANCE_Z = 1.26f;
     public float DURATION = 1;
 
+    private float startTime;
+
     private void OnEnable(){
         foreach(TriggerScript triggerScript in triggerList){
             triggerScript.triggerActiveSub += addActiveTriggers;
@@ -45,6 +47,7 @@ public class DoorScript_v2 : MonoBehaviour
         slidingDoor = this.transform.Find(SLIDING_DOOR);
         frame = this.transform.Find(FRAME);
         closePosition = slidingDoor.localPosition;
+        startTime = Time.time;
     }
 
     // Update is called once per frame
@@ -63,6 +66,7 @@ public class DoorScript_v2 : MonoBehaviour
             StartCoroutine(sg.Post2(levelName, "Completed"));
             string sessionid = StarterAssets.FirstPersonController.sess_id;
             StartCoroutine(sg.Post3(sessionid, levelName));
+            StartCoroutine(sg.Post4(levelName,(Time.time-startTime).ToString()));
             Debug.Log("DOOR V2: Level Complete");
 
             //TODO : cursor control shouldnt be in door, change this later

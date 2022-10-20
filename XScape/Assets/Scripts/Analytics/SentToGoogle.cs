@@ -10,6 +10,7 @@ public class SentToGoogle
     [SerializeField] private string URL1 = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSedKF0pgUx4-PPkuv9LMHY7NMwwVqBCHmlaV3vcU33r7MMUUA/formResponse";
     [SerializeField] private string URL2 = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdSnww8TEMchcQ7LRontDMiwtbFSpzy7TjvKjBQTSVyzigBmQ/formResponse";
     [SerializeField] private string URL3 = "https://docs.google.com/forms/u/0/d/e/1FAIpQLSfLi1RAnN2vBx2Mytxr3-fujXBxk4WwX84F5UlBWxNTvSI8Fg/formResponse";
+    [SerializeField] private string URL4 = "https://docs.google.com/forms/u/0/d/e/1FAIpQLScC-ItNJBIiz8qOD-bbL0dWcqIGQa_6YW0Fnz84anX2L1xNMg/formResponse";
 
     // public void Send(string level, float timeLost, float healthLost)
     // {
@@ -104,6 +105,29 @@ public class SentToGoogle
         WWWForm form = new WWWForm();
         form.AddField("entry.233370001", sesionId);
         form.AddField("entry.86418165", level);
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post(URL3, form))
+        {
+            yield return www.SendWebRequest();
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log("Form upload complete!");
+            }
+        }
+
+    }
+
+
+    public IEnumerator Post4(string level, string totalTimeTaken) // string level, string session
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("entry.897732532", level);
+        form.AddField("entry.1380655407",totalTimeTaken);
 
 
         using (UnityWebRequest www = UnityWebRequest.Post(URL3, form))
