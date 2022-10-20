@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Restart : MonoBehaviour
 {
-
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))

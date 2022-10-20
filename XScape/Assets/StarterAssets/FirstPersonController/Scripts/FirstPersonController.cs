@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 #endif
 
 namespace StarterAssets
@@ -76,7 +77,10 @@ namespace StarterAssets
 
 		private const float _threshold = 0.01f;
 
-		private bool IsCurrentDeviceMouse
+        Scene m_Scene;
+        public static string sceneName;
+
+        private bool IsCurrentDeviceMouse
 		{
 			get
 			{
@@ -115,7 +119,11 @@ namespace StarterAssets
 			{
 				RotationSpeed = webglRotationSpeed;
 			}
-		}
+
+            m_Scene = SceneManager.GetActiveScene();
+            sceneName = m_Scene.name;
+            Debug.Log(sceneName);
+        }
 
 		private void Update()
 		{

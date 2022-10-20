@@ -10,7 +10,7 @@ public class DoorScript_v2 : MonoBehaviour
 
     private Transform slidingDoor;
     private Transform frame;
-
+    private SentToGoogle sg;
     private int activeTriggersCount = 0;
     private bool isDoorOpen = false;
 
@@ -40,6 +40,7 @@ public class DoorScript_v2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sg = new SentToGoogle();
         activeTriggersCount = 0;
         slidingDoor = this.transform.Find(SLIDING_DOOR);
         frame = this.transform.Find(FRAME);
@@ -55,6 +56,11 @@ public class DoorScript_v2 : MonoBehaviour
     public void OnTriggerEnter(Collider other){
         //Player completed level
         if(other.CompareTag("Player")){
+            int magnetClick1 = MagnetButtonController.magnetClick;
+            int platformClick1 = platformMove.movingPlatformClick;
+            string levelName = StarterAssets.FirstPersonController.sceneName;
+            StartCoroutine(sg.Post1(levelName, magnetClick1, platformClick1));
+            StartCoroutine(sg.Post2(levelName, "Completed"));
             Debug.Log("DOOR V2: Level Complete");
 
             //TODO : cursor control shouldnt be in door, change this later

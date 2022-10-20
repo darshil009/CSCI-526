@@ -7,7 +7,7 @@ public class MagnetButtonController : MonoBehaviour
     private bool isActive;
     [SerializeField] Material activeMaterial;
     [SerializeField] Material inactiveMaterial;
-
+    private SentToGoogle sg;
     [SerializeField] LayerMask magnetButtonMask;
 
     [SerializeField] private List<GameObject> magnetBlocks;
@@ -16,6 +16,14 @@ public class MagnetButtonController : MonoBehaviour
     [SerializeField] float forceStrength = 0.5f;
     [SerializeField] MagnetButtonManager magnetButtonManager;
     MeshRenderer meshRenderer;
+
+    public static int magnetClick;
+    private void Start()
+    {
+        magnetClick = 0;
+        sg = new SentToGoogle();
+    }
+
     private void Awake()
     {
         meshRenderer = GetComponent<MeshRenderer>();
@@ -30,6 +38,7 @@ public class MagnetButtonController : MonoBehaviour
 
     public void Activate()
     {
+        magnetClick += 1;
         // Debug.Log("Deactivating all");
         magnetButtonManager.DeactivateAll();
         this.isActive = true;

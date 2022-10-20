@@ -28,10 +28,11 @@ public class platformMove : MonoBehaviour
     private int _currentIndex = 0;
     private int _targetIndex = 0;
     private float _timeElapsed, _time;
-    
+    public static int movingPlatformClick;
     // Start is called before the first frame update
     void Start()
     {
+        movingPlatformClick = 0;
         _posArr = new Vector3[steps];
         GeneratePositions();
     }
@@ -72,6 +73,7 @@ public class platformMove : MonoBehaviour
     
     private void OnMouseDown()
     {
+        movingPlatformClick += 1;
         float pct = _timeElapsed / _time;
         pct = Mathf.SmoothStep(0, 1, pct);
         if (pct < 1)

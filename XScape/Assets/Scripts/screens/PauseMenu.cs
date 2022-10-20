@@ -6,15 +6,29 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     private bool GameIsPaused = false;
-    public List<GameObject> disableItems; 
+    public List<GameObject> disableItems;
+    private SentToGoogle sg;
 
     [SerializeField] GameObject pauseMenuUI;
+
+
+    void Start()
+    {
+
+        sg = new SentToGoogle();
+    }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
+            string levelName = StarterAssets.FirstPersonController.sceneName;
+            StartCoroutine(sg.Post2(levelName, "replay"));
+            int magnetClick1 = MagnetButtonController.magnetClick;
+            int platformClick1 = platformMove.movingPlatformClick;
+            string levelName1 = StarterAssets.FirstPersonController.sceneName;
+            StartCoroutine(sg.Post1(levelName1, magnetClick1, platformClick1));
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             Cursor.lockState = CursorLockMode.Locked;
         }
@@ -69,6 +83,9 @@ public class PauseMenu : MonoBehaviour
 
     public void openLevelSelect()
     {
+        string levelName = StarterAssets.FirstPersonController.sceneName;
+        Debug.Log("here------>>>" + levelName);
+        StartCoroutine(sg.Post2(levelName, "quit"));
         Time.timeScale = 1f;
         SceneManager.LoadScene("LevelSelect");
     }
