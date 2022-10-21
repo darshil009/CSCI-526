@@ -195,7 +195,7 @@ namespace StarterAssets
 
 		private IEnumerator displaySensitivity()
         {
-			SensitivityText.text = "Current sensitivity: " + webglRotationSpeed;
+			SensitivityText.text = "CURRENT SENSITIVITY: " + webglRotationSpeed;
 			yield return new WaitForSeconds(1);
 			SensitivityText.text = "";
 		}
