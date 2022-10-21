@@ -21,7 +21,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && !GameIsPaused)
         {
             string levelName = StarterAssets.FirstPersonController.sceneName;
             StartCoroutine(sg.Post2(levelName, "replay"));
