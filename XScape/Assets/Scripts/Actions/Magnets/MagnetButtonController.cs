@@ -38,17 +38,18 @@ public class MagnetButtonController : MonoBehaviour
 
     public void Activate()
     {
+        
         magnetClick += 1;
         // Debug.Log("Deactivating all");
         magnetButtonManager.DeactivateAll();
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("MagnetBlocks"));
         this.isActive = true;
         meshRenderer.material = activeMaterial;
-
-
     }
 
     public void Deactivate()
     {
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("MagnetBlocks"), false);
         this.isActive = false;
         meshRenderer.material = inactiveMaterial;
         foreach (Rigidbody rigidbody in blocksRigidBodies)
