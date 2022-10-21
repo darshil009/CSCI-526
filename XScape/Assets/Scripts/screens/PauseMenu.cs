@@ -90,6 +90,9 @@ public class PauseMenu : MonoBehaviour
         StartCoroutine(sg.Post2(levelName, "quit"));
         string sessionid = StarterAssets.FirstPersonController.sess_id;
         StartCoroutine(sg.Post3(sessionid, levelName));
+        int magnetClick1 = MagnetButtonController.magnetClick;
+        int platformClick1 = platformMove.movingPlatformClick;
+        StartCoroutine(sg.Post1(levelName, magnetClick1, platformClick1));
         Time.timeScale = 1f;
         SceneManager.LoadScene("LevelSelect");
     }
