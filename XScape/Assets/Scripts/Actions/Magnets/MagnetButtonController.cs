@@ -22,6 +22,7 @@ public class MagnetButtonController : MonoBehaviour
     {
         magnetClick = 0;
         sg = new SentToGoogle();
+        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("MagnetBlocks"), false);
     }
 
     private void Awake()
