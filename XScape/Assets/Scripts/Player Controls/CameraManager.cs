@@ -9,7 +9,7 @@ public class CameraManager : MonoBehaviour
     [SerializeField] private GameObject firstPersonCamera;
     [SerializeField] private GameObject thirdPersonCamera;
 
-    private int activeCamera = 1;
+    private static int activeCamera = 1;
     
     // Start is called before the first frame update
     void Awake()
