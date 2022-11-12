@@ -20,7 +20,7 @@ public class portalEntryExit : MonoBehaviour
       GameObject[] gameObjects;
       gameObjects = GameObject.FindGameObjectsWithTag(this.gameObject.tag);
 
-      Debug.Log(gameObjects);
+      // Debug.Log(gameObjects);
       
       if(this.gameObject.name=="portalEntry")
       {
