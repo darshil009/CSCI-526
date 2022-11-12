@@ -14,6 +14,14 @@ public class portalEntryExit : MonoBehaviour
 
     void Start()
     {
+
+      // Debug.Log(this.gameObject.tag);
+
+      GameObject[] gameObjects;
+      gameObjects = GameObject.FindGameObjectsWithTag(this.gameObject.tag);
+
+      Debug.Log(gameObjects);
+      
       if(this.gameObject.name=="portalEntry")
       {
         endPortal="portalExit";
@@ -23,9 +31,20 @@ public class portalEntryExit : MonoBehaviour
         endPortal="portalEntry";
       }
 
-        x1=GameObject.Find(endPortal).transform.position.x;
-        y1=GameObject.Find(endPortal).transform.position.y;
-        z1=GameObject.Find(endPortal).transform.position.z;
+      foreach (GameObject portal in gameObjects)
+      {
+        if(portal.name==endPortal)
+        {
+          x1=portal.transform.position.x;
+          y1=portal.transform.position.y;
+          z1=portal.transform.position.z;
+          break;
+        }
+      }
+
+        // x1=GameObject.Find(endPortal).transform.position.x;
+        // y1=GameObject.Find(endPortal).transform.position.y;
+        // z1=GameObject.Find(endPortal).transform.position.z;
         // x2,y2,z2=gameObject.Find("PortalExit").transform.position;
 
         val = (float)2.5;
