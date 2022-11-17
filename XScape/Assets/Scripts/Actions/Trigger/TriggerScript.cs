@@ -28,7 +28,7 @@ public class TriggerScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("trigger enter");
-        if(!isActive)
+        if(!isActive && other.CompareTag("MagnetBlock"))
             activateTrigger();
         
     }
@@ -36,7 +36,7 @@ public class TriggerScript : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         Debug.Log("trigger exit");
-        if(isActive)
+        if(isActive && other.CompareTag("MagnetBlock"))
             deActivateTrigger();
         
     }
