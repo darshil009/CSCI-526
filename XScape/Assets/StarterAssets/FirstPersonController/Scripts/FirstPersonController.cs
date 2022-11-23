@@ -327,8 +327,6 @@ namespace StarterAssets
 				animator.SetBool(Jump, false);
 				isJumping = false;
 				animator.SetBool(Falling, false);
-				//
-				// Debug.Log(isGrounded + " " + _verticalVelocity);
 
 				// Jump
 				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
