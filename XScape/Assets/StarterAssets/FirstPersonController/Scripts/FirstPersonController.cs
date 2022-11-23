@@ -30,6 +30,8 @@ namespace StarterAssets
 		public float SpeedChangeRate = 10.0f;
 
 		private TextMeshProUGUI SensitivityText;
+		[SerializeField] public Animator animator;
+		
 
 		[Space(10)]
 		[Tooltip("The height the player can jump")]
@@ -88,6 +90,12 @@ namespace StarterAssets
         public static string sceneName;
         public static string sess_id;
         private static DateTime JanFirst1970 = new DateTime(1970, 1, 1);
+        
+        
+        private static readonly int Jump = Animator.StringToHash("jump");
+        private static readonly int Vertical = Animator.StringToHash("vertical");
+        private static readonly int Horizontal = Animator.StringToHash("horizontal");
+
         public static string getTime()
         {
             return ((long)((DateTime.Now.ToUniversalTime() - JanFirst1970).TotalMilliseconds + 0.5)).ToString();
@@ -126,13 +134,14 @@ namespace StarterAssets
                 PlayerPrefs.Save();
                 Debug.Log("Inside else..." + sess_id);
             }
+            
 
         }
 
         private void Start()
-		{
+        {
 
-			SensitivityText = GameObject.Find("Crosshair").transform.Find("SensitivityText").GetComponent<TextMeshProUGUI>();
+	        SensitivityText = GameObject.Find("Crosshair").transform.Find("SensitivityText").GetComponent<TextMeshProUGUI>();
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -210,6 +219,7 @@ namespace StarterAssets
 			// set sphere position, with offset
 			Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
 			Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
+			animator.SetBool(Jump, !Grounded);
 		}
 
 		private void CameraRotation()
@@ -281,6 +291,11 @@ namespace StarterAssets
 
 			// move the player
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
+			float verticalAxis = Input.GetAxis("Vertical");
+			float horizontalAxis = Input.GetAxis("Horizontal");
+			
+			animator.SetFloat(Vertical, verticalAxis);
+			animator.SetFloat(Horizontal, horizontalAxis);
 		}
 
 		private void JumpAndGravity()
@@ -301,6 +316,7 @@ namespace StarterAssets
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+					
 				}
 
 				// jump timeout
