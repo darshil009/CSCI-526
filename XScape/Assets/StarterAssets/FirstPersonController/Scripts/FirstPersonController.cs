@@ -3,9 +3,7 @@ using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using UnityEngine.UI;
 using System;
-using UnityEditor.U2D.Sprites;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 
 #endif
