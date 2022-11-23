@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
 using System;
+using UnityEditor.U2D.Sprites;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 
 #endif
@@ -92,7 +93,14 @@ namespace StarterAssets
         private static DateTime JanFirst1970 = new DateTime(1970, 1, 1);
         
         
-        private static readonly int Jump = Animator.StringToHash("jump");
+        private static readonly int Jump = Animator.StringToHash("isJumping");
+        private static readonly int Moving = Animator.StringToHash("isMoving");
+        private static readonly int Ground = Animator.StringToHash("isGrounded");
+        private static readonly int Falling = Animator.StringToHash("isFalling");
+
+        private bool isJumping, isGrounded;
+        
+        
         private static readonly int Vertical = Animator.StringToHash("vertical");
         private static readonly int Horizontal = Animator.StringToHash("horizontal");
 
@@ -293,6 +301,9 @@ namespace StarterAssets
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 			float verticalAxis = Input.GetAxis("Vertical");
 			float horizontalAxis = Input.GetAxis("Horizontal");
+
+			if (Grounded && (verticalAxis != 0.0f || horizontalAxis != 0.0f)) animator.SetBool(Moving, true);
+			else animator.SetBool(Moving, false);
 			
 			animator.SetFloat(Vertical, verticalAxis);
 			animator.SetFloat(Horizontal, horizontalAxis);
@@ -310,13 +321,22 @@ namespace StarterAssets
 				{
 					_verticalVelocity = -2f;
 				}
+				
+				animator.SetBool(Ground, true);
+				isGrounded = true;
+				animator.SetBool(Jump, false);
+				isJumping = false;
+				animator.SetBool(Falling, false);
+				//
+				// Debug.Log(isGrounded + " " + _verticalVelocity);
 
 				// Jump
 				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-					
+					animator.SetBool(Jump, true);
+					isJumping = true;
 				}
 
 				// jump timeout
@@ -327,6 +347,16 @@ namespace StarterAssets
 			}
 			else
 			{
+				
+				animator.SetBool(Ground, false);
+				isGrounded = false;
+
+				if ((isJumping && _verticalVelocity < 0.0f) || _verticalVelocity < 2.0f)
+				{
+					animator.SetBool(Falling, true);
+					
+				}
+
 				// reset the jump timeout timer
 				_jumpTimeoutDelta = JumpTimeout;
 
@@ -344,6 +374,7 @@ namespace StarterAssets
 			if (_verticalVelocity < _terminalVelocity)
 			{
 				_verticalVelocity += Gravity * Time.deltaTime;
+				
 			}
 		}
 
