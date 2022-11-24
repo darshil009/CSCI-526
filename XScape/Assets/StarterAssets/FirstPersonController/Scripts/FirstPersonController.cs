@@ -22,9 +22,9 @@ namespace StarterAssets
 		[Tooltip("Sprint speed of the character in m/s")]
 		public float SprintSpeed = 6.0f;
 		[Tooltip("Rotation speed of the character")]
-		public float RotationSpeed = 1.0f;
+		public static float RotationSpeed = 1.0f;
 		[Tooltip("Rotation speed of the character for WebGL Builds")]
-		public int webglRotationSpeed = 2;
+		public static int webglRotationSpeed = 2;
 		[Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
 
@@ -188,7 +188,6 @@ namespace StarterAssets
 			else if (Input.GetKeyDown(KeyCode.Minus))
             {
 				webglRotationSpeed -= 1;
-				Debug.Log("Decrease");
 				FixRotationSpeed();
 				if (before == webglRotationSpeed) return;
 				StartCoroutine(displaySensitivity());
