@@ -30,7 +30,7 @@ public class laser : MonoBehaviour
                 Instantiate(explosionPrefab, hit.transform.position, Quaternion.identity);
                 Destroy(hit.transform.gameObject);
             }
-            else if (hit.transform.CompareTag("cap1") || hit.transform.CompareTag("vp")) 
+            else if (hit.transform.CompareTag("cap1") || hit.transform.CompareTag("vp") || hit.transform.CompareTag("NonMagnetBlock")) 
                 return;
 
             else
