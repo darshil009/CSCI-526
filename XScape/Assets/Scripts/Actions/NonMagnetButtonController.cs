@@ -31,7 +31,6 @@ public class NonMagnetButtonController : MonoBehaviour
         SetMaterialAll(inactiveMaterial);
     }
 
-    
     void Update()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -39,7 +38,7 @@ public class NonMagnetButtonController : MonoBehaviour
         ray.origin = Camera.main.transform.position;
         //  Debug.DrawRay(ray.origin,ray.direction*100,Color.green);
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             if (Physics.Raycast(ray.origin, ray.direction, out hit, 1000f, nonMagnetButtonMask))
             {
@@ -55,19 +54,17 @@ public class NonMagnetButtonController : MonoBehaviour
                     }
                 }
             }
+        }else{
+            isPushing = false;
+            SetMaterial(inactiveMaterial, directionToApplyForce);
+            directionToApplyForce = Vector3.zero;
         }
     }
 
     private void FixedUpdate(){
-       if(isPushing && timeCount < secondsToApplyForce){
+       if(isPushing)
             GetComponent<Rigidbody>().AddForce(directionToApplyForce * forceStrength * Time.deltaTime*500-GetComponent<Rigidbody>().velocity, ForceMode.VelocityChange);
-            timeCount++;
-       }else{
-            timeCount = 0;
-            isPushing = false;
-            SetMaterial(inactiveMaterial, directionToApplyForce);
-            directionToApplyForce = Vector3.zero;
-       }
+       
     }
 
     Vector3 GetHitFace(Vector3 incomingVec)
