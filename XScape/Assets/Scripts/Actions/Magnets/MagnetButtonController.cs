@@ -39,8 +39,8 @@ public class MagnetButtonController : MonoBehaviour
 
     public void Activate()
     {
-        audioData = GetComponent<AudioSource>();
-        audioData.Play(0);
+        //audioData = GetComponent<AudioSource>();
+        //audioData.Play(0);
         magnetClick += 1;
         // Debug.Log("Deactivating all");
         magnetButtonManager.DeactivateAll();
