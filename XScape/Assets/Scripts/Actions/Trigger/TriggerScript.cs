@@ -11,6 +11,7 @@ public class TriggerScript : MonoBehaviour
     public delegate void TriggerInActive();
     public event TriggerActive triggerActiveSub;
     public event TriggerInActive triggerInActiveSub;
+    AudioSource audioData;
 
     private bool isActive = false; 
     // Start is called before the first frame update
@@ -42,6 +43,8 @@ public class TriggerScript : MonoBehaviour
     }
 
     public void activateTrigger(){
+        audioData = GetComponent<AudioSource>();
+        audioData.Play(0);
         triggerActiveSub();
         isActive = true;
         GetComponent<Renderer>().material = triggerActiveMat;
