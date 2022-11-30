@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3409124478189597689}
   - component: {fileID: 6179741932392781238}
   - component: {fileID: 6060631465146501948}
+  - component: {fileID: 6449477989766118303}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Untagged
@@ -54,7 +55,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df7cb4a0ef2f64731953b140eb12caf8, type: 2}
+  - {fileID: 2100000, guid: 1a50fa8cbb17aa543aabffcb70b38dec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,8 +86,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0.015244838
-        value: 0.37499636
+        time: 0.047832742
+        value: 0.30603075
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -244,6 +245,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6449477989766118303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3043732476965420408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: d72803ef6f4af9f46aa69ba257810f40, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!1 &5899138855684647706
 GameObject:
   m_ObjectHideFlags: 0
