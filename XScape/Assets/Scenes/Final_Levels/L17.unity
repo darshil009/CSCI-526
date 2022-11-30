@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2336,7 +2336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6076659652910099359, guid: 64bba89c05e174195944a3816f5e8676, type: 3}
       propertyPath: m_text
-      value: Direct the blocks inside portals to see the magic!
+      value: Direct the blocks inside portals to teleport them!
       objectReference: {fileID: 0}
     - target: {fileID: 6076659653704710733, guid: 64bba89c05e174195944a3816f5e8676, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2920,6 +2920,22 @@ PrefabInstance:
     - target: {fileID: 2747052446029810818, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747052446029810818, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747052446029810818, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747052446029810818, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2747052446029810818, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_RootOrder
