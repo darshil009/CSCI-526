@@ -346,10 +346,14 @@ namespace StarterAssets
 				animator.SetBool(Ground, false);
 				isGrounded = false;
 
-				if ((isJumping && _verticalVelocity < 0.0f) || _verticalVelocity < 2.0f)
+				if (!Grounded && ((isJumping && _verticalVelocity < 0.0f) || _verticalVelocity < 2.0f))
 				{
 					animator.SetBool(Falling, true);
 					
+				}
+				else
+				{
+					animator.SetBool(Ground, true);
 				}
 
 				// reset the jump timeout timer
