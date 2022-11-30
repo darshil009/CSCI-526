@@ -353,6 +353,7 @@ namespace StarterAssets
 				}
 				else
 				{
+					animator.SetBool(Falling, false);
 					animator.SetBool(Ground, true);
 				}
 
