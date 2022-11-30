@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -77,13 +78,21 @@ public class DoorScript_v2 : MonoBehaviour
             StartCoroutine(sg.Post3(sessionid, levelName));
             StartCoroutine(sg.Post4(levelName,(Time.time-startTime).ToString()));
             Debug.Log("DOOR V2: Level Complete");
+            Debug.Log("levelName:");
+            Debug.Log(levelName);
             //TODO : cursor control shouldnt be in door, change this later
 
-             StartCoroutine(sg.Post5(TriggerActivations.levelName,TriggerActivations.triggerActiveCount.ToString(),"COMPLETE"));
+            StartCoroutine(sg.Post5(TriggerActivations.levelName,TriggerActivations.triggerActiveCount.ToString(),"COMPLETE"));
             TriggerActivations.reset();
 
             Cursor.lockState = CursorLockMode.None;
-            SceneManager.LoadScene("LevelComplete", LoadSceneMode.Additive);
+            if (string.Equals(levelName, "L22"))
+            {
+                SceneManager.LoadScene("LastLevelComplete", LoadSceneMode.Additive);
+            }
+            else{
+                SceneManager.LoadScene("LevelComplete", LoadSceneMode.Additive);
+            }
         }
     }
 
