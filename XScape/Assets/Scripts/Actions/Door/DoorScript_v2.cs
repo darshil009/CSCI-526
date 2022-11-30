@@ -20,7 +20,7 @@ public class DoorScript_v2 : MonoBehaviour
     private string FRAME = "Gate_Small/Frame";
     private float SLIDE_DISTANCE_Z = 1.26f;
     public float DURATION = 1;
-
+    AudioSource audioData;
     private float startTime;
 
     // private string levelSessionId = System.Guid.NewGuid().ToString();
@@ -109,8 +109,10 @@ public class DoorScript_v2 : MonoBehaviour
         StopAllCoroutines();
         if (!isDoorOpen)
         {
+            audioData = GetComponent<AudioSource>();
             Vector3 openPosition = closePosition + Vector3.forward * SLIDE_DISTANCE_Z;
             StartCoroutine(MoveDoor(openPosition));
+            audioData.Play(0);
         }
         else
         {

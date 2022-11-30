@@ -11,7 +11,7 @@ public class MagnetButtonController : MonoBehaviour
     [SerializeField] LayerMask magnetButtonMask;
 
     [SerializeField] private List<GameObject> magnetBlocks;
-
+    AudioSource audioData;
     private List<Rigidbody> blocksRigidBodies;
     [SerializeField] float forceStrength = 0.5f;
     [SerializeField] MagnetButtonManager magnetButtonManager;
@@ -39,7 +39,8 @@ public class MagnetButtonController : MonoBehaviour
 
     public void Activate()
     {
-        
+        audioData = GetComponent<AudioSource>();
+        audioData.Play(0);
         magnetClick += 1;
         // Debug.Log("Deactivating all");
         magnetButtonManager.DeactivateAll();
