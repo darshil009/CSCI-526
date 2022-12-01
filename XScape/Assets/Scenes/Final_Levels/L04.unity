@@ -1217,7 +1217,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh41844
+  m_Name: pb_Mesh37064
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1756,15 +1756,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.41
+      value: -10.85
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.79
+      value: -9.12
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -32.79
+      value: -21.19
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2795,6 +2795,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerActiveMat: {fileID: 2100000, guid: 37d6e8a02b9d4488bb3f321482c26e15, type: 2}
   triggerInActiveMat: {fileID: 2100000, guid: b9b0f0def41634cb9a2a48e7e6288c53, type: 2}
+  triggerActiveLightMat: {fileID: 0}
+  triggerInActiveLightMat: {fileID: 0}
 --- !u!82 &3301021225249336234
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2905,6 +2907,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerActiveMat: {fileID: 2100000, guid: 37d6e8a02b9d4488bb3f321482c26e15, type: 2}
   triggerInActiveMat: {fileID: 2100000, guid: b9b0f0def41634cb9a2a48e7e6288c53, type: 2}
+  triggerActiveLightMat: {fileID: 0}
+  triggerInActiveLightMat: {fileID: 0}
 --- !u!82 &3301021225383551600
 AudioSource:
   m_ObjectHideFlags: 0

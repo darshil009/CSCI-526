@@ -1483,7 +1483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.7
+      value: -7.15
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1491,23 +1491,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.54
+      value: -6.32
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.66638243
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.7456101
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1515,7 +1515,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -96.423
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -2733,6 +2733,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerActiveMat: {fileID: 2100000, guid: 37d6e8a02b9d4488bb3f321482c26e15, type: 2}
   triggerInActiveMat: {fileID: 2100000, guid: b9b0f0def41634cb9a2a48e7e6288c53, type: 2}
+  triggerActiveLightMat: {fileID: 0}
+  triggerInActiveLightMat: {fileID: 0}
 --- !u!114 &1589917044124256017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2747,6 +2749,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerActiveMat: {fileID: 2100000, guid: 37d6e8a02b9d4488bb3f321482c26e15, type: 2}
   triggerInActiveMat: {fileID: 2100000, guid: b9b0f0def41634cb9a2a48e7e6288c53, type: 2}
+  triggerActiveLightMat: {fileID: 0}
+  triggerInActiveLightMat: {fileID: 0}
 --- !u!65 &2441061790404145022
 BoxCollider:
   m_ObjectHideFlags: 0

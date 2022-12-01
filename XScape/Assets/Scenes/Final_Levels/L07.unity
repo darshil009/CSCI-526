@@ -400,6 +400,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 2.83
       objectReference: {fileID: 0}
+    - target: {fileID: 846629315642626179, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2747052446029810818, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -422,15 +426,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.0700006
+      value: 1.9700003
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.13
+      value: -3.6099997
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7119421
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalRotation.x
@@ -438,7 +442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.7022382
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalRotation.z
@@ -450,7 +454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -89.214
       objectReference: {fileID: 0}
     - target: {fileID: 2910729718043272673, guid: 9882ba07c6c8d4b22a3cbc7665aac419, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -6545,6 +6549,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerActiveMat: {fileID: 2100000, guid: 37d6e8a02b9d4488bb3f321482c26e15, type: 2}
   triggerInActiveMat: {fileID: 2100000, guid: b9b0f0def41634cb9a2a48e7e6288c53, type: 2}
+  triggerActiveLightMat: {fileID: 0}
+  triggerInActiveLightMat: {fileID: 0}
 --- !u!82 &4131027342520353047
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6655,6 +6661,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   triggerActiveMat: {fileID: 2100000, guid: 37d6e8a02b9d4488bb3f321482c26e15, type: 2}
   triggerInActiveMat: {fileID: 2100000, guid: b9b0f0def41634cb9a2a48e7e6288c53, type: 2}
+  triggerActiveLightMat: {fileID: 0}
+  triggerInActiveLightMat: {fileID: 0}
 --- !u!82 &4131027344060017622
 AudioSource:
   m_ObjectHideFlags: 0
