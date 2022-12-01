@@ -12,7 +12,7 @@ public class portalEntryExit : MonoBehaviour
     Vector3 pos;
     string endPortal;
 
-    void Start()
+    void updateLocation()
     {
 
       // Debug.Log(this.gameObject.tag);
@@ -61,7 +61,7 @@ public class portalEntryExit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+      updateLocation();
     }
 
     private void OnCollisionEnter(Collision collision)
