@@ -86,7 +86,7 @@ public class DoorScript_v2 : MonoBehaviour
             TriggerActivations.reset();
 
             Cursor.lockState = CursorLockMode.None;
-            if (string.Equals(levelName, "L22"))
+            if (string.Equals(levelName, "L25"))
             {
                 SceneManager.LoadScene("LastLevelComplete", LoadSceneMode.Additive);
             }
