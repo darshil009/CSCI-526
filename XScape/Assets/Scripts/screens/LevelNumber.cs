@@ -12,7 +12,7 @@ public class LevelNumber : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levelText.text = "Level : " + (SceneManager.GetActiveScene().buildIndex - 2);
+        levelText.text = "Level : " + (SceneManager.GetActiveScene().buildIndex - 3);
     }
 
     // Update is called once per frame
