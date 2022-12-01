@@ -14,7 +14,7 @@ public class NonMagnetButtonController : MonoBehaviour
     private GameObject quadWest; 
     private GameObject quadEast; 
 
-    [SerializeField] float forceStrength = 0.3f;
+    [SerializeField] float forceStrength = 0.75f;
     private float secondsToApplyForce = 10;
     private float timeCount = 0;
     private Vector3 directionToApplyForce = Vector3.zero;
