@@ -7,6 +7,7 @@ public class MagnetButtonController : MonoBehaviour
     private bool isActive;
     [SerializeField] Material activeMaterial;
     [SerializeField] Material inactiveMaterial;
+    [SerializeField] Material hoverMaterial;
     private SentToGoogle sg;
     [SerializeField] LayerMask magnetButtonMask;
 
@@ -16,6 +17,7 @@ public class MagnetButtonController : MonoBehaviour
     [SerializeField] float forceStrength = 0.5f;
     [SerializeField] MagnetButtonManager magnetButtonManager;
     MeshRenderer meshRenderer;
+
 
     public static int magnetClick;
     private void Start()
@@ -84,6 +86,24 @@ public class MagnetButtonController : MonoBehaviour
                     }
                     else Activate();
                 }
+            }
+        }
+        else
+        {
+            if (Physics.Raycast(ray.origin, ray.direction, out hit, 1000f, magnetButtonMask))
+            {
+                if (hit.collider.gameObject == gameObject)
+                {
+                    if(!this.isActive)
+                    {
+                        meshRenderer.material = hoverMaterial;
+                    }
+                }
+
+            }
+            else if(!this.isActive)
+            {
+                meshRenderer.material = inactiveMaterial;
             }
         }
     }
