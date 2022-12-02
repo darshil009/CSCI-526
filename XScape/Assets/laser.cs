@@ -10,19 +10,27 @@ public class laser : MonoBehaviour
     [SerializeField] private GameObject explosionPrefab;
     AudioSource audioData;
     public static bool isActive;
+
+    private float dist;
     // Start is called before the first frame update
     void Start()
     {
+        dist = Vector3.Distance(startPoint.position, endPoint.position);
         lr = GetComponent<LineRenderer>();
         isActive = false;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         lr.SetPosition(0, startPoint.position);
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit))
+        
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(transform.position, transform.forward, dist);
+
+        foreach (var hit in hits)
         {
             if (hit.collider) lr.SetPosition(1, hit.point);
             if (hit.transform.CompareTag("MagnetBlock") || hit.transform.CompareTag("MagnetBlock1"))
@@ -40,7 +48,6 @@ public class laser : MonoBehaviour
             {
                 lr.SetPosition(1, endPoint.position);
             }
-            
         }
     }
 }
