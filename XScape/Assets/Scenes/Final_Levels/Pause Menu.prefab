@@ -321,12 +321,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Keyboard Controls:
 
-    C : Camera Angle
+    WASD : Move
+
+    Spacebar : Jump
+
+    C : Camera
+    Angle
 
     +/- : Mouse Sensitivity
 
-    R
-    : Restart'
+    R : Restart'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 33b2d8640a4bb57488bedfb0e11a6a5d, type: 2}
   m_sharedMaterial: {fileID: -8972458037608199658, guid: 33b2d8640a4bb57488bedfb0e11a6a5d, type: 2}
@@ -913,7 +917,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -128, y: -90}
+  m_AnchoredPosition: {x: -128, y: -84.1}
   m_SizeDelta: {x: 250, y: 120}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &6737438158120782114
