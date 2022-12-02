@@ -301,6 +301,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2150dc8637bd14e769e867c7a89d7110, type: 3}
+--- !u!1 &263256362 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6737438156278916927, guid: 2150dc8637bd14e769e867c7a89d7110, type: 3}
+  m_PrefabInstance: {fileID: 263256361}
+  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &317161207
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -3458,9 +3463,29 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
+      propertyPath: disableItems.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
       propertyPath: triggerList.Array.data[0]
       value: 
       objectReference: {fileID: 1116443649}
+    - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
+      propertyPath: disableItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 2006112094}
+    - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
+      propertyPath: disableItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 2006112093}
+    - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
+      propertyPath: disableItems.Array.data[2]
+      value: 
+      objectReference: {fileID: 2006112092}
+    - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
+      propertyPath: disableItems.Array.data[3]
+      value: 
+      objectReference: {fileID: 263256362}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
 --- !u!43 &886438135

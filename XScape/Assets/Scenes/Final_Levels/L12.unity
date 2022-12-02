@@ -4183,7 +4183,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh112288
+  m_Name: pb_Mesh168974
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4718,6 +4718,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2150dc8637bd14e769e867c7a89d7110, type: 3}
+--- !u!1 &1375778176 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6737438156278916927, guid: 2150dc8637bd14e769e867c7a89d7110, type: 3}
+  m_PrefabInstance: {fileID: 1375778175}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1385950772
 GameObject:
   m_ObjectHideFlags: 0
@@ -4967,6 +4972,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
+      propertyPath: disableItems.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
       propertyPath: triggerList.Array.data[0]
       value: 
       objectReference: {fileID: 1009385386}
@@ -4974,6 +4983,22 @@ PrefabInstance:
       propertyPath: triggerList.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
+      propertyPath: disableItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 606127024}
+    - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
+      propertyPath: disableItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 606127023}
+    - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
+      propertyPath: disableItems.Array.data[2]
+      value: 
+      objectReference: {fileID: 606127022}
+    - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
+      propertyPath: disableItems.Array.data[3]
+      value: 
+      objectReference: {fileID: 1375778176}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
 --- !u!1001 &2093174684
