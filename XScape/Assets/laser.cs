@@ -28,6 +28,7 @@ public class laser : MonoBehaviour
         RaycastHit[] hits;
         var dist = Vector3.Distance(startPoint.position, endPoint.position);
         hits = Physics.RaycastAll(transform.position, transform.forward, dist);
+        System.Array.Sort(hits, (x,y) => x.distance.CompareTo(y.distance));
         foreach (var hit in hits)
         {
             lr.SetPosition(1, hit.point);
