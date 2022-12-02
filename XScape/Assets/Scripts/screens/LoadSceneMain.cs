@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class LoadSceneMain : MonoBehaviour
     public void loadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
-        Cursor.lockState = CursorLockMode.Locked;
+        if (sceneName != "LevelSelect")
+            Cursor.lockState = CursorLockMode.Locked;
     }
 }
