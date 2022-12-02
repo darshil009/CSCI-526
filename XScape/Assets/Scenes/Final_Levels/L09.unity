@@ -195,6 +195,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
+      propertyPath: disableItems.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
       propertyPath: triggerList.Array.data[0]
       value: 
       objectReference: {fileID: 711704325}
@@ -202,6 +206,22 @@ PrefabInstance:
       propertyPath: triggerList.Array.data[1]
       value: 
       objectReference: {fileID: 1689558759}
+    - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
+      propertyPath: disableItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 223498030}
+    - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
+      propertyPath: disableItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 223498029}
+    - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
+      propertyPath: disableItems.Array.data[2]
+      value: 
+      objectReference: {fileID: 223498028}
+    - target: {fileID: 7945217919086704820, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
+      propertyPath: disableItems.Array.data[3]
+      value: 
+      objectReference: {fileID: 1397499115}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 550aa4ced30dc4955888777bcd92e071, type: 3}
 --- !u!1 &54281099
@@ -10130,6 +10150,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2150dc8637bd14e769e867c7a89d7110, type: 3}
+--- !u!1 &1397499115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6737438156278916927, guid: 2150dc8637bd14e769e867c7a89d7110, type: 3}
+  m_PrefabInstance: {fileID: 1397499114}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1411723794
 Mesh:
   m_ObjectHideFlags: 0

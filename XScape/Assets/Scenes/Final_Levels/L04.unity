@@ -1426,6 +1426,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2150dc8637bd14e769e867c7a89d7110, type: 3}
+--- !u!1 &1242476489 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6737438156278916927, guid: 2150dc8637bd14e769e867c7a89d7110, type: 3}
+  m_PrefabInstance: {fileID: 1242476488}
+  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &1277746214
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -4796,6 +4801,11 @@ MonoBehaviour:
   - {fileID: 963220164}
   - {fileID: 1209196092}
   DURATION: 1
+  disableItems:
+  - {fileID: 1348159125}
+  - {fileID: 1348159124}
+  - {fileID: 1348159123}
+  - {fileID: 1242476489}
 --- !u!82 &4662871459235097969
 AudioSource:
   m_ObjectHideFlags: 0

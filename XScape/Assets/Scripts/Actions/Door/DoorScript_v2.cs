@@ -24,6 +24,7 @@ public class DoorScript_v2 : MonoBehaviour
     AudioSource audioData;
     private float startTime;
     private bool isLevelComplete;
+    [SerializeField] List<GameObject> disableItems;
 
     // private string levelSessionId = System.Guid.NewGuid().ToString();
     private int numActivatedTriggers=0;
@@ -89,6 +90,10 @@ public class DoorScript_v2 : MonoBehaviour
             TriggerActivations.reset();
 
             Cursor.lockState = CursorLockMode.None;
+            foreach (var obj in disableItems)
+            {
+                obj.SetActive(false);
+            }
             if (string.Equals(levelName, "L25"))
             {
                 SceneManager.LoadScene("LastLevelComplete", LoadSceneMode.Additive);
