@@ -23,6 +23,7 @@ public class DoorScript_v2 : MonoBehaviour
     public float DURATION = 1;
     AudioSource audioData;
     private float startTime;
+    private bool isLevelComplete;
 
     // private string levelSessionId = System.Guid.NewGuid().ToString();
     private int numActivatedTriggers=0;
@@ -58,6 +59,7 @@ public class DoorScript_v2 : MonoBehaviour
         frame = this.transform.Find(FRAME);
         closePosition = slidingDoor.localPosition;
         startTime = Time.time;
+        isLevelComplete = false;
     }
 
     // Update is called once per frame
@@ -68,7 +70,8 @@ public class DoorScript_v2 : MonoBehaviour
 
     public void OnTriggerEnter(Collider other){
         //Player completed level
-        if(other.CompareTag("Player")){
+        if(other.CompareTag("Player") && !isLevelComplete){
+            isLevelComplete = true;
             int magnetClick1 = MagnetButtonController.magnetClick;
             int platformClick1 = platformMove.movingPlatformClick;
             string levelName = StarterAssets.FirstPersonController.sceneName;
@@ -93,6 +96,7 @@ public class DoorScript_v2 : MonoBehaviour
             else{
                 SceneManager.LoadScene("LevelComplete", LoadSceneMode.Additive);
             }
+            
         }
     }
 
