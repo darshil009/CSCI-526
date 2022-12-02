@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 26143302}
   - component: {fileID: 26143301}
   m_Layer: 0
-  m_Name: LevelComplete
+  m_Name: LastLevelComplete
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,7 +310,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -226.75, y: -20.331}
+  m_AnchoredPosition: {x: -114.6, y: -19.4}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &447449281
@@ -444,7 +444,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -20.331}
+  m_AnchoredPosition: {x: 134.6, y: -20.331}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &561579496
@@ -807,7 +807,7 @@ GameObject:
   - component: {fileID: 1434164708}
   - component: {fileID: 1434164707}
   m_Layer: 5
-  m_Name: LevelCompleteText
+  m_Name: LastLevelCompleteText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -830,8 +830,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 71.503}
-  m_SizeDelta: {x: 500, y: 50}
+  m_AnchoredPosition: {x: 13.2414, y: 60.4766}
+  m_SizeDelta: {x: 613.9216, y: 88.9027}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1434164707
 MonoBehaviour:
@@ -853,7 +853,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level Completed
+  m_text: 'Congratulations!!!
+
+
+    Last Level Completed'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 33b2d8640a4bb57488bedfb0e11a6a5d, type: 2}
   m_sharedMaterial: {fileID: -8972458037608199658, guid: 33b2d8640a4bb57488bedfb0e11a6a5d, type: 2}
@@ -880,7 +883,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51
+  m_fontSize: 34.95
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1423,7 +1426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1801797153
 RectTransform:
   m_ObjectHideFlags: 0
