@@ -677,6 +677,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6737438156278916926, guid: 2150dc8637bd14e769e867c7a89d7110, type: 3}
+      propertyPath: disableItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 936157065}
+    - target: {fileID: 6737438156278916926, guid: 2150dc8637bd14e769e867c7a89d7110, type: 3}
+      propertyPath: disableItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 936157064}
+    - target: {fileID: 6737438156278916926, guid: 2150dc8637bd14e769e867c7a89d7110, type: 3}
+      propertyPath: disableItems.Array.data[2]
+      value: 
+      objectReference: {fileID: 936157063}
     - target: {fileID: 6737438156278916927, guid: 2150dc8637bd14e769e867c7a89d7110, type: 3}
       propertyPath: m_Name
       value: Pause Menu
@@ -4558,6 +4570,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a91f5c8b31704d588ff3ee271554a59, type: 3}
+--- !u!1 &936157063 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1141385097829287160, guid: 0a91f5c8b31704d588ff3ee271554a59, type: 3}
+  m_PrefabInstance: {fileID: 936157062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &936157064 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8122470236448414193, guid: 0a91f5c8b31704d588ff3ee271554a59, type: 3}
+  m_PrefabInstance: {fileID: 936157062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &936157065 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 46195018616728522, guid: 0a91f5c8b31704d588ff3ee271554a59, type: 3}
+  m_PrefabInstance: {fileID: 936157062}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &983032157 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7993448355615031863, guid: 35d5c5867f48d48f2b0a5431c34b6b7c, type: 3}
