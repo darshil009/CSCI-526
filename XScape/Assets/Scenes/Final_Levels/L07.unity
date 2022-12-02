@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -289,6 +289,91 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2150dc8637bd14e769e867c7a89d7110, type: 3}
+--- !u!1001 &230169108
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4695903535538529183}
+    m_Modifications:
+    - target: {fileID: 3414524782540156100, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_Name
+      value: MagnetButtonManager (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -29.329779
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.2783985
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 14.55267
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156103, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: magnetButtonControllers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3414524782540156103, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: magnetButtonControllers.Array.data[0]
+      value: 
+      objectReference: {fileID: 1107925484}
+    - target: {fileID: 3414524782540156103, guid: 762b607661c234764afd520e22778013, type: 3}
+      propertyPath: magnetButtonControllers.Array.data[1]
+      value: 
+      objectReference: {fileID: 845604878}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 762b607661c234764afd520e22778013, type: 3}
+--- !u!114 &230169109 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3414524782540156103, guid: 762b607661c234764afd520e22778013, type: 3}
+  m_PrefabInstance: {fileID: 230169108}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eda4080d256094c6da564453737f8d8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &230169110 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3414524782540156102, guid: 762b607661c234764afd520e22778013, type: 3}
+  m_PrefabInstance: {fileID: 230169108}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &344452003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2630,6 +2715,184 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &845604876
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4695903535538529183}
+    m_Modifications:
+    - target: {fileID: 8407635365759336168, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: magnetButtonManager
+      value: 
+      objectReference: {fileID: 230169109}
+    - target: {fileID: 8407635365759336168, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: magnetBlocks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407635365759336168, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: magnetBlocks.Array.data[0]
+      value: 
+      objectReference: {fileID: 6089831790183155680}
+    - target: {fileID: 8407635365759336168, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: magnetBlocks.Array.data[1]
+      value: 
+      objectReference: {fileID: 6089831789596705365}
+    - target: {fileID: 8407635365759336180, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407635365759336180, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407635365759336180, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.9294176
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407635365759336180, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 28.130003
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407635365759336180, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407635365759336180, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407635365759336180, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407635365759336180, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407635365759336180, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407635365759336180, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407635365759336180, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8407635365759336181, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+      propertyPath: m_Name
+      value: MagnetButtonRight (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+--- !u!4 &845604877 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8407635365759336180, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+  m_PrefabInstance: {fileID: 845604876}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &845604878 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8407635365759336168, guid: 2195abbfd257741b68dc9e33b64da40f, type: 3}
+  m_PrefabInstance: {fileID: 845604876}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e675a8c701f4f27ac37e574752ed06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &1107925482
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4695903535538529183}
+    m_Modifications:
+    - target: {fileID: 8674865461408971556, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674865461408971556, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.9699974
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674865461408971556, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.268861
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674865461408971556, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -29.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674865461408971556, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674865461408971556, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674865461408971556, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674865461408971556, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674865461408971556, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674865461408971556, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674865461408971556, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674865461408971557, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+      propertyPath: m_Name
+      value: MagnetButtonLeft (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674865461408971563, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+      propertyPath: magnetButtonManager
+      value: 
+      objectReference: {fileID: 230169109}
+    - target: {fileID: 8674865461408971563, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+      propertyPath: magnetBlocks.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674865461408971563, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+      propertyPath: magnetBlocks.Array.data[0]
+      value: 
+      objectReference: {fileID: 6089831790183155680}
+    - target: {fileID: 8674865461408971563, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+      propertyPath: magnetBlocks.Array.data[1]
+      value: 
+      objectReference: {fileID: 6089831789596705365}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+--- !u!4 &1107925483 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8674865461408971556, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+  m_PrefabInstance: {fileID: 1107925482}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1107925484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8674865461408971563, guid: 0676c097917394e849a9880f25f51aa4, type: 3}
+  m_PrefabInstance: {fileID: 1107925482}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e675a8c701f4f27ac37e574752ed06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1308986294
 GameObject:
   m_ObjectHideFlags: 0
@@ -3129,7 +3392,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6293699151238245812, guid: c1a6c481e65264d6dbe7f3be78586629, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6293699151238245812, guid: c1a6c481e65264d6dbe7f3be78586629, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3505,53 +3768,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.008600006, y: 0.21909475, z: 0.12519799}
   m_Center: {x: -0.000000038184226, y: -0.0000000037252907, z: 0.0000000037252907}
---- !u!4 &1517668408092343332
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1517668408092343334}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.459774, y: 0.5653391, z: -0.61732674}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4695903535538529183}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1517668408092343333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1517668408092343334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eda4080d256094c6da564453737f8d8e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  magnetButtonControllers:
-  - {fileID: 4759833658229833920}
-  - {fileID: 5674791180435200980}
---- !u!1 &1517668408092343334
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1517668408092343332}
-  - component: {fileID: 1517668408092343333}
-  m_Layer: 0
-  m_Name: MagnetButtonManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!54 &1790391362528243122
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23179,9 +23395,9 @@ Transform:
   - {fileID: 4210024881160505627}
   - {fileID: 770298912}
   - {fileID: 1366324669}
-  - {fileID: 1517668408092343332}
-  - {fileID: 5674791180435200968}
-  - {fileID: 4759833658229833935}
+  - {fileID: 230169110}
+  - {fileID: 1107925483}
+  - {fileID: 845604877}
   - {fileID: 1993801668055235555}
   - {fileID: 6091247501067453291}
   - {fileID: 6091247501659604702}
@@ -23190,442 +23406,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4759833658229833920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4759833658229833934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90e675a8c701f4f27ac37e574752ed06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeMaterial: {fileID: 2100000, guid: ff6065dfcef764207be1d07cce1208c9, type: 2}
-  inactiveMaterial: {fileID: 2100000, guid: 7a1650a86ef7b4ae79bfd9c25649591f, type: 2}
-  magnetButtonMask:
-    serializedVersion: 2
-    m_Bits: 8
-  magnetBlocks:
-  - {fileID: 6089831790183155680}
-  - {fileID: 6089831789596705365}
-  forceStrength: 10
-  magnetButtonManager: {fileID: 1517668408092343333}
---- !u!64 &4759833658229833921
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4759833658229833934}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &4759833658229833922
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4759833658229833934}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: ff6065dfcef764207be1d07cce1208c9, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &4759833658229833923
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4759833658229833934}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &4759833658229833934
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4759833658229833935}
-  - component: {fileID: 4759833658229833923}
-  - component: {fileID: 4759833658229833922}
-  - component: {fileID: 4759833658229833921}
-  - component: {fileID: 4759833658229833920}
-  - component: {fileID: 4759833658229833936}
-  m_Layer: 3
-  m_Name: MagnetButtonLeft
-  m_TagString: MagnetButton
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4759833658229833935
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4759833658229833934}
-  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -6.9699974, y: 6.268861, z: -29.22}
-  m_LocalScale: {x: 5.1186986, y: 5.5997696, z: 1.0294218}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4695903535538529183}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!82 &4759833658229833936
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4759833658229833934}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 50e12d639e9724535abc96645cbb8e5b, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!4 &5674791180435200968
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5674791180435200969}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.27, y: 4.9294176, z: 28.130003}
-  m_LocalScale: {x: 5.1186986, y: 5.5997696, z: 1.0294218}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4695903535538529183}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5674791180435200969
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5674791180435200968}
-  - component: {fileID: 5674791180435200981}
-  - component: {fileID: 5674791180435200982}
-  - component: {fileID: 5674791180435200983}
-  - component: {fileID: 5674791180435200980}
-  - component: {fileID: 5674791180435200984}
-  m_Layer: 3
-  m_Name: MagnetButtonRight
-  m_TagString: MagnetButton
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &5674791180435200980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5674791180435200969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90e675a8c701f4f27ac37e574752ed06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeMaterial: {fileID: 2100000, guid: ff6065dfcef764207be1d07cce1208c9, type: 2}
-  inactiveMaterial: {fileID: 2100000, guid: 7a1650a86ef7b4ae79bfd9c25649591f, type: 2}
-  magnetButtonMask:
-    serializedVersion: 2
-    m_Bits: 8
-  magnetBlocks:
-  - {fileID: 6089831790183155680}
-  - {fileID: 6089831789596705365}
-  forceStrength: 10
-  magnetButtonManager: {fileID: 1517668408092343333}
---- !u!33 &5674791180435200981
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5674791180435200969}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5674791180435200982
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5674791180435200969}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: ff6065dfcef764207be1d07cce1208c9, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5674791180435200983
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5674791180435200969}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!82 &5674791180435200984
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5674791180435200969}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 50e12d639e9724535abc96645cbb8e5b, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &6065810800298736786
 MonoBehaviour:
   m_ObjectHideFlags: 0
