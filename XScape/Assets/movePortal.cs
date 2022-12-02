@@ -13,43 +13,58 @@ public class movePortal : MonoBehaviour
     [SerializeField] float speed= 2f;
     [SerializeField] Material activeMaterial;
     [SerializeField] Material inactiveMaterial;
+    //[SerializeField] Material otherInactiveMaterial;
+    [SerializeField] List<GameObject> otherButtons;
+    private List<movePortal> mps=new List<movePortal>();
+    //[SerializeField] List<List<GameObject>> buttons;
+    //[SerializeField] Material leftActiveMaterial;
+    //[SerializeField] Material leftInActiveMaterial;
+    //[SerializeField] Material rightActiveMaterial;
+    //[SerializeField] Material rightInActiveMaterial;
+
     MeshRenderer meshRenderer;
-    private bool isActive;
+    public bool isActive;
+    //private bool leftActive=false;
+    //private bool rightActive=false;
     
-    private void Awake()
-    {
-        meshRenderer = GetComponent<MeshRenderer>();
-        meshRenderer.material = inactiveMaterial;
-        isActive = false;
-    }
+
     private void Start()
     {
+        foreach (var button in otherButtons)
+        {
+            mps.Add(button.GetComponent<movePortal>());
+        }
+        //mp = otherButton.GetComponent<movePortal>();
 
         //pm = GameObject.FindGameObjectWithTag("MovingPortal").GetComponent<portalMovement>();
         
     }
 
-    //public void leftClick()
-    //{
-        
-    //    addForce();
-    //}
-    //public void rightClick()
-    //{
-
-    //    addForce();
-    //}
+   
     public void Activate()
     {
-        this.isActive = true;
-        meshRenderer.material = activeMaterial;
+        foreach (var mp in mps)
+        {
+            mp.Deactivate();
+        }
+      
+        //otherButton.GetComponent<MeshRenderer>().material = otherInactiveMaterial;
+     
+        gameObject.GetComponent<MeshRenderer>().material = activeMaterial;
+
+
         addForce();
     }
     public void Deactivate()
     {
-        this.isActive = false;
-        meshRenderer.material = inactiveMaterial;
+        gameObject.GetComponent<MeshRenderer>().material = inactiveMaterial;
+
+        isActive = false;
         rb.velocity = new Vector3(0, 0, 0);
+    }
+    public void DeactivateAll()
+    {
+
     }
     public void addForce()
     {
@@ -71,26 +86,38 @@ public class movePortal : MonoBehaviour
             {
                 if (hit.collider.gameObject == gameObject)
                 {
-                    Debug.Log(gameObject.name);
-                    if (gameObject.CompareTag("LeftButtonPortal"))
+                  
+                    if (isActive)
                     {
-                        if (this.isActive)
-                        {
-                            Deactivate();
-                        }
-                        else Activate();
-                        //leftClick();
+
+                        
+                        Deactivate();
                     }
+                    else
+                    {
+                        //Debug.Log(isActive + " " + mp.isActive);
+                        isActive = true;
+                        Activate();
+                    }
+                    //if (gameObject.CompareTag("LeftButtonPortal"))
+                    //{
+                    //    if (this.leftActive)
+                    //    {
+                    //        Deactivate();
+                    //    }
+                    //    else Activate();
+                    //    //leftClick();
+                    //}
                     
-                    else if (gameObject.CompareTag("RightButtonPortal"))
-                    {
-                        if (this.isActive)
-                        {
-                            Deactivate();
-                        }
-                        else Activate();
-                        //rightClick();
-                    }
+                    //else if (gameObject.CompareTag("RightButtonPortal"))
+                    //{
+                    //    if (this.rightActive)
+                    //    {
+                    //        Deactivate();
+                    //    }
+                    //    else Activate();
+                    //    //rightClick();
+                    //}
                 }
             }
         }
