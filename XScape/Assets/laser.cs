@@ -26,7 +26,8 @@ public class laser : MonoBehaviour
         lr.SetPosition(0, startPoint.position);
         
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, transform.forward, 5000f);
+        var dist = Vector3.Distance(startPoint.position, endPoint.position);
+        hits = Physics.RaycastAll(transform.position, transform.forward, dist);
         foreach (var hit in hits)
         {
             lr.SetPosition(1, hit.point);
